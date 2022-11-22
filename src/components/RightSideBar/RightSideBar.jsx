@@ -50,8 +50,7 @@ const RightSideBar = () => {
         </Heading>
         <List color="#9B9FAA">
           <ListItem display="flex" justifyContent="space-between">
-            <Text>Left</Text>
-            <Text>000 kcal</Text>
+            <Text>Your diet will be displayed here</Text>
           </ListItem>
         </List>
       </Box>
