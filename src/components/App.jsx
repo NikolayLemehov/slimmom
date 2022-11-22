@@ -1,4 +1,5 @@
 import {Outlet, Route, Routes} from "react-router-dom";
+import {LogInPage} from "../pages/LogInPage/LogInPage";
 
 export const App = () => {
   return (
@@ -7,7 +8,7 @@ export const App = () => {
       <Routes>
         <Route path='/' element={<Outlet/>}>
           <Route index element={<h1>Home</h1>}/>
-          <Route path='login' element={<div>Login</div>}/>
+          <Route path='login' element={<LogInPage/>}/>
           <Route path='registration' element={<div>Registration</div>}/>
           <Route path='calculator' element={<div>Calculator</div>}/>
           <Route path='diary' element={<div>Diary</div>}/>
