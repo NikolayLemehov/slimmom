@@ -1,16 +1,18 @@
+import {Outlet, Route, Routes} from "react-router-dom";
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <div>Header</div>
+      <Routes>
+        <Route path='/' element={<Outlet/>}>
+          <Route index element={<h1>Home</h1>}/>
+          <Route path='login' element={<div>Login</div>}/>
+          <Route path='registration' element={<div>Registration</div>}/>
+          <Route path='calculator' element={<div>Calculator</div>}/>
+          <Route path='diary' element={<div>Diary</div>}/>
+        </Route>
+      </Routes>
+    </>
   );
 };
