@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import {
   Box,
   Button,
-  Checkbox,
   Flex,
   FormControl,
   FormLabel,
@@ -18,7 +17,8 @@ export function LogInPage() {
       rememberMe: false
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      console.log(values)
     }
   });
   return (
@@ -48,15 +48,6 @@ export function LogInPage() {
                 value={formik.values.password}
               />
             </FormControl>
-            <Checkbox
-              id="rememberMe"
-              name="rememberMe"
-              onChange={formik.handleChange}
-              isChecked={formik.values.rememberMe}
-              colorScheme="purple"
-            >
-              Remember me?
-            </Checkbox>
             <Button type="submit" colorScheme="purple" width="full">
               Login
             </Button>
