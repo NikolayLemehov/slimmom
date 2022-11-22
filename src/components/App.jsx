@@ -1,11 +1,12 @@
 import Home from 'pages/LogInPage/Home/Home';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { LogInPage } from '../pages/LogInPage/LogInPage';
+import Header from './Header/Header';
 
 export const App = () => {
   return (
     <>
-      <div>Header</div>
+      <Header />
       <Routes>
         <Route path="/" element={<Outlet />}>
           <Route index element={<Home />} />
