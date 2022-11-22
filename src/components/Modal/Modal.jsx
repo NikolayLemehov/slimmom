@@ -13,7 +13,7 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import MainButton from 'components/Button/Button';
+import MainButton from 'components/Button/MainButton';
 import { useState } from 'react';
 
 const ModalWindow = () => {
