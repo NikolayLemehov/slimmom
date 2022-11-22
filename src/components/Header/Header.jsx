@@ -1,6 +1,5 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { Divider, IconButton, Link, Stack, Text } from '@chakra-ui/react';
-import RightSideBar from 'components/RightSideBar/RightSideBar';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo/logo.png';
 
@@ -62,7 +61,6 @@ const Header = () => {
           background="transparent"
         />
       </Stack>
-      <RightSideBar />
     </>
   );
 };
