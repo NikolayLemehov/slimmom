@@ -45,19 +45,22 @@ const ModalWindow = () => {
 
           <ModalCloseButton size="sm" />
           <ModalBody>
-            <Text
-              as="b"
-              fontSize="48px"
-              display="flex"
-              alignItems="baseline"
-              justifyContent="center"
-              color="#264061"
-            >
-              2800
-              <Text fontSize="24px" ml="1">
-                kcal
+            <Box display="flex" justifyContent="center">
+              <Text
+                as="b"
+                fontSize="48px"
+                display="flex"
+                alignItems="baseline"
+                justifyContent="center"
+                color="#264061"
+              >
+                2800
+                <Text fontSize="24px" ml="1">
+                  kcal
+                </Text>
               </Text>
-            </Text>
+            </Box>
+
             <Divider w="330px" mx="auto" />
             <Text as={'h3'} color="#212121" textAlign="center" mt="12px">
               Foods you should not eat
