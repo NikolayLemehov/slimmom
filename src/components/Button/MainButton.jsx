@@ -10,7 +10,7 @@ const MainButton = ({ type, id, onClick, text, isOpen }) => {
       w="min-content"
       py="13px"
       px="25px"
-      isOpen={isOpen}
+      open={isOpen}
       background="#FC842D"
       color="#FFFFFF"
       boxShadow="0px 4px 10px rgba(252, 132, 45, 0.5)"
