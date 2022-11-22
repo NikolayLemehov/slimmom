@@ -12,6 +12,7 @@ export const App = () => {
           <Route path='calculator' element={<div>Calculator</div>}/>
           <Route path='diary' element={<div>Diary</div>}/>
         </Route>
+        <Route path='*' element={<div>404</div>}/>
       </Routes>
     </>
   );
