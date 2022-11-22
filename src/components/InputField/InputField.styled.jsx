@@ -10,8 +10,6 @@ export const FormLabel = styled.label`
 
     font-size: 12px;
     color: #fc842d;
-
-    transition: bottom 300ms ease, color 300ms ease, font-size 300ms ease;
   }
 `;
 
@@ -28,6 +26,7 @@ export const LabelName = styled.span`
 
   color: #9b9faa;
 
+  transition: bottom 300ms ease, color 300ms ease, font-size 300ms ease;
   z-index: 10;
 `;
 
@@ -42,11 +41,10 @@ export const Input = styled.input`
 
   border-bottom: 1px solid #e0e0e0;
 
+  transition: border-color 300ms ease;
   &:focus-within {
     border-bottom: 1px solid #fc842d;
     outline: none;
-
-    transition: border-color 300ms ease;
   }
 
   &:not(:placeholder-shown) {
