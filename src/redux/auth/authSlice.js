@@ -14,32 +14,33 @@ const initialState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {
-    [authOperations.register.fulfilled](state, {payload}) {
-      state.user = payload.user;
-    },
-    [authOperations.logIn.fulfilled](state, {payload}) {
-      state.user.username = payload['user']['username'];
-      state.user.email = payload['user']['email'];
-      state.accessToken = payload['accessToken'];
-      state.refreshToken = payload['refreshToken'];
-      state.sid = payload['sid'];
-      state.isLoggedIn = true;
-    },
-    [authOperations.logOut.fulfilled](state) {
-      state.username = initialState.username;
-      state.accessToken = initialState.accessToken;
-      state.refreshToken = initialState.refreshToken;
-      state.sid = initialState.sid;
-      state.isLoggedIn = initialState.isLoggedIn;
-    },
-    [authOperations.refresh.fulfilled](state, {payload}) {
-      state.accessToken = payload['newAccessToken'];
-      state.refreshToken = payload['newRefreshToken'];
-      state.sid = payload['sid'];
-      state.isLoggedIn = true;
-      state.isFetchingCurrentUser = false;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(authOperations.register.fulfilled, (state, {payload}) => {
+        state.user = payload.user;
+      })
+      .addCase(authOperations.logIn.fulfilled, (state, {payload}) => {
+        state.user.username = payload['user']['username'];
+        state.user.email = payload['user']['email'];
+        state.accessToken = payload['accessToken'];
+        state.refreshToken = payload['refreshToken'];
+        state.sid = payload['sid'];
+        state.isLoggedIn = true;
+      })
+      .addCase(authOperations.logOut.fulfilled, (state) => {
+        state.user.username = initialState.username;
+        state.accessToken = initialState.accessToken;
+        state.refreshToken = initialState.refreshToken;
+        state.sid = initialState.sid;
+        state.isLoggedIn = initialState.isLoggedIn;
+      })
+      .addCase(authOperations.refresh.fulfilled, (state, {payload}) => {
+        state.accessToken = payload['newAccessToken'];
+        state.refreshToken = payload['newRefreshToken'];
+        state.sid = payload['sid'];
+        state.isLoggedIn = true;
+        state.isFetchingCurrentUser = false;
+      })
   }
 })
 
