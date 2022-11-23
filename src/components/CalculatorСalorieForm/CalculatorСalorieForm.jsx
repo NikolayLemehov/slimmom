@@ -3,8 +3,7 @@ import InputField from 'components/InputField/InputField';
 
 import MainButton from 'components/Button/MainButton';
 
-
-import { Form, Title } from './CalculatorСalorieForm.styled';
+import { Form, Title, NameLabel } from './CalculatorСalorieForm.styled';
 
 export default function CalculatorСalorieForm() {
   const handlerEvent = e => {
@@ -15,15 +14,25 @@ export default function CalculatorСalorieForm() {
     <>
       <Title>Calculate your daily calorie intake right now</Title>
       <Form>
-        <Box display="flex" gap="32px">
-          <Box display="flex" flexDirection="column" gap="10px">
+        <Box
+          display="flex"
+          gap={{ md: '32px' }}
+          flexDirection={{ xs: 'column', md: 'row' }}
+          width={{ xs: '100%' }}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="10px"
+            minWidth={{ xs: '100%', md: '240px' }}
+          >
             <InputField
               labelName="Height *"
               type="number"
               name="height"
               handlerEvent={handlerEvent}
               required
-              width="240px"
+              width="100%"
             />
             <InputField
               labelName="Age *"
@@ -31,7 +40,7 @@ export default function CalculatorСalorieForm() {
               name="age"
               handlerEvent={handlerEvent}
               required
-              width="240px"
+              width="100%"
             />
             <InputField
               labelName="Current weight *"
@@ -39,40 +48,52 @@ export default function CalculatorСalorieForm() {
               name="currentWeight"
               handlerEvent={handlerEvent}
               required
-              width="240px"
+              width="100%"
             />
           </Box>
-          <Box display="flex" flexDirection="column" gap="10px">
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="10px"
+            minWidth={{ xs: '100%', md: '240px' }}
+          >
             <InputField
               labelName="Desired weight *"
               type="number"
               name="desiredWeight *"
               handlerEvent={handlerEvent}
               required
-              width="240px"
+              width="100%"
             />
-            <InputField
+            {/* <InputField
               labelName="Blood type *"
               type="number"
               name="bloodType"
               value="1"
               handlerEvent={handlerEvent}
               required
-              width="240px"
+              width="100%"
               disable
-            />
+            /> */}
+            <NameLabel>Blood type *</NameLabel>
             <RadioGroup onChange={handlerEvent} name="bloodType">
               <Stack direction="row" spacing={10}>
-                <Radio value="1" w="20px" size="lg" defaultChecked>
+                <Radio
+                  value="1"
+                  w="20px"
+                  size="lg"
+                  defaultChecked
+                  colorScheme="orange"
+                >
                   1
                 </Radio>
-                <Radio value="2" w="20px" size="lg">
+                <Radio value="2" w="20px" size="lg" colorScheme="orange">
                   2
                 </Radio>
-                <Radio value="3" w="20px" size="lg">
+                <Radio value="3" w="20px" size="lg" colorScheme="orange">
                   3
                 </Radio>
-                <Radio value="4" w="20px" size="lg">
+                <Radio value="4" w="20px" size="lg" colorScheme="orange">
                   4
                 </Radio>
               </Stack>
