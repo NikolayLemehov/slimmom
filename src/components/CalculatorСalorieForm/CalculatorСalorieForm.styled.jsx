@@ -7,6 +7,7 @@ export const Form = styled.form`
   gap: 60px;
 
   width: 512px;
+
 `;
 
 export const Title = styled.h1`
@@ -21,4 +22,5 @@ export const Title = styled.h1`
   line-height: 1.2;
 
   color: #212121;
+
 `;

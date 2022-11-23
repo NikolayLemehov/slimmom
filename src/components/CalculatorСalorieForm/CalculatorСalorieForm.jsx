@@ -1,6 +1,8 @@
 import { Box, Radio, RadioGroup, Stack } from '@chakra-ui/react';
 import InputField from 'components/InputField/InputField';
+
 import MainButton from 'components/Button/MainButton';
+
 
 import { Form, Title } from './CalculatorСalorieForm.styled';
 
