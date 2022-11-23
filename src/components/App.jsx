@@ -4,7 +4,7 @@ import Home from 'pages/LogInPage/Home/Home';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { LogInPage } from '../pages/LogInPage/LogInPage';
 import Header from './Header/Header';
-import CalculatorСalorieForm from './CalculatorСalorieForm/CalculatorСalorieForm';
+import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
@@ -15,7 +15,7 @@ export const App = () => {
       ml="auto"
       pr={{ xs: '20px', md: '32px', lg: '16px' }}
       pl={{ xs: '20px', md: '32px', lg: '16px' }}
-      maxW={{ sm: '480px', md: '798px', lg: '1280px' }}
+      maxW={{ sm: '480px', md: '768px', lg: '1280px' }}
     >
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
@@ -24,7 +24,7 @@ export const App = () => {
             <Route index element={<Home />} />
             <Route path="login" element={<LogInPage />} />
             <Route path="registration" element={<div>Registration</div>} />
-            <Route path="calculator" element={<CalculatorСalorieForm />} />
+            <Route path="calculator" element={<CalculatorPage />} />
             <Route path="diary" element={<div>Diary</div>} />
             <Route path="uikit" element={<UiKit />} />
           </Route>
