@@ -37,7 +37,7 @@ const ModalWindow = () => {
       <Modal isOpen={isOpen} onClose={onClose} size={{ sm: 'full', md: '2xl' }}>
         {overlay}
         <ModalContent>
-          <Box w="409px" mx="auto">
+          <Box maxW="409px" mx="auto">
             <ModalHeader fontSize="26px" textAlign="center">
               Your recommended daily calorie intake is
             </ModalHeader>
