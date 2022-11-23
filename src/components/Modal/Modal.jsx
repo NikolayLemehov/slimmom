@@ -34,7 +34,7 @@ const ModalWindow = () => {
           onOpen();
         }}
       />
-      <Modal isOpen={isOpen} onClose={onClose} size="2xl">
+      <Modal isOpen={isOpen} onClose={onClose} size={{ sm: 'full', md: '2xl' }}>
         {overlay}
         <ModalContent>
           <Box w="409px" mx="auto">
@@ -44,7 +44,7 @@ const ModalWindow = () => {
           </Box>
 
           <ModalCloseButton size="sm" />
-          <ModalBody>
+          <ModalBody h="100%">
             <Box display="flex" justifyContent="center">
               <Text
                 as="b"
@@ -62,14 +62,21 @@ const ModalWindow = () => {
             </Box>
 
             <Divider w="330px" mx="auto" />
-            <Text as={'h3'} color="#212121" textAlign="center" mt="12px">
+            <Text
+              as={'h3'}
+              color="#212121"
+              textAlign="center"
+              mt="12px"
+              mb="20px"
+            >
               Foods you should not eat
             </Text>
+            <OrderedList mx="auto" display="flex" justifyContent="center">
+              <ListItem color="#9B9FAA">Product item</ListItem>
+            </OrderedList>
           </ModalBody>
-          <OrderedList mx="auto">
-            <ListItem color="#9B9FAA">Product item</ListItem>
-          </OrderedList>
-          <ModalFooter display="flex" justifyContent="center">
+
+          <ModalFooter display="flex" justifyContent="center" mb="120px">
             <MainButton text="Start losing weight" onClick={onClose} />
           </ModalFooter>
         </ModalContent>
