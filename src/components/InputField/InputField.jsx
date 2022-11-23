@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FormLabel, LabelName, Input } from './InputField.styled';
 
 export default function InputField({
@@ -16,3 +17,10 @@ export default function InputField({
     </>
   );
 }
+
+InputField.propTypes = {
+  labelName: PropTypes.string,
+  handlerEvent: PropTypes.func.isRequired,
+  width: PropTypes.string,
+  right: PropTypes.number,
+};
