@@ -6,7 +6,7 @@ import {BrowserRouter} from "react-router-dom";
 import {ChakraProvider} from "@chakra-ui/react";
 import './index.css';
 import {App} from 'components/App';
-import {theme} from "./theme/theme";
+import {customTheme} from "./theme/theme";
 import {persistor, store} from "./redux/store";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename='/slimmom'>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ChakraProvider theme={theme}>
+          <ChakraProvider theme={customTheme}>
             <App/>
           </ChakraProvider>
         </PersistGate>

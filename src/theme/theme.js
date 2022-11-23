@@ -1,8 +1,10 @@
-import {extendTheme} from '@chakra-ui/react';
-import "@fontsource/noto-sans"
-// body { font-family: "Noto Sans", sans-serif; }
-import "@fontsource/montserrat"
-// body { font-family: "Montserrat", sans-serif; }
+import {theme, extendTheme} from '@chakra-ui/react';
+import "@fontsource/noto-sans/400.css"
+import "@fontsource/noto-sans/700.css"
+import "@fontsource/montserrat/400.css"
+import "@fontsource/montserrat/700.css"
+import {Button} from "./components/Button";
+import {customColors} from "./colors";
 
 const config = {
   initialColorMode: 'light',
@@ -15,10 +17,17 @@ const breakpoints = {
   lg: '1280px',
 };
 
-export const theme = extendTheme({
+export const customTheme = extendTheme({
   config, breakpoints,
-  // fonts: {
-  //   heading: `'Open Sans', sans-serif`,
-  //   body: `'Raleway', sans-serif`,
-  // }
+  fonts: {
+    body: `'Noto Sans', sans-serif`, // look like Verdana
+    heading: `'Montserrat', sans-serif`, // look like Gotham Pro
+  },
+  colors: {
+    ...theme.colors,
+    ...customColors,
+  },
+  components: {
+    Button,
+  }
 });

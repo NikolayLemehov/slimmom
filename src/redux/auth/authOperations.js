@@ -19,9 +19,10 @@ const token = {
 }
 
 const register = createAsyncThunk('auth/register', async credential => {
-  const {email, password} = credential;
+  const {email, password, username} = credential;
+
   try {
-    await slimMomAxios.post('/auth/register', credential)
+    await slimMomAxios.post('/auth/register', {email, password, username})
     const {data} = await slimMomAxios.post('/auth/login', {email, password})
     token.set(data.accessToken)
     return data;
@@ -31,8 +32,10 @@ const register = createAsyncThunk('auth/register', async credential => {
 })
 
 const logIn = createAsyncThunk('auth/login', async credential => {
+  const {email, password} = credential;
+
   try {
-    const {data} = await slimMomAxios.post('/auth/login', credential);
+    const {data} = await slimMomAxios.post('/auth/login', {email, password});
     token.set(data.accessToken)
     return data;
   } catch (e) {

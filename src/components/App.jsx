@@ -5,11 +5,11 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import { LogInPage } from '../pages/LogInPage/LogInPage';
 import Header from './Header/Header';
 
-import CalculatorСalorieForm from './CalculatorСalorieForm/CalculatorСalorieForm';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
 
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
+import {RegistrationPage} from "../pages/RegistrationPage/RegistrationPage";
 
 
 const UiKit = lazy(() => import('./UiKit/UiKit'));
@@ -29,7 +29,7 @@ export const App = () => {
           <Route path="/" element={<Outlet />}>
             <Route index element={<Home />} />
             <Route path="login" element={<LogInPage />} />
-            <Route path="registration" element={<div>Registration</div>} />
+            <Route path="registration" element={<RegistrationPage/>} />
             <Route path="calculator" element={<CalculatorPage />} />
             <Route path="diary" element={<div>Diary</div>} />
             <Route path="uikit" element={<UiKit />} />

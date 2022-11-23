@@ -1,5 +1,6 @@
 import authOperations from "../../redux/auth/authOperations";
 import {useDispatch} from "react-redux";
+import {Button, Heading, VStack} from "@chakra-ui/react";
 
 export default function UiKit() {
   const dispatch = useDispatch();
@@ -14,26 +15,30 @@ export default function UiKit() {
   }
 
   return (
-    <div>
-      <button
+    <VStack>
+      <Button
         type={'button'}
         onClick={() => dispatch(authOperations.register(credentialRegister))}
-      >Register</button>
-      <br/>
-      <button
+      >Register</Button>
+      <Button
         type={'button'}
         onClick={() => dispatch(authOperations.logIn(credentialLogIn))}
-      >Login</button>
-      <br/>
-      <button
+      >Login</Button>
+      <Button
         type={'button'}
         onClick={()=>dispatch(authOperations.logOut())}
-      >LogOut</button>
-      <br/>
-      <button
+      >LogOut</Button>
+      <Button
         type={'button'}
         onClick={()=>dispatch(authOperations.refresh())}
-      >Refresh</button>
-    </div>
+      >Refresh</Button>
+
+      <Button>base</Button>
+      <Button variant={'primary'}>primary</Button>
+      <Button variant={'outline'}>outline</Button>
+
+      <Heading fontFamily={'body'}>Body font family</Heading>
+      <Heading fontFamily={'heading'}>Heading font family</Heading>
+    </VStack>
   );
 }
