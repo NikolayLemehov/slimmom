@@ -1,8 +1,10 @@
 import { Box, Radio, RadioGroup, Stack } from '@chakra-ui/react';
 import InputField from 'components/InputField/InputField';
-import MainButton from 'components/Button/Button';
 
-import { Form } from './CalculatorСalorieForm.styled';
+import MainButton from 'components/Button/MainButton';
+
+
+import { Form, Title } from './CalculatorСalorieForm.styled';
 
 export default function CalculatorСalorieForm() {
   const handlerEvent = e => {
@@ -11,6 +13,7 @@ export default function CalculatorСalorieForm() {
 
   return (
     <>
+      <Title>Calculate your daily calorie intake right now</Title>
       <Form>
         <Box display="flex" gap="32px">
           <Box display="flex" flexDirection="column" gap="10px">
