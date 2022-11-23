@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import Home from 'pages/LogInPage/Home/Home';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { LogInPage } from '../pages/LogInPage/LogInPage';
@@ -17,13 +17,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Box
-      mr="auto"
-      ml="auto"
-      pr={{ xs: '20px', md: '32px', lg: '16px' }}
-      pl={{ xs: '20px', md: '32px', lg: '16px' }}
-      maxW={{ sm: '480px', md: '798px', lg: '1280px' }}
-    >
+    <Container maxW={{ sm: '768px', md: '1280px' }}>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
@@ -38,6 +32,6 @@ export const App = () => {
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </Suspense>
-    </Box>
+    </Container>
   );
 };

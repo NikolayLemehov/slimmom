@@ -4,8 +4,8 @@ const RightSideBar = () => {
   return (
     <Box
       bgColor="#F0F1F3"
-      minW={{ xs: '768px', md: '517px' }}
-      maxW={{ lg: '517px' }}
+      // maxW={{ xs: '768px', md: '1280px' }}
+      w={{ base: '100%', lg: '517px' }}
       py={{ xs: '40px', md: '80px', lg: '166px' }}
       display="flex"
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
