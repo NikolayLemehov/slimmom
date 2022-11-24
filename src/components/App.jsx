@@ -11,6 +11,7 @@ import authOperations from 'redux/auth/authOperations';
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 import DiaryPage from 'pages/DiaryPage/DiaryPage';
 import {RegistrationPage} from "../pages/RegistrationPage/RegistrationPage";
+import HomePage from "../pages/HomePage/HomePage";
 
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
@@ -27,7 +28,7 @@ export const App = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Outlet />}>
-            <Route index element={<Home />} />
+            <Route index element={<HomePage />} />
             <Route path="login" element={<LogInPage />} />
             <Route path="registration" element={<div>Registration</div>} />
             <Route path="calculator" element={<CalculatorPage />} />

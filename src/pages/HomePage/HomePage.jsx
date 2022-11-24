@@ -8,7 +8,7 @@ import ModalWindow from 'components/Modal/Modal';
 import CalculatorСalorieForm from '../../components/CalculatorСalorieForm/CalculatorСalorieForm';
 import { BgImg } from './HomePage.styled';
 
-const Home = () => {
+const HomePage = () => {
   const dispatch = useDispatch();
 
   // Modal window
@@ -81,4 +81,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
