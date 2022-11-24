@@ -62,8 +62,8 @@ export function RegistrationPage() {
             <HStack>
               {/*<MainButton type="submit" text='Login' onClick={() => navigate('/login')}/>*/}
               {/*<MainButton type="button" text='Register' background={'#ffffff'}/>*/}
-              <Button variant={'outline'} type="submit" onClick={() => navigate('/login')}>Login</Button>
-              <Button variant={'primary'} type="button">Register</Button>
+              <Button variant={'outline'} type="button" onClick={() => navigate('/login')}>Login</Button>
+              <Button variant={'primary'} type="submit">Register</Button>
             </HStack>
           </VStack>
         </form>
