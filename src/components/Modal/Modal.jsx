@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {
   Box,
   Divider,
@@ -12,39 +12,32 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
   OrderedList,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react';
 import { IoReturnDownBackSharp } from 'react-icons/io5';
 
 import MainButton from 'components/Button/MainButton';
 import LogoSmall from 'components/Logo/SmallLogo';
 
-const ModalWindow = () => {
-  const OverlayOne = () => (
-    <ModalOverlay
-      bg="blackAlpha.300"
-      backdropFilter="blur(10px) hue-rotate(90deg)"
-    />
-  );
-  const [overlay, setOverlay] = useState(<OverlayOne />);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+import {
+  getDailyRate,
+  getNotAllowedProducts,
+} from 'redux/dailyRate/dailyRateSelectors';
+
+import { List } from './Modal.styled';
+
+const ModalWindow = ({ overlay, isOpen, onClose }) => {
+  const dailyRate = useSelector(getDailyRate);
+  const notAllowedProducts = useSelector(getNotAllowedProducts);
+  console.log(notAllowedProducts);
   return (
     <>
-      <MainButton
-        text="Start losing weight"
-        onClick={() => {
-          setOverlay(<OverlayOne />);
-          onOpen();
-        }}
-      />
       <Modal
         isOpen={isOpen}
         onClose={onClose}
         isCentered={true}
-        size={{ xs: 'full', sm: '2xl' }}
+        size={{ xs: 'full', md: '2xl' }}
       >
         {overlay}
         <ModalContent>
@@ -55,7 +48,7 @@ const ModalWindow = () => {
             p="20px"
           >
             <LogoSmall />
-            <Box display={{ sm: 'none' }}>
+            <Box display={{ md: 'none' }}>
               <Link
                 _hover={{ textDecor: 'none' }}
                 fontFamily="-moz-initial"
@@ -77,18 +70,19 @@ const ModalWindow = () => {
               </Link>
             </Box>
           </Box>
-          <Box display={{ sm: 'none' }}>
+          <Box display={{ md: 'none' }}>
             <Box
               bgColor="#EFF1F3"
               w="100%"
               h="40px"
-              display={{ xs: 'flex', sm: 'none' }}
+              display={{ xs: 'flex', md: 'none' }}
             >
               <Icon
                 as={IoReturnDownBackSharp}
                 ml="20px"
                 mt="12px"
                 boxSize="5"
+                onClick={onClose}
               />
             </Box>
           </Box>
@@ -98,7 +92,7 @@ const ModalWindow = () => {
             </ModalHeader>
           </Box>
 
-          <ModalCloseButton size="sm" display={{ xs: 'none', sm: 'block' }} />
+          <ModalCloseButton size="sm" display={{ xs: 'none', md: 'block' }} />
           <ModalBody h="100%">
             <Box display="flex" justifyContent="center">
               <Text
@@ -109,7 +103,7 @@ const ModalWindow = () => {
                 justifyContent="center"
                 color="#264061"
               >
-                2800
+                {dailyRate}
                 <Text fontSize="24px" ml="1">
                   kcal
                 </Text>
@@ -117,21 +111,41 @@ const ModalWindow = () => {
             </Box>
 
             <Divider w="330px" mx="auto" />
-            <Text
-              as={'h3'}
-              color="#212121"
-              textAlign="center"
-              mt="12px"
-              mb="20px"
+            <Box
+              w="330px"
+              mx="auto"
+              display="flex"
+              flexDirection="column"
+              alignItems="start"
             >
-              Foods you should not eat
-            </Text>
-            <OrderedList mx="auto" display="flex" justifyContent="center">
-              <ListItem color="#9B9FAA">Product item</ListItem>
-            </OrderedList>
+              <Text
+                as={'h3'}
+                color="#212121"
+                textAlign="center"
+                w="100%"
+                mt="12px"
+                mb="20px"
+              >
+                Foods you should not eat
+              </Text>
+              <List
+              // color="#9B9FAA"
+              // w="100%"
+              // pl="40px"
+              // h="150px"
+              // m="0"
+              // overflowY="scroll"
+              >
+                {notAllowedProducts.map((item, index) => (
+                  <li key={index}>
+                    {index + 1}. {item}
+                  </li>
+                ))}
+              </List>
+            </Box>
           </ModalBody>
 
-          <ModalFooter display="flex" justifyContent="center" mb="120px">
+          <ModalFooter display="flex" justifyContent="center" mb="81px">
             <MainButton text="Start losing weight" onClick={onClose} />
           </ModalFooter>
         </ModalContent>
