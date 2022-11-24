@@ -25,9 +25,10 @@ export function LogInPage() {
     <Flex align="center" justify="flex-start" h="max-content">
       <Box bg="white" p={6} rounded="md">
         <Heading>Sign In</Heading>
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} autoComplete="off">
           <VStack spacing={4} align="flex-start">
             <InputField
+              autoComplete="off"
               labelName="Email *"
               type="text"
               name="email"
@@ -37,6 +38,7 @@ export function LogInPage() {
               width="100%"
             />
             <InputField
+              autoComplete="off"
               labelName="Password *"
               type="password"
               name="password"
