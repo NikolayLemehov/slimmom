@@ -1,9 +1,9 @@
-import { Box, Divider, Link, Text } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
+import { Box, Divider, Link, Text } from '@chakra-ui/react';
 
 const UserMenu = () => {
   return (
-    <Box ml="auto" display="flex" alignItems="center" gap="15px" mr="15px">
+    <Box ml="auto" display="flex" alignItems="center" gap="15px" mr="45px">
       <Text>Name</Text>
       <Divider orientation="vertical" h="7" border="1px solid #9d9999" />
       <Link

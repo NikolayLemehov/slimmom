@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Box,
   Divider,
@@ -16,10 +17,10 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import MainButton from 'components/Button/MainButton';
 import { IoReturnDownBackSharp } from 'react-icons/io5';
+
+import MainButton from 'components/Button/MainButton';
 import LogoSmall from 'components/Logo/SmallLogo';
-import { NavLink } from 'react-router-dom';
 
 const ModalWindow = () => {
   const OverlayOne = () => (
