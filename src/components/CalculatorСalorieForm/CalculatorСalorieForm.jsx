@@ -5,15 +5,15 @@ import MainButton from 'components/Button/MainButton';
 
 import { Form, Title, NameLabel } from './CalculatorСalorieForm.styled';
 
-export default function CalculatorСalorieForm() {
-  const handlerEvent = e => {
-    console.log(e);
-  };
-
+export default function CalculatorСalorieForm({
+  handleSubmit,
+  handleChange,
+  handleRadio,
+}) {
   return (
     <>
       <Title>Calculate your daily calorie intake right now</Title>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Box
           display="flex"
           gap={{ md: '32px' }}
@@ -29,24 +29,24 @@ export default function CalculatorСalorieForm() {
             <InputField
               labelName="Height *"
               type="number"
-              name="height"
-              handlerEvent={handlerEvent}
+              name="heightUser"
+              handlerEvent={handleChange}
               required
               width="100%"
             />
             <InputField
               labelName="Age *"
               type="number"
-              name="age"
-              handlerEvent={handlerEvent}
+              name="ageUser"
+              handlerEvent={handleChange}
               required
               width="100%"
             />
             <InputField
               labelName="Current weight *"
               type="number"
-              name="currentWeight"
-              handlerEvent={handlerEvent}
+              name="currentWeightUser"
+              handlerEvent={handleChange}
               required
               width="100%"
             />
@@ -60,8 +60,8 @@ export default function CalculatorСalorieForm() {
             <InputField
               labelName="Desired weight *"
               type="number"
-              name="desiredWeight *"
-              handlerEvent={handlerEvent}
+              name="desiredWeightUser"
+              handlerEvent={handleChange}
               required
               width="100%"
             />
@@ -76,15 +76,13 @@ export default function CalculatorСalorieForm() {
               disable
             /> */}
             <NameLabel>Blood type *</NameLabel>
-            <RadioGroup onChange={handlerEvent} name="bloodType">
+            <RadioGroup
+              onChange={handleRadio}
+              name="bloodTypeUser"
+              defaultValue="1"
+            >
               <Stack direction="row" spacing={10}>
-                <Radio
-                  value="1"
-                  w="20px"
-                  size="lg"
-                  defaultChecked
-                  colorScheme="orange"
-                >
+                <Radio value="1" w="20px" size="lg" colorScheme="orange">
                   1
                 </Radio>
                 <Radio value="2" w="20px" size="lg" colorScheme="orange">
