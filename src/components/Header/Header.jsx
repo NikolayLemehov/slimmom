@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import { IoReturnDownBackSharp } from 'react-icons/io5';
-import { Box, Icon, Link, Stack } from '@chakra-ui/react';
+import { Box, Divider, Icon, Link, Stack } from '@chakra-ui/react';
 
 import { authSelectors } from 'redux/auth/authSelectors';
 import SmallLogo from 'components/Logo/SmallLogo';
@@ -30,7 +30,17 @@ const Header = () => {
         mt={{ lg: '64px' }}
       >
         {isLogin ? (
-          <img src={textLogo} alt="Logo" width="166px" height="66px" />
+          <>
+            <Link as={NavLink} to="/">
+              <img src={textLogo} alt="Logo" width="166px" height="66px" />
+            </Link>
+            <Divider
+              orientation="vertical"
+              h="7"
+              border="1px solid #9d9999"
+              display={{ base: 'none', lg: 'block' }}
+            />
+          </>
         ) : (
           <>
             <Logo />
