@@ -1,5 +1,5 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { Box, Divider, Icon, IconButton, Link, Stack } from '@chakra-ui/react';
+import { Box, Icon, IconButton, Link, Stack } from '@chakra-ui/react';
 
 import SmallLogo from 'components/Logo/SmallLogo';
 import textLogo from '../assets/logo/textLogo.svg';
@@ -8,6 +8,7 @@ import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authSelectors } from 'redux/auth/authSelectors';
+import Logo from 'components/Logo/Logo';
 
 const Header = () => {
   const isLogin = useSelector(authSelectors.isLoggedIn);
@@ -30,14 +31,12 @@ const Header = () => {
         {isLogin ? (
           <img src={textLogo} alt="Logo" width="166px" height="66px" />
         ) : (
-          <SmallLogo />
+          <>
+            <Logo />
+            <SmallLogo />
+          </>
         )}
-        <Divider
-          orientation="vertical"
-          h="7"
-          border="1px solid #9d9999"
-          display={{ base: 'none', lg: 'block' }}
-        />
+
         {!isLogin ? (
           <Box>
             <Link
@@ -109,15 +108,17 @@ const Header = () => {
           </Box>
         )}
       </Stack>
-      <Box
-        bgColor="#EFF1F3"
-        w="100%"
-        h="40px"
-        display={{ xs: 'flex', sm: 'none' }}
-      >
-        <Icon as={IoReturnDownBackSharp} ml="20px" mt="12px" boxSize="5" />
-        <UserMenu />
-      </Box>
+      {isLogin && (
+        <Box
+          bgColor="#EFF1F3"
+          w="100%"
+          h="40px"
+          display={{ xs: 'flex', sm: 'none' }}
+        >
+          <Icon as={IoReturnDownBackSharp} ml="20px" mt="12px" boxSize="5" />
+          <UserMenu />
+        </Box>
+      )}
     </>
   );
 };
