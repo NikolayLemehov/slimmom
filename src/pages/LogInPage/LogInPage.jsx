@@ -25,7 +25,7 @@ export function LogInPage() {
     }
   });
   return (
-    <Flex direction='column' justify="flex-start" alignItems='flex-start' h="max-content" height='100%' flexGrow='1'>
+    <Flex justify="flex-start" alignItems='center' flexGrow='1' h='100vh'>
       <Box bg="white" py='98px'>
         <Heading as='h1' size='xs' mb='34px' color={customColors.sun["100"]} style={{textTransform: 'uppercase'}}>Sign
           In</Heading>

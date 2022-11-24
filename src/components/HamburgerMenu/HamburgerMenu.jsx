@@ -21,18 +21,16 @@ const HamburgerMenu = () => {
   return (
     <Flex>
       {!isOpen && (
-        <Flex pos="fixed" top="23px" right={{ xs: '15px', md: '25px' }}>
-          <IconButton
-            bgColor="transparent"
-            aria-label="Open Menu"
-            size="sm"
-            icon={<HamburgerIcon />}
-            display={{ lg: 'none' }}
-            onClick={() => {
-              onOpen();
-            }}
-          />
-        </Flex>
+        <IconButton
+          bgColor="transparent"
+          aria-label="Open Menu"
+          size="sm"
+          icon={<HamburgerIcon />}
+          display={{ lg: 'none' }}
+          onClick={() => {
+            onOpen();
+          }}
+        />
       )}
       <Modal isOpen={isOpen} onClose={onClose} size="full" motionPreset="none">
         <ModalContent>

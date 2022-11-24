@@ -2,11 +2,10 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import { IoReturnDownBackSharp } from 'react-icons/io5';
-import { Box, Icon, Link, Stack } from '@chakra-ui/react';
+import { Box, Flex, Icon, Link } from '@chakra-ui/react';
 
 import { authSelectors } from 'redux/auth/authSelectors';
 import SmallLogo from 'components/Logo/SmallLogo';
-import textLogo from '../assets/logo/textLogo.svg';
 import UserMenu from 'components/UserMenu/UserMenu';
 import Logo from 'components/Logo/Logo';
 import HamburgerMenu from 'components/HamburgerMenu/HamburgerMenu';
@@ -16,37 +15,32 @@ const Header = () => {
 
   return (
     <>
-      <Stack
-        direction="row"
+      <Flex
+        position="absolute"
+        top="0"
+        left="0"
+        w="100%"
         p={4}
-        align="center"
-        gap="2"
         borderBottom={{
           base: '2px solid #E0E0E0',
           lg: 'none',
         }}
-        display="flex"
-        justifyContent={{ base: 'space-between', lg: 'flex-start' }}
-        mt={{ lg: '64px' }}
       >
-        {isLogin ? (
-          <img src={textLogo} alt="Logo" width="166px" height="66px" />
-        ) : (
-          <>
-            <Logo />
-            <SmallLogo />
-          </>
-        )}
-
         {!isLogin ? (
-          <Box>
+          <Flex>
+            <Box display={{ xs: 'none', md: 'flex' }}>
+              <Logo />
+            </Box>
+            <Box display={{ xs: 'flex', md: 'none' }}>
+              <SmallLogo />
+            </Box>
+
             <Link
               _hover={{ textDecor: 'none' }}
               fontFamily="-moz-initial"
               fontSize="14px"
               as={NavLink}
               to="/login"
-              mr="16px"
             >
               SIGIN IN
             </Link>
@@ -59,55 +53,44 @@ const Header = () => {
             >
               REGISTRATION
             </Link>
-          </Box>
+          </Flex>
         ) : (
-          <Box
-            display="flex"
-            alignItems="baseline"
-            w="100%"
-            justifyContent="space-between"
-            gap="16px"
-          >
-            <Box display={{ xs: 'none', lg: 'flex' }}>
-              <Link
-                _hover={{ textDecor: 'none' }}
-                fontFamily="-moz-initial"
-                fontSize="14px"
-                as={NavLink}
-                to="/calculator"
-                mr="16px"
-              >
-                CALCULATOR
-              </Link>
-              <Link
-                _hover={{ textDecor: 'none' }}
-                fontFamily="-moz-initial"
-                fontSize="14px"
-                as={NavLink}
-                to="/diary"
-              >
-                DIARY
-              </Link>
-            </Box>
+          <Flex justifyContent="space-between">
+            <Flex alignItems="center" gap="20px">
+              <Logo />
+              <Flex display={{ xs: 'none', lg: 'flex' }}>
+                <Link
+                  _hover={{ textDecor: 'none' }}
+                  fontFamily="-moz-initial"
+                  fontSize="14px"
+                  as={NavLink}
+                  to="/calculator"
+                >
+                  CALCULATOR
+                </Link>
+                <Link
+                  _hover={{ textDecor: 'none' }}
+                  fontFamily="-moz-initial"
+                  fontSize="14px"
+                  as={NavLink}
+                  to="/diary"
+                >
+                  DIARY
+                </Link>
+              </Flex>
+            </Flex>
 
-            <Box maxW="409px" mx="auto"></Box>
-
-            <Box display="flex" alignItems="center" gap="20px" ml="auto">
+            <Flex display="flex" alignItems="center" gap="20px" ml="100px">
               <Box display={{ xs: 'none', sm: 'flex' }}>
                 <UserMenu />
               </Box>
               <HamburgerMenu />
-            </Box>
-          </Box>
+            </Flex>
+          </Flex>
         )}
-      </Stack>
+      </Flex>
       {isLogin && (
-        <Box
-          bgColor="#EFF1F3"
-          w="100%"
-          h="40px"
-          display={{ xs: 'flex', sm: 'none' }}
-        >
+        <Box bgColor="#EFF1F3" h="40px" display={{ xs: 'flex', sm: 'none' }}>
           <Icon as={IoReturnDownBackSharp} ml="20px" mt="12px" boxSize="5" />
           <UserMenu />
         </Box>
