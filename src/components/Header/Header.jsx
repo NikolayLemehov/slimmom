@@ -16,7 +16,10 @@ const Header = () => {
   return (
     <>
       <Flex
-        alignItems=""
+        position="absolute"
+        top="0"
+        left="0"
+        w="100%"
         p={4}
         borderBottom={{
           base: '2px solid #E0E0E0',

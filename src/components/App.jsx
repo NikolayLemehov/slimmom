@@ -19,7 +19,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Container maxW={{ sm: '768px', md: '1280px' }}>
+    <Container maxW={{ sm: '768px', md: '1280px' }} position="relative">
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
