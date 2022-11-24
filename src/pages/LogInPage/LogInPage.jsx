@@ -1,4 +1,4 @@
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 import {
   Box,
   Button,
@@ -8,8 +8,11 @@ import {
 } from "@chakra-ui/react";
 import InputField from "../../components/InputField/InputField";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import authOperations from "../../redux/auth/authOperations";
 
 export function LogInPage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -17,8 +20,7 @@ export function LogInPage() {
       password: "",
     },
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      console.log(values)
+      dispatch(authOperations.logIn(values))
     }
   });
   return (
