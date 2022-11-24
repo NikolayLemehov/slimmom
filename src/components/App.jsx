@@ -1,12 +1,9 @@
+import { useDispatch } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
 import { Container } from '@chakra-ui/react';
-import Home from 'pages/LogInPage/Home/Home';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { LogInPage } from '../pages/LogInPage/LogInPage';
 import Header from './Header/Header';
-
-// import CalculatorСalorieForm from './CalculatorСalorieForm/CalculatorСalorieForm';
-import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 import DiaryPage from 'pages/DiaryPage/DiaryPage';
@@ -30,7 +27,7 @@ export const App = () => {
           <Route path="/" element={<Outlet />}>
             <Route index element={<HomePage />} />
             <Route path="login" element={<LogInPage />} />
-            <Route path="registration" element={<div>Registration</div>} />
+            <Route path="registration" element={<RegistrationPage/>} />
             <Route path="calculator" element={<CalculatorPage />} />
             <Route path="diary" element={<DiaryPage />} />
             <Route path="uikit" element={<UiKit />} />
