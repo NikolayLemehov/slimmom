@@ -4,24 +4,21 @@ export const List = styled.ul`
   height: 150px;
 
   color: '#9B9FAA';
-
   overflow: hidden;
   overflow-y: scroll;
-  ::-webkit-scrollbar {
+  &&::-webkit-scrollbar {
     width: 6px;
   }
-  /* Track */
-  ::-webkit-scrollbar-track {
+
+  &&::-webkit-scrollbar-track {
     background: #f0f1f3;
   }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+  &&::-webkit-scrollbar-thumb {
     background: #264061;
   }
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+  &&::-webkit-scrollbar-thumb:hover {
     background: #101a28;
   }
 `;

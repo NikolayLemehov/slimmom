@@ -5,14 +5,12 @@ import {
   Divider,
   Icon,
   Link,
-  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  OrderedList,
   Text,
 } from '@chakra-ui/react';
 import { IoReturnDownBackSharp } from 'react-icons/io5';
@@ -128,14 +126,7 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               >
                 Foods you should not eat
               </Text>
-              <List
-              // color="#9B9FAA"
-              // w="100%"
-              // pl="40px"
-              // h="150px"
-              // m="0"
-              // overflowY="scroll"
-              >
+              <List>
                 {notAllowedProducts.map((item, index) => (
                   <li key={index}>
                     {index + 1}. {item}
