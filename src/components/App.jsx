@@ -19,9 +19,8 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Container maxW={{sm: '768px', md: '1280px'}} style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
-      <Header style={{marginTop: '0'}}/>
-      <div style={{flexGrow: '1', display: 'flex', flexDirection: 'column'}}>
+    <Container maxW={{sm: '768px', md: '1280px'}}>
+      <Header/>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Outlet />}>
@@ -35,7 +34,6 @@ export const App = () => {
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </Suspense>
-      </div>
     </Container>
   );
 };
