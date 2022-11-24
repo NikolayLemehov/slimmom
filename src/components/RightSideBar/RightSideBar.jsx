@@ -1,12 +1,11 @@
-import { Box, Heading, List, ListItem, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, List, ListItem, Text } from '@chakra-ui/react';
 
 const RightSideBar = () => {
   return (
-    <Box
+    <Flex
       bgColor="#F0F1F3"
-      w={{ base: '100%', lg: '517px' }}
+      w="100%"
       py={{ xs: '40px', md: '80px', lg: '166px' }}
-      display="flex"
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
       gap={{ xs: '40px', md: '97px', lg: '60px' }}
       justifyContent="center"
@@ -53,7 +52,7 @@ const RightSideBar = () => {
           </ListItem>
         </List>
       </Box>
-    </Box>
+    </Flex>
   );
 };
 

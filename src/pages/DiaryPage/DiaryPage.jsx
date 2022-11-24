@@ -3,10 +3,12 @@ import DiaryDateCalendar from '../../components/DiaryDateСalendar/DiaryDateСal
 import DiaryAddProductForm from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import DiaryProductsList from 'components/DiaryProductsList/DiaryProductsList';
 import RightSideBar from 'components/RightSideBar/RightSideBar';
+import GrayBar from 'components/GrayBar/GrayBar';
 
 export default function DiaryPage() {
   return (
     <Flex h="100vh">
+      {/* <GrayBar /> */}
       <Box
         display="flex"
         flexDirection="column"
@@ -21,8 +23,8 @@ export default function DiaryPage() {
         <DiaryDateCalendar />
         <DiaryAddProductForm />
         <DiaryProductsList />
+        <RightSideBar />
       </Box>
-      <RightSideBar />
     </Flex>
   );
 }

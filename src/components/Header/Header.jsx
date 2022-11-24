@@ -20,7 +20,8 @@ const Header = () => {
         top="0"
         left="0"
         w="100%"
-        p={4}
+        p="20px"
+        justifyContent="space-between"
         borderBottom={{
           base: '2px solid #E0E0E0',
           lg: 'none',
@@ -55,7 +56,7 @@ const Header = () => {
             </Link>
           </Flex>
         ) : (
-          <Flex justifyContent="space-between">
+          <Flex justifyContent="space-between" w="100%">
             <Flex alignItems="center" gap="20px">
               <Logo />
               <Flex display={{ xs: 'none', lg: 'flex' }}>
@@ -80,7 +81,7 @@ const Header = () => {
               </Flex>
             </Flex>
 
-            <Flex display="flex" alignItems="center" gap="20px" ml="100px">
+            <Flex display="flex" alignItems="center">
               <Box display={{ xs: 'none', sm: 'flex' }}>
                 <UserMenu />
               </Box>
