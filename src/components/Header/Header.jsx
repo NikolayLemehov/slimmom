@@ -1,14 +1,15 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
-import { Box, Icon, IconButton, Link, Stack } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
+import { IoReturnDownBackSharp } from 'react-icons/io5';
+import { Box, Icon, Link, Stack } from '@chakra-ui/react';
+
+import { authSelectors } from 'redux/auth/authSelectors';
 import SmallLogo from 'components/Logo/SmallLogo';
 import textLogo from '../assets/logo/textLogo.svg';
 import UserMenu from 'components/UserMenu/UserMenu';
-import { IoReturnDownBackSharp } from 'react-icons/io5';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { authSelectors } from 'redux/auth/authSelectors';
 import Logo from 'components/Logo/Logo';
+import HamburgerMenu from 'components/HamburgerMenu/HamburgerMenu';
 
 const Header = () => {
   const isLogin = useSelector(authSelectors.isLoggedIn);
@@ -67,7 +68,7 @@ const Header = () => {
             justifyContent="space-between"
             gap="16px"
           >
-            <Box display={{ xs: 'none', md: 'flex' }}>
+            <Box display={{ xs: 'none', lg: 'flex' }}>
               <Link
                 _hover={{ textDecor: 'none' }}
                 fontFamily="-moz-initial"
@@ -95,15 +96,15 @@ const Header = () => {
               <Box display={{ xs: 'none', sm: 'flex' }}>
                 <UserMenu />
               </Box>
-
-              <IconButton
+              <HamburgerMenu />
+              {/* <IconButton
                 aria-label="Open Menu"
                 size="sm"
                 mr={2}
                 icon={<HamburgerIcon />}
                 background="transparent"
                 display={{ lg: 'none' }}
-              />
+              /> */}
             </Box>
           </Box>
         )}

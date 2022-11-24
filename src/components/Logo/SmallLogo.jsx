@@ -1,6 +1,6 @@
-import { Box, Link } from '@chakra-ui/react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Box, Link } from '@chakra-ui/react';
 import smallLogo from '../assets/logo/smallLogo.svg';
 
 const SmallLogo = () => {
