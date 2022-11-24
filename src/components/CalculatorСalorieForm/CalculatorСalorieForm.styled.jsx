@@ -15,6 +15,7 @@ export const Form = styled.form`
 
   @media screen and (min-width: 1280px) {
     align-items: end;
+    /* margin-bottom: 111px; */
   }
 `;
 
@@ -33,8 +34,9 @@ export const Title = styled.h1`
 
   @media screen and (min-width: 768px) {
     width: 608px;
-    margin-top: 140px;
+    margin-top: 0px;
     margin-bottom: 48px;
+    padding-top: 293px;
 
     font-size: 34px;
     line-height: 1.2;
