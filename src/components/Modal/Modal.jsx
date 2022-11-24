@@ -5,14 +5,12 @@ import {
   Divider,
   Icon,
   Link,
-  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  OrderedList,
   Text,
 } from '@chakra-ui/react';
 import { IoReturnDownBackSharp } from 'react-icons/io5';
@@ -25,12 +23,16 @@ import {
   getNotAllowedProducts,
 } from 'redux/dailyRate/dailyRateSelectors';
 
-import { List } from './Modal.styled';
+import { BottomGradient, List, TopGradient } from './Modal.styled';
+import { useNavigate } from 'react-router-dom/dist';
 
 const ModalWindow = ({ overlay, isOpen, onClose }) => {
   const dailyRate = useSelector(getDailyRate);
   const notAllowedProducts = useSelector(getNotAllowedProducts);
-  console.log(notAllowedProducts);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/login');
+  };
   return (
     <>
       <Modal
@@ -110,9 +112,10 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               </Text>
             </Box>
 
-            <Divider w="330px" mx="auto" />
+            <Divider w={{ xs: 'none', md: '330px' }} mx="auto" />
             <Box
-              w="330px"
+              position="relative"
+              w={{ xs: 'none', md: '330px' }}
               mx="auto"
               display="flex"
               flexDirection="column"
@@ -128,25 +131,20 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               >
                 Foods you should not eat
               </Text>
-              <List
-              // color="#9B9FAA"
-              // w="100%"
-              // pl="40px"
-              // h="150px"
-              // m="0"
-              // overflowY="scroll"
-              >
+              <TopGradient />
+              <List>
                 {notAllowedProducts.map((item, index) => (
                   <li key={index}>
                     {index + 1}. {item}
                   </li>
                 ))}
               </List>
+              <BottomGradient />
             </Box>
           </ModalBody>
 
           <ModalFooter display="flex" justifyContent="center" mb="81px">
-            <MainButton text="Start losing weight" onClick={onClose} />
+            <MainButton text="Start losing weight" onClick={handleClick} />
           </ModalFooter>
         </ModalContent>
       </Modal>

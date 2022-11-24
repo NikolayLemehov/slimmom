@@ -1,10 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
 import { Container } from '@chakra-ui/react';
+
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { LogInPage } from '../pages/LogInPage/LogInPage';
 import Header from './Header/Header';
+
 import authOperations from 'redux/auth/authOperations';
+
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 import DiaryPage from 'pages/DiaryPage/DiaryPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
@@ -21,6 +24,7 @@ export const App = () => {
   return (
     <Container maxW={{ sm: '768px', md: '1280px' }} position="relative">
       <Header />
+
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Outlet />}>
