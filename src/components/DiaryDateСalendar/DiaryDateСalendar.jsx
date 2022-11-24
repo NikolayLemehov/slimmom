@@ -9,6 +9,9 @@ import Flatpickr from 'react-flatpickr';
 export default function DiaryDateCalendar() {
   const [date, setDate] = useState(new Date());
 
+  const a = date.getDate();
+  console.log(a);
+
   return (
     <FormLabel
       display="flex"
@@ -24,6 +27,7 @@ export default function DiaryDateCalendar() {
         className={css.field}
         value={date}
         onChange={([e]) => {
+          console.dir(e);
           setDate(e);
         }}
       />
