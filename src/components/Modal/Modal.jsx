@@ -1,6 +1,10 @@
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Box,
   Divider,
+  Icon,
+  Link,
   ListItem,
   Modal,
   ModalBody,
@@ -13,8 +17,10 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
+import { IoReturnDownBackSharp } from 'react-icons/io5';
+
 import MainButton from 'components/Button/MainButton';
-import { useState } from 'react';
+import LogoSmall from 'components/Logo/SmallLogo';
 
 const ModalWindow = () => {
   const OverlayOne = () => (
@@ -34,16 +40,65 @@ const ModalWindow = () => {
           onOpen();
         }}
       />
-      <Modal isOpen={isOpen} onClose={onClose} size={{ sm: 'full', md: '2xl' }}>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered={true}
+        size={{ xs: 'full', sm: '2xl' }}
+      >
         {overlay}
         <ModalContent>
-          <Box w="409px" mx="auto">
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            p="20px"
+          >
+            <LogoSmall />
+            <Box display={{ sm: 'none' }}>
+              <Link
+                _hover={{ textDecor: 'none' }}
+                fontFamily="-moz-initial"
+                fontSize="14px"
+                as={NavLink}
+                to="/login"
+                mr="16px"
+              >
+                SIGIN IN
+              </Link>
+              <Link
+                _hover={{ textDecor: 'none' }}
+                fontFamily="-moz-initial"
+                fontSize="14px"
+                as={NavLink}
+                to="/registration"
+              >
+                REGISTRATION
+              </Link>
+            </Box>
+          </Box>
+          <Box display={{ sm: 'none' }}>
+            <Box
+              bgColor="#EFF1F3"
+              w="100%"
+              h="40px"
+              display={{ xs: 'flex', sm: 'none' }}
+            >
+              <Icon
+                as={IoReturnDownBackSharp}
+                ml="20px"
+                mt="12px"
+                boxSize="5"
+              />
+            </Box>
+          </Box>
+          <Box maxW="409px" mx="auto">
             <ModalHeader fontSize="26px" textAlign="center">
               Your recommended daily calorie intake is
             </ModalHeader>
           </Box>
 
-          <ModalCloseButton size="sm" />
+          <ModalCloseButton size="sm" display={{ xs: 'none', sm: 'block' }} />
           <ModalBody h="100%">
             <Box display="flex" justifyContent="center">
               <Text

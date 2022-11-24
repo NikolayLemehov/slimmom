@@ -4,7 +4,6 @@ const RightSideBar = () => {
   return (
     <Box
       bgColor="#F0F1F3"
-      // maxW={{ xs: '768px', md: '1280px' }}
       w={{ base: '100%', lg: '517px' }}
       py={{ xs: '40px', md: '80px', lg: '166px' }}
       display="flex"

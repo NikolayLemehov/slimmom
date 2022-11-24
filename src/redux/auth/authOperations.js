@@ -1,27 +1,12 @@
-import axios from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {authSelectors} from "./authSelectors";
-// import {BASE_URL} from "../utils/variables";
-// import authSelectors from "./auth.selectors";
-
-// axios.defaults.baseURL = BASE_URL
-const baseURL = 'https://slimmom-backend.goit.global';
-
-const slimMomAxios = axios.create({baseURL});
-
-const token = {
-  set(token) {
-    slimMomAxios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
-  },
-  unset() {
-    this.set()
-  }
-}
+import {slimMomAxios, token} from "../slimMomAxios";
 
 const register = createAsyncThunk('auth/register', async credential => {
-  const {email, password} = credential;
+  const {email, password, username} = credential;
+
   try {
-    await slimMomAxios.post('/auth/register', credential)
+    await slimMomAxios.post('/auth/register', {email, password, username})
     const {data} = await slimMomAxios.post('/auth/login', {email, password})
     token.set(data.accessToken)
     return data;
@@ -31,8 +16,10 @@ const register = createAsyncThunk('auth/register', async credential => {
 })
 
 const logIn = createAsyncThunk('auth/login', async credential => {
+  const {email, password} = credential;
+
   try {
-    const {data} = await slimMomAxios.post('/auth/login', credential);
+    const {data} = await slimMomAxios.post('/auth/login', {email, password});
     token.set(data.accessToken)
     return data;
   } catch (e) {
