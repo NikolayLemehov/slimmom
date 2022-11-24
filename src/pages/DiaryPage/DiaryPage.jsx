@@ -3,6 +3,7 @@ import DiaryDateCalendar from '../../components/DiaryDateСalendar/DiaryDateСal
 import DiaryAddProductForm from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import DiaryProductsList from 'components/DiaryProductsList/DiaryProductsList';
 import RightSideBar from 'components/RightSideBar/RightSideBar';
+
 export default function DiaryPage() {
   return (
     <Flex h="100vh">
