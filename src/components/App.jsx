@@ -1,7 +1,7 @@
 import {lazy, Suspense, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {Outlet, Route, Routes} from 'react-router-dom';
-import {Container} from '@chakra-ui/react';
+import {Container, Flex} from '@chakra-ui/react';
 
 import {LogInPage} from '../pages/LogInPage/LogInPage';
 import Home from 'pages/HomePage/HomePage';
@@ -19,9 +19,9 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Container maxW={{sm: '768px', md: '1280px'}} style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
+    <Container maxW={{sm: '768px', md: '1280px'}} display='flex' style={{flexDirection: 'column', minHeight: '100vh'}}>
       <Header style={{marginTop: '0'}}/>
-      <div style={{flexGrow: '1', display: 'flex', flexDirection: 'column'}}>
+      <Flex flexDirection='column' style={{flexGrow: '1'}}>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Outlet/>}>
@@ -35,7 +35,7 @@ export const App = () => {
             <Route path="*" element={<div>404</div>}/>
           </Routes>
         </Suspense>
-      </div>
+      </Flex>
     </Container>
   );
 };
