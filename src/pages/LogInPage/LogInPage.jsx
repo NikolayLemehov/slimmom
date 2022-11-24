@@ -10,6 +10,7 @@ import InputField from "../../components/InputField/InputField";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import authOperations from "../../redux/auth/authOperations";
+import {customColors} from "../../theme/colors";
 
 export function LogInPage() {
   const dispatch = useDispatch();
@@ -24,31 +25,34 @@ export function LogInPage() {
     }
   });
   return (
-    <Flex align="center" justify="flex-start" h="max-content">
-      <Box bg="white" p={6} rounded="md">
-        <Heading>Sign In</Heading>
+    <Flex direction='column' justify="flex-start" alignItems='flex-start' h="max-content" height='100%' flexGrow='1'>
+      <Box bg="white" py='98px'>
+        <Heading as='h1' size='xs' mb='34px' style={{textTransform: 'uppercase', color: customColors.sun["100"]}}>Sign
+          In</Heading>
         <form onSubmit={formik.handleSubmit} autoComplete="off">
-          <VStack spacing={4} align="flex-start">
-            <InputField
-              autoComplete="off"
-              labelName="Email *"
-              type="text"
-              name="email"
-              handlerEvent={formik.handleChange}
-              value={formik.values.email}
-              required
-              width="100%"
-            />
-            <InputField
-              autoComplete="off"
-              labelName="Password *"
-              type="password"
-              name="password"
-              handlerEvent={formik.handleChange}
-              value={formik.values.password}
-              required
-              width="100%"
-            />
+          <VStack spacing='50px' align="flex-start">
+            <VStack spacing={5} align="flex-start">
+              <InputField
+                autoComplete="off"
+                labelName="Email *"
+                type="text"
+                name="email"
+                handlerEvent={formik.handleChange}
+                value={formik.values.email}
+                required
+                width="240px"
+              />
+              <InputField
+                autoComplete="off"
+                labelName="Password *"
+                type="password"
+                name="password"
+                handlerEvent={formik.handleChange}
+                value={formik.values.password}
+                required
+                width="240px"
+              />
+            </VStack>
             <HStack>
               <Button variant={'primary'} type="submit">Login</Button>
               <Button variant={'outline'} type="button" onClick={() => navigate('/registration')}>Register</Button>
