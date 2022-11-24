@@ -1,31 +1,44 @@
 import storage from 'redux-persist/lib/storage';
-import {createSlice} from "@reduxjs/toolkit";
-import {persistReducer} from "redux-persist";
-import dailyOperations from "./dailyOperations";
-import {dailyRate} from "./dailtyRateOperations";
+import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import { dailyRate } from './dailtyRateOperations';
 
 const initialState = {
-  data: null,
-}
+  dailyRate: null,
+  notAllowedProducts: [],
+  loading: false,
+  error: '',
+};
+const handlePending = state => {
+  state.isLoading = true;
+};
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 export const dailyRateSlice = createSlice({
-  name: 'rate',
+  name: 'dailyRate',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(dailyRate.id.fulfilled, (state, {payload}) => {
-        state.data = payload;
+      .addCase(dailyRate.pending, handlePending)
+      .addCase(dailyRate.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.dailyRate = payload.dailyRate;
+        state.notAllowedProducts = payload.notAllowedProducts;
       })
-      .addCase(dailyRate.common.fulfilled, (state, {payload}) => {
-        state.data = payload;
-      })
-  }
-})
+      .addCase(dailyRate.rejected, handleRejected);
+  },
+});
 
 const persistConfig = {
   key: 'watermelon/slimMom/dailyRate',
   storage,
-  // whitelist: ['token'],
-}
+  whitelist: ['dailyRate', 'notAllowedProducts'],
+};
 
-export const persistedDailyRateReducer = persistReducer(persistConfig, dailyRateSlice.reducer)
+export const persistedDailyRateReducer = persistReducer(
+  persistConfig,
+  dailyRateSlice.reducer
+);

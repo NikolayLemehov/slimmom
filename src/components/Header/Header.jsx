@@ -97,14 +97,6 @@ const Header = () => {
                 <UserMenu />
               </Box>
               <HamburgerMenu />
-              {/* <IconButton
-                aria-label="Open Menu"
-                size="sm"
-                mr={2}
-                icon={<HamburgerIcon />}
-                background="transparent"
-                display={{ lg: 'none' }}
-              /> */}
             </Box>
           </Box>
         )}
