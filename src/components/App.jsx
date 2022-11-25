@@ -14,6 +14,8 @@ import DiaryPage from 'pages/DiaryPage/DiaryPage';
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import HomePage from '../pages/HomePage/HomePage';
 
+import Loader from './Loader/Loader';
+
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
 export const App = () => {
@@ -30,7 +32,7 @@ export const App = () => {
     >
       <Header />
 
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Outlet />}>
             <Route index element={<HomePage />} />
