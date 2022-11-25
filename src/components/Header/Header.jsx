@@ -53,6 +53,8 @@ const Header = () => {
                 as={NavLink}
                 to="/login"
                 style={getStyle}
+                fontFamily="secondary"
+                fontWeight="700"
               >
                 SIGIN IN
               </Link>
@@ -62,6 +64,8 @@ const Header = () => {
                 as={NavLink}
                 to="/registration"
                 style={getStyle}
+                fontFamily="secondary"
+                fontWeight="700"
               >
                 REGISTRATION
               </Link>
@@ -78,6 +82,8 @@ const Header = () => {
                   as={NavLink}
                   to="/calculator"
                   style={getStyle}
+                  fontFamily="secondary"
+                  fontWeight="700"
                 >
                   CALCULATOR
                 </Link>
@@ -87,6 +93,8 @@ const Header = () => {
                   as={NavLink}
                   to="/diary"
                   style={getStyle}
+                  fontFamily="secondary"
+                  fontWeight="700"
                 >
                   DIARY
                 </Link>
