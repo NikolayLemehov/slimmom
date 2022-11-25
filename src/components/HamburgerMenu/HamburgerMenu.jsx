@@ -35,8 +35,7 @@ const HamburgerMenu = () => {
       <Modal isOpen={isOpen} onClose={onClose} size="full" motionPreset="none">
         <ModalContent>
           <ModalHeader
-            py="16px"
-            ml="8px"
+            pt="21px"
             fontWeight="normal"
             fontSize="16px"
             borderBottom="2px solid #E0E0E0"
@@ -48,7 +47,7 @@ const HamburgerMenu = () => {
               <img src={textLogo} alt="logo" />
             </NavLink>
             <Flex>
-              <Box display={{ xs: 'none', md: 'flex' }}>
+              <Box display={{ xs: 'none', md: 'flex' }} mr="53px">
                 <UserMenu />
               </Box>
               <IconButton

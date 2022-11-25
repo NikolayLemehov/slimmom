@@ -15,7 +15,7 @@ const UserMenu = () => {
         fontSize="14px"
         as={NavLink}
         to="/"
-        mt="1"
+        pt="1"
         onClick={() => dispatch(authOperations.logOut())}
       >
         EXIT

@@ -5,7 +5,7 @@ import textLogo from '../assets/logo/textLogo.svg';
 
 const Logo = () => {
   return (
-    <Flex gap="20px" alignItems="baseline">
+    <Flex gap="20px" alignItems="center">
       <Link as={NavLink} to="/">
         <img src={textLogo} alt="Logo" width="166px" height="66px" />
       </Link>

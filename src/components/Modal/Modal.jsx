@@ -3,19 +3,15 @@ import { useSelector } from 'react-redux';
 import {
   Box,
   Divider,
-  Icon,
   Link,
-  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  OrderedList,
   Text,
 } from '@chakra-ui/react';
-import { IoReturnDownBackSharp } from 'react-icons/io5';
 
 import MainButton from 'components/Button/MainButton';
 import LogoSmall from 'components/Logo/SmallLogo';
@@ -25,12 +21,17 @@ import {
   getNotAllowedProducts,
 } from 'redux/dailyRate/dailyRateSelectors';
 
-import { List } from './Modal.styled';
+import { BottomGradient, List, TopGradient } from './Modal.styled';
+import { useNavigate } from 'react-router-dom/dist';
+import GrayBar from 'components/GrayBar/GrayBar';
 
 const ModalWindow = ({ overlay, isOpen, onClose }) => {
   const dailyRate = useSelector(getDailyRate);
   const notAllowedProducts = useSelector(getNotAllowedProducts);
-  console.log(notAllowedProducts);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/login');
+  };
   return (
     <>
       <Modal
@@ -70,28 +71,12 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               </Link>
             </Box>
           </Box>
-          <Box display={{ md: 'none' }}>
-            <Box
-              bgColor="#EFF1F3"
-              w="100%"
-              h="40px"
-              display={{ xs: 'flex', md: 'none' }}
-            >
-              <Icon
-                as={IoReturnDownBackSharp}
-                ml="20px"
-                mt="12px"
-                boxSize="5"
-                onClick={onClose}
-              />
-            </Box>
-          </Box>
+          {isOpen && <GrayBar />}
           <Box maxW="409px" mx="auto">
             <ModalHeader fontSize="26px" textAlign="center">
               Your recommended daily calorie intake is
             </ModalHeader>
           </Box>
-
           <ModalCloseButton size="sm" display={{ xs: 'none', md: 'block' }} />
           <ModalBody h="100%">
             <Box display="flex" justifyContent="center">
@@ -110,9 +95,10 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               </Text>
             </Box>
 
-            <Divider w="330px" mx="auto" />
+            <Divider w={{ xs: 'none', md: '330px' }} mx="auto" />
             <Box
-              w="330px"
+              position="relative"
+              w={{ xs: 'none', md: '330px' }}
               mx="auto"
               display="flex"
               flexDirection="column"
@@ -128,25 +114,19 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               >
                 Foods you should not eat
               </Text>
-              <List
-              // color="#9B9FAA"
-              // w="100%"
-              // pl="40px"
-              // h="150px"
-              // m="0"
-              // overflowY="scroll"
-              >
+              <TopGradient />
+              <List>
                 {notAllowedProducts.map((item, index) => (
                   <li key={index}>
                     {index + 1}. {item}
                   </li>
                 ))}
               </List>
+              <BottomGradient />
             </Box>
           </ModalBody>
-
           <ModalFooter display="flex" justifyContent="center" mb="81px">
-            <MainButton text="Start losing weight" onClick={onClose} />
+            <MainButton text="Start losing weight" onClick={handleClick} />
           </ModalFooter>
         </ModalContent>
       </Modal>
