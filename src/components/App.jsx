@@ -10,6 +10,7 @@ import authOperations from 'redux/auth/authOperations';
 
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 import DiaryPage from 'pages/DiaryPage/DiaryPage';
+
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import HomePage from '../pages/HomePage/HomePage';
 
