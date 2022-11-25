@@ -1,18 +1,16 @@
 import { useDispatch } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
 import { Container } from '@chakra-ui/react';
-
 import { Outlet, Route, Routes } from 'react-router-dom';
-import { LogInPage } from '../pages/LogInPage/LogInPage';
-import Header from './Header/Header';
 
 import authOperations from 'redux/auth/authOperations';
-
+import Header from './Header/Header';
+import { LogInPage } from '../pages/LogInPage/LogInPage';
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 import DiaryPage from 'pages/DiaryPage/DiaryPage';
-
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import HomePage from '../pages/HomePage/HomePage';
+import Loader from "./Loader/Loader";
 
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
@@ -30,7 +28,7 @@ export const App = () => {
     >
       <Header />
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Outlet />}>
             <Route index element={<HomePage />} />
