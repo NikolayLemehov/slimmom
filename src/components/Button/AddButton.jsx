@@ -13,6 +13,7 @@ export default function AddButton({ type, onClick }) {
       rounded="50%"
       background="#FC842D"
       boxShadow="0px 4px 10px rgba(252, 132, 45, 0.5)"
+      ml={{ md: '65px', lg: '0px' }}
       _hover={{ background: '#c0580f' }}
     >
       <Icon w="23px" h="23px" color="#ffffff" as={BsPlus} />

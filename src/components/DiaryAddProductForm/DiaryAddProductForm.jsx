@@ -70,44 +70,46 @@ export default function DiaryAddProductForm() {
   };
 
   return (
-    <form onSubmit={handleFromSubmit}>
-      <FormControl
-        display={{ xs: 'none', md: 'flex' }}
-        alignItems="center"
-        gap={{ md: '22px', lg: '48px' }}
-        isInvalid={inputDirty}
-      >
-        <Box w="240px">
-          <InputField
-            labelName="Enter product name"
-            width="100%"
-            handlerEvent={handleInputChange}
-            name="product"
-            value={product}
-            onBlur={handleInputBlur}
-          />
-          {productInputDirty && (
-            <DiaryAddFormValidation text="*Please, enter the product name" />
-          )}
-        </Box>
-        <Box w={{ md: '106px', lg: '107px' }} position="relative">
-          <InputField
-            labelName="Grams"
-            width="100%"
-            handlerEvent={handleInputChange}
-            right={0}
-            name="grams"
-            value={grams}
-            onBlur={handleInputBlur}
-          />
-          {gramsInputDirty && (
-            <DiaryAddFormValidation text="*Please, enter the product weight" />
-          )}
-        </Box>
+    <Box display={{ xs: 'none', md: 'block' }}>
+      <form onSubmit={handleFromSubmit}>
+        <FormControl
+          display={{ xs: 'none', md: 'flex' }}
+          alignItems="center"
+          gap={{ md: '22px', lg: '48px' }}
+          isInvalid={inputDirty}
+        >
+          <Box w={{ md: '240px' }}>
+            <InputField
+              labelName="Enter product name"
+              width="100%"
+              handlerEvent={handleInputChange}
+              name="product"
+              value={product}
+              onBlur={handleInputBlur}
+            />
+            {productInputDirty && (
+              <DiaryAddFormValidation text="*Please, enter the product name" />
+            )}
+          </Box>
+          <Box w={{ md: '106px', lg: '107px' }} position="relative">
+            <InputField
+              labelName="Grams"
+              width="100%"
+              handlerEvent={handleInputChange}
+              right={0}
+              name="grams"
+              value={grams}
+              onBlur={handleInputBlur}
+            />
+            {gramsInputDirty && (
+              <DiaryAddFormValidation text="*Please, enter the product weight" />
+            )}
+          </Box>
 
-        <AddButton type="submit" onClick={handleClick} />
-        {submitError && <DiaryAddFormError />}
-      </FormControl>
-    </form>
+          <AddButton type="submit" onClick={handleClick} />
+          {submitError && <DiaryAddFormError />}
+        </FormControl>
+      </form>
+    </Box>
   );
 }

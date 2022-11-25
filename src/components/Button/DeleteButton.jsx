@@ -5,23 +5,23 @@ export default function DeleteButton() {
   return (
     <Button
       type="button"
-      marginRight="40px"
+      marginRight={{ xs: '0px', md: '40px' }}
       background="transparent"
-      rounded="50%"
       color="rgba(155, 159, 170, 1)"
       p="4px"
+      maxW="20px"
+      maxH="20px"
       _hover={{
-        background: '#FC842D',
-        color: '#ffffff',
-        boxShadow: '0px 4px 10px rgba(252, 132, 45, 0.5)',
+        color: '#FC842D',
       }}
     >
       <ListIcon
         as={VscChromeClose}
-        w="12px"
-        h="12px"
+        maxW="12px"
+        maxH="12px"
         color="inherit"
         margin="0px"
+        p="0px"
       />
     </Button>
   );
