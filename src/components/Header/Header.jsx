@@ -13,6 +13,9 @@ import GrayBar from 'components/GrayBar/GrayBar';
 const Header = () => {
   const isLogin = useSelector(authSelectors.isLoggedIn);
 
+  const getStyle = ({ isActive }) =>
+    isActive ? { color: '#212121' } : { color: '#9B9FAA' };
+
   return (
     <>
       <Flex
@@ -21,6 +24,7 @@ const Header = () => {
         left="0"
         w="100%"
         p="20px"
+        zIndex="100"
         justifyContent="space-between"
         borderBottom={{
           base: '2px solid #E0E0E0',
@@ -49,6 +53,7 @@ const Header = () => {
                 fontSize="14px"
                 as={NavLink}
                 to="/login"
+                style={getStyle}
               >
                 SIGIN IN
               </Link>
@@ -58,6 +63,7 @@ const Header = () => {
                 fontSize="14px"
                 as={NavLink}
                 to="/registration"
+                style={getStyle}
               >
                 REGISTRATION
               </Link>
@@ -74,6 +80,7 @@ const Header = () => {
                   fontSize="14px"
                   as={NavLink}
                   to="/calculator"
+                  style={getStyle}
                 >
                   CALCULATOR
                 </Link>
@@ -83,6 +90,7 @@ const Header = () => {
                   fontSize="14px"
                   as={NavLink}
                   to="/diary"
+                  style={getStyle}
                 >
                   DIARY
                 </Link>
