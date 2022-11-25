@@ -1,24 +1,22 @@
 import { Box, Flex, Heading, List, ListItem, Text } from '@chakra-ui/react';
-import leafLg from '../assets/bgDairy/leafLg.svg';
-import leafMd from '../assets/bgDairy/leafMd.svg';
 
 const RightSideBar = () => {
   return (
     <Flex
       bgColor="#F0F1F3"
       h="100%"
-      w={{ xs: '100%', lg: '617px' }}
-      py={{ xs: '40px', md: '80px', lg: '166px' }}
+      // w={{ xs: '100%', lg: '617px' }}
+      py={{ xs: '40px', md: '80px', lg: '0px' }}
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
       gap={{ xs: '40px', md: '97px', lg: '60px' }}
-      justifyContent="center"
+      justifyContent={{ xs: 'center', lg: 'start' }}
       alignItems={{ xs: 'center', md: 'baseline', lg: 'center' }}
-      position={{ lg: 'fixed' }}
-      top={{ lg: '0' }}
-      right={{ lg: '0' }}
-      bgImage={{ md: leafMd, lg: leafLg }}
-      bgPos="right"
-      bgRepeat="no-repeat"
+      // position={{ lg: 'fixed' }}
+      // top={{ lg: '0' }}
+      // right={{ lg: '0' }}
+      // bgImage={{ md: leafMd, lg: leafLg }}
+      // bgPos="right"
+      // bgRepeat="no-repeat"
     >
       <Box w="288px">
         <Heading fontSize="14px" textAlign="center" mb="20px" color="#212121">
@@ -56,7 +54,9 @@ const RightSideBar = () => {
         </Heading>
         <List color="#9B9FAA">
           <ListItem display="flex" justifyContent="space-between">
-            <Text>Your diet will be displayed here</Text>
+            <Text w="100%" textAlign="center">
+              Your diet will be displayed here
+            </Text>
           </ListItem>
         </List>
       </Box>
