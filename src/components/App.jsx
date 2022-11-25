@@ -22,7 +22,11 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Container maxW={{ sm: '768px', md: '1280px' }} position="relative">
+    <Container
+      maxW={{ sm: '768px', md: '1280px' }}
+      position="relative"
+      pt={{ xs: '152px', md: '180px', lg: '293px' }}
+    >
       <Header />
 
       <Suspense fallback={<div>Loading...</div>}>
