@@ -10,6 +10,7 @@ import InputField from "../../components/InputField/InputField";
 import authOperations from "../../redux/auth/authOperations";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {BgImg} from "./Registration.styled";
 
 export function RegistrationPage() {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ export function RegistrationPage() {
     }
   });
   return (
+    <>
+      <BgImg/>
     <Flex align="center" justify="flex-start" h="max-content">
       <Box bg="white" p={6} rounded="md">
         <Heading>Registration</Heading>
@@ -69,5 +72,6 @@ export function RegistrationPage() {
         </form>
       </Box>
     </Flex>
+    </>
   );
 }

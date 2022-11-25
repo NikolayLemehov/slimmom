@@ -11,6 +11,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import authOperations from "../../redux/auth/authOperations";
 import {customColors} from "../../theme/colors";
+import {BgImg} from "./LogIn.styled";
 
 export function LogInPage() {
   const dispatch = useDispatch();
@@ -25,6 +26,8 @@ export function LogInPage() {
     }
   });
   return (
+    <>
+    <BgImg/>
     <Flex justify="flex-start" alignItems='center' flexGrow='1' h='100vh'>
       <Box bg="white" py='98px'>
         <Heading as='h1' size='xs' mb='34px' color={customColors.sun["100"]} style={{textTransform: 'uppercase'}}>Sign
@@ -61,5 +64,6 @@ export function LogInPage() {
         </form>
       </Box>
     </Flex>
+    </>
   );
 }
