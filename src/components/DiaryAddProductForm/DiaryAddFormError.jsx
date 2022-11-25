@@ -13,13 +13,13 @@ export default function DiaryAddFormError() {
       className={css.alert_box}
       position="absolute"
       top="0px"
-      left="510px"
+      left={{ md: '520px', lg: '510px' }}
       display="flex"
       flexDirection="column"
       gap="4px"
-      w="100px"
-      p="5px"
-      fontSize="8px"
+      w={{ md: '100px', lg: '120px' }}
+      p={{ md: '5px', lg: '7px' }}
+      fontSize={{ md: '8px', lg: '10px' }}
       background="#ffffff"
       rounded="10px"
       boxShadow="0px 4px 10px rgba(252, 132, 45, 0.5)"

@@ -12,6 +12,7 @@ export default function DiaryProductItem({ product, grams, kcal }) {
       color="#212121"
       lineHeight="1.21"
       letterSpacing="0.04em"
+      fontSize="14px"
     >
       <Text
         as="span"
@@ -35,7 +36,7 @@ export default function DiaryProductItem({ product, grams, kcal }) {
       </Text>
       <Text
         as="span"
-        minW={{ xs: '58px', md: '106px' }}
+        minW={{ xs: '65px', md: '106px' }}
         paddingBottom={{ xs: '8px', md: '20px' }}
         borderBottom="1px solid #E0E0E0"
         marginRight={{ xs: '17px', md: '32px' }}

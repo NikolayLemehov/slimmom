@@ -4,7 +4,7 @@ import DiaryProductItem from 'components/DiaryProductItem/DiaryProductItem';
 
 export default function DiaryProductsList() {
   return (
-    <List>
+    <List marginBottom={{ xs: '60px', md: '55px' }}>
       <DiaryProductItem product="Pizza" grams="100" kcal="200" />
     </List>
   );
