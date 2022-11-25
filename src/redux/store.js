@@ -10,11 +10,13 @@ import {
 } from 'redux-persist/es/constants';
 import { persistedAuthReducer } from './auth/authSlice';
 import { persistedDailyRateReducer } from './dailyRate/dailyRateSlice';
+import { productsReducer } from './products/productsSlice';
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     dailyRate: persistedDailyRateReducer,
+    products: productsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

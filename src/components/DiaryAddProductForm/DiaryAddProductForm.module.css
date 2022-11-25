@@ -1,0 +1,24 @@
+.alert_box {
+  opacity: 0;
+  animation: ani 3.5s none;
+}
+
+@keyframes ani {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+}
+
+.alert_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-align: center;
+}

@@ -10,6 +10,7 @@ import authOperations from 'redux/auth/authOperations';
 
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 import DiaryPage from 'pages/DiaryPage/DiaryPage';
+
 import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
 import HomePage from '../pages/HomePage/HomePage';
 
@@ -29,7 +30,7 @@ export const App = () => {
     >
       <Header />
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Outlet />}>
             <Route index element={<HomePage />} />

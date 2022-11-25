@@ -1,13 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { FormLabel, Icon } from '@chakra-ui/react';
-import { MdDateRange } from 'react-icons/md';
+import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/material_orange.css';
+import { MdDateRange } from 'react-icons/md';
+
+import { getCurrentDate } from 'redux/products/productsSlice';
+import { getInfoForDay } from 'redux/products/productsOperations';
+
 import css from './DiaryDateCalendar.module.css';
 
-import Flatpickr from 'react-flatpickr';
-
 export default function DiaryDateCalendar() {
+  const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
+
+  const formatDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+    .toISOString()
+    .substring(0, 10);
+
+  useEffect(() => {
+    const formatDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000
+    )
+      .toISOString()
+      .substring(0, 10);
+
+    dispatch(getCurrentDate(formatDate));
+    dispatch(getInfoForDay({ date: formatDate }));
+
+    // console.log(formatDate);
+  }, [date, dispatch]);
 
   return (
     <FormLabel
