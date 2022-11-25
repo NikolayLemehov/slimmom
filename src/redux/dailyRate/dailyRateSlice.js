@@ -11,7 +11,11 @@ const initialState = {
   error: '',
 };
 const handlePending = state => {
+  state.dailyRate = null;
+  state.notAllowedProducts = [];
+  state.summaries = [];
   state.isLoading = true;
+  state.error = '';
 };
 const handleRejected = (state, action) => {
   state.isLoading = false;
