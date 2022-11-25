@@ -71,7 +71,7 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               </Link>
             </Box>
           </Box>
-          {isOpen && <GrayBar />}
+          {isOpen && <GrayBar onClick={onClose} />}
           <Box maxW="409px" mx="auto">
             <ModalHeader fontSize="26px" textAlign="center">
               Your recommended daily calorie intake is
