@@ -49,21 +49,23 @@ const Header = () => {
             <Flex gap="20px">
               <Link
                 _hover={{ textDecor: 'none' }}
-                fontFamily="-moz-initial"
                 fontSize="14px"
                 as={NavLink}
                 to="/login"
                 style={getStyle}
+                fontFamily="secondary"
+                fontWeight="700"
               >
                 SIGIN IN
               </Link>
               <Link
                 _hover={{ textDecor: 'none' }}
-                fontFamily="-moz-initial"
                 fontSize="14px"
                 as={NavLink}
                 to="/registration"
                 style={getStyle}
+                fontFamily="secondary"
+                fontWeight="700"
               >
                 REGISTRATION
               </Link>
@@ -76,21 +78,23 @@ const Header = () => {
               <Flex display={{ xs: 'none', lg: 'flex' }} gap="16px">
                 <Link
                   _hover={{ textDecor: 'none' }}
-                  fontFamily="-moz-initial"
                   fontSize="14px"
                   as={NavLink}
                   to="/calculator"
                   style={getStyle}
+                  fontFamily="secondary"
+                  fontWeight="700"
                 >
                   CALCULATOR
                 </Link>
                 <Link
                   _hover={{ textDecor: 'none' }}
-                  fontFamily="-moz-initial"
                   fontSize="14px"
                   as={NavLink}
                   to="/diary"
                   style={getStyle}
+                  fontFamily="secondary"
+                  fontWeight="700"
                 >
                   DIARY
                 </Link>
