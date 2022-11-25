@@ -1,10 +1,10 @@
-import {theme, extendTheme} from '@chakra-ui/react';
+import { theme, extendTheme } from '@chakra-ui/react';
 // import "@fontsource/noto-sans/400.css"
 // import "@fontsource/noto-sans/700.css"
-import "@fontsource/montserrat/400.css"
-import "@fontsource/montserrat/700.css"
-import {Button} from "./components/Button";
-import {customColors} from "./colors";
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/700.css';
+import { Button } from './components/Button';
+import { customColors } from './colors';
 
 const config = {
   initialColorMode: 'light',
@@ -18,7 +18,8 @@ const breakpoints = {
 };
 
 export const customTheme = extendTheme({
-  config, breakpoints,
+  config,
+  breakpoints,
   fonts: {
     body: `'Verdana', sans-serif`, // look like Verdana
     primary: `'Verdana', sans-serif`, // look like Verdana
@@ -30,5 +31,5 @@ export const customTheme = extendTheme({
   },
   components: {
     Button,
-  }
+  },
 });

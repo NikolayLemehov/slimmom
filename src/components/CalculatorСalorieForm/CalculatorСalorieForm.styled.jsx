@@ -15,6 +15,7 @@ export const Form = styled.form`
 
   @media screen and (min-width: 1280px) {
     align-items: end;
+    /* margin-bottom: 111px; */
   }
 `;
 
@@ -33,8 +34,9 @@ export const Title = styled.h1`
 
   @media screen and (min-width: 768px) {
     width: 608px;
-    margin-top: 140px;
+    margin-top: 0px;
     margin-bottom: 48px;
+    padding-top: 293px;
 
     font-size: 34px;
     line-height: 1.2;
@@ -42,17 +44,17 @@ export const Title = styled.h1`
 `;
 
 export const NameLabel = styled.p`
-  margin-top: 15px;
+  margin-top: 5px;
   font-family: 'Verdana';
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.21;
   letter-spacing: 0.04em;
 
-  color: #9b9faa;
+  color: #fc842d;
 
   @media screen and (min-width: 768px) {
-    margin-top: 25px;
+    margin-top: 12px;
   }
 `;
