@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import {
   Box,
   Divider,
-  Icon,
   Link,
   Modal,
   ModalBody,
@@ -13,7 +12,6 @@ import {
   ModalHeader,
   Text,
 } from '@chakra-ui/react';
-import { IoReturnDownBackSharp } from 'react-icons/io5';
 
 import MainButton from 'components/Button/MainButton';
 import LogoSmall from 'components/Logo/SmallLogo';
@@ -25,6 +23,7 @@ import {
 
 import { BottomGradient, List, TopGradient } from './Modal.styled';
 import { useNavigate } from 'react-router-dom/dist';
+import GrayBar from 'components/GrayBar/GrayBar';
 
 const ModalWindow = ({ overlay, isOpen, onClose }) => {
   const dailyRate = useSelector(getDailyRate);
@@ -72,28 +71,12 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               </Link>
             </Box>
           </Box>
-          <Box display={{ md: 'none' }}>
-            <Box
-              bgColor="#EFF1F3"
-              w="100%"
-              h="40px"
-              display={{ xs: 'flex', md: 'none' }}
-            >
-              <Icon
-                as={IoReturnDownBackSharp}
-                ml="20px"
-                mt="12px"
-                boxSize="5"
-                onClick={onClose}
-              />
-            </Box>
-          </Box>
+          {isOpen && <GrayBar />}
           <Box maxW="409px" mx="auto">
             <ModalHeader fontSize="26px" textAlign="center">
               Your recommended daily calorie intake is
             </ModalHeader>
           </Box>
-
           <ModalCloseButton size="sm" display={{ xs: 'none', md: 'block' }} />
           <ModalBody h="100%">
             <Box display="flex" justifyContent="center">
@@ -142,7 +125,6 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
               <BottomGradient />
             </Box>
           </ModalBody>
-
           <ModalFooter display="flex" justifyContent="center" mb="81px">
             <MainButton text="Start losing weight" onClick={handleClick} />
           </ModalFooter>
