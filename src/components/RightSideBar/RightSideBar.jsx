@@ -1,16 +1,24 @@
 import { Box, Flex, Heading, List, ListItem, Text } from '@chakra-ui/react';
+import leafLg from '../assets/bgDairy/leafLg.svg';
+import leafMd from '../assets/bgDairy/leafMd.svg';
 
 const RightSideBar = () => {
   return (
     <Flex
       bgColor="#F0F1F3"
-      w="100%"
-      h="100vh"
+      h="100%"
+      w={{ xs: '100%', lg: '617px' }}
       py={{ xs: '40px', md: '80px', lg: '166px' }}
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
       gap={{ xs: '40px', md: '97px', lg: '60px' }}
       justifyContent="center"
       alignItems={{ xs: 'center', md: 'baseline', lg: 'center' }}
+      position={{ lg: 'fixed' }}
+      top={{ lg: '0' }}
+      right={{ lg: '0' }}
+      bgImage={{ md: leafMd, lg: leafLg }}
+      bgPos="right"
+      bgRepeat="no-repeat"
     >
       <Box w="288px">
         <Heading fontSize="14px" textAlign="center" mb="20px" color="#212121">
