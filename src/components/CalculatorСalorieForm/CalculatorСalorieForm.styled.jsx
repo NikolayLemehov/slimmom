@@ -7,21 +7,23 @@ export const Form = styled.form`
   gap: 60px;
 
   width: 100%;
+  padding-bottom: 41px;
 
   @media screen and (min-width: 768px) {
-    width: 512px;
     align-items: start;
+
+    width: 512px;
+    padding-bottom: 48px;
   }
 
   @media screen and (min-width: 1280px) {
     align-items: end;
-    /* margin-bottom: 111px; */
+    /* padding-bottom: 111px; */
   }
 `;
 
 export const Title = styled.h1`
   width: 100%;
-  margin-top: 32px;
   margin-bottom: 12px;
 
   font-family: 'Verdana';
@@ -33,13 +35,15 @@ export const Title = styled.h1`
   color: #212121;
 
   @media screen and (min-width: 768px) {
-    width: 608px;
+    width: 100%;
     margin-top: 0px;
     margin-bottom: 48px;
-    padding-top: 293px;
 
     font-size: 34px;
     line-height: 1.2;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 608px;
   }
 `;
 

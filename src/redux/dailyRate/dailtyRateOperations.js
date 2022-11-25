@@ -2,15 +2,22 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // import {authSelectors} from "../auth/authSelectors";
 import { slimMomAxios } from '../slimMomAxios';
 
-// const rateId = createAsyncThunk('/daily-rate', async  (id, thunkAPI)  => {
-//   // const accessToken = authSelectors.refreshToken(thunkAPI.getState());
-//   try {
-//     const {data} = await slimMomAxios.post(`/daily-rate/${id}`)
-//     return data
-//   } catch (e) {
-//     console.log(e)
-//   }
-// })
+export const dailyRateById = createAsyncThunk(
+  'dailyRateById/fetchData',
+  async ({ userId, dataUser }, thunkAPI) => {
+    // const accessToken = authSelectors.refreshToken(thunkAPI.getState());
+    try {
+      console.log(dataUser);
+      const { data } = await slimMomAxios.post(
+        `/daily-rate/${userId}`,
+        dataUser
+      );
+      return data;
+    } catch (e) {
+      thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
 export const dailyRate = createAsyncThunk(
   'dailyRate/fetchData',
