@@ -1,26 +1,24 @@
-import { Box, Icon } from '@chakra-ui/react';
+import { Box, Flex, Icon } from '@chakra-ui/react';
+import UserMenu from 'components/UserMenu/UserMenu';
 import { IoReturnDownBackSharp } from 'react-icons/io5';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth/authSelectors';
 
-const GrayBar = onClick => {
-  const params = useParams();
-  console.log('params :>> ', params);
+const GrayBar = ({ onClick }) => {
+  const isLogin = useSelector(authSelectors.isLoggedIn);
   return (
     <Box display={{ md: 'none' }} w="100%">
-      <Box
+      <Flex
         bgColor="#EFF1F3"
         w="100%"
         h="40px"
-        display={{ xs: 'flex', md: 'none' }}
+        justifyContent="space-between"
+        alignItems="center"
+        p="15px 20px"
       >
-        <Icon
-          as={IoReturnDownBackSharp}
-          ml="20px"
-          mt="12px"
-          boxSize="5"
-          onClick={onClick}
-        />
-      </Box>
+        <Icon as={IoReturnDownBackSharp} boxSize="6" onClick={onClick} />
+        {isLogin && <UserMenu />}
+      </Flex>
     </Box>
   );
 };

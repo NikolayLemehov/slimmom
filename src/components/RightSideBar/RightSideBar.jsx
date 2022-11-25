@@ -5,12 +5,12 @@ const RightSideBar = () => {
     <Flex
       bgColor="#F0F1F3"
       w="100%"
+      h="100vh"
       py={{ xs: '40px', md: '80px', lg: '166px' }}
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
       gap={{ xs: '40px', md: '97px', lg: '60px' }}
       justifyContent="center"
       alignItems={{ xs: 'center', md: 'baseline', lg: 'center' }}
-      ml={{ lg: 'auto' }}
     >
       <Box w="288px">
         <Heading fontSize="14px" textAlign="center" mb="20px" color="#212121">

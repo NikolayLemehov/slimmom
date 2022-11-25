@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { IoReturnDownBackSharp } from 'react-icons/io5';
-import { Box, Flex, Icon, Link } from '@chakra-ui/react';
+import { Box, Flex, Link } from '@chakra-ui/react';
 
 import { authSelectors } from 'redux/auth/authSelectors';
 import SmallLogo from 'components/Logo/SmallLogo';
 import UserMenu from 'components/UserMenu/UserMenu';
 import Logo from 'components/Logo/Logo';
 import HamburgerMenu from 'components/HamburgerMenu/HamburgerMenu';
+import GrayBar from 'components/GrayBar/GrayBar';
 
 const Header = () => {
   const isLogin = useSelector(authSelectors.isLoggedIn);
@@ -28,38 +28,46 @@ const Header = () => {
         }}
       >
         {!isLogin ? (
-          <Flex>
-            <Box display={{ xs: 'none', md: 'flex' }}>
-              <Logo />
+          <Flex
+            alignItems="center"
+            gap="20px"
+            w="100%"
+            justifyContent={{ xs: 'space-between', lg: 'flex-start' }}
+          >
+            <Box>
+              <Flex display={{ xs: 'none', md: 'flex' }}>
+                <Logo />
+              </Flex>
+              <Flex display={{ xs: 'flex', md: 'none' }}>
+                <SmallLogo />
+              </Flex>
             </Box>
-            <Box display={{ xs: 'flex', md: 'none' }}>
-              <SmallLogo />
-            </Box>
-
-            <Link
-              _hover={{ textDecor: 'none' }}
-              fontFamily="-moz-initial"
-              fontSize="14px"
-              as={NavLink}
-              to="/login"
-            >
-              SIGIN IN
-            </Link>
-            <Link
-              _hover={{ textDecor: 'none' }}
-              fontFamily="-moz-initial"
-              fontSize="14px"
-              as={NavLink}
-              to="/registration"
-            >
-              REGISTRATION
-            </Link>
+            <Flex gap="20px">
+              <Link
+                _hover={{ textDecor: 'none' }}
+                fontFamily="-moz-initial"
+                fontSize="14px"
+                as={NavLink}
+                to="/login"
+              >
+                SIGIN IN
+              </Link>
+              <Link
+                _hover={{ textDecor: 'none' }}
+                fontFamily="-moz-initial"
+                fontSize="14px"
+                as={NavLink}
+                to="/registration"
+              >
+                REGISTRATION
+              </Link>
+            </Flex>
           </Flex>
         ) : (
           <Flex justifyContent="space-between" w="100%">
             <Flex alignItems="center" gap="20px">
               <Logo />
-              <Flex display={{ xs: 'none', lg: 'flex' }}>
+              <Flex display={{ xs: 'none', lg: 'flex' }} gap="16px">
                 <Link
                   _hover={{ textDecor: 'none' }}
                   fontFamily="-moz-initial"
@@ -82,20 +90,17 @@ const Header = () => {
             </Flex>
 
             <Flex display="flex" alignItems="center">
-              <Box display={{ xs: 'none', sm: 'flex' }}>
+              <Box display={{ xs: 'none', md: 'flex' }} mr="53px">
                 <UserMenu />
               </Box>
               <HamburgerMenu />
             </Flex>
           </Flex>
         )}
-      </Flex>
-      {isLogin && (
-        <Box bgColor="#EFF1F3" h="40px" display={{ xs: 'flex', sm: 'none' }}>
-          <Icon as={IoReturnDownBackSharp} ml="20px" mt="12px" boxSize="5" />
-          <UserMenu />
+        <Box position="absolute" bottom="-42px" left="0" w="100%">
+          <GrayBar />
         </Box>
-      )}
+      </Flex>
     </>
   );
 };
