@@ -9,6 +9,7 @@ export default function DeleteButton() {
       background="transparent"
       rounded="50%"
       color="rgba(155, 159, 170, 1)"
+      p="4px"
       _hover={{
         background: '#FC842D',
         color: '#ffffff',

@@ -28,3 +28,15 @@ export const addProduct = createAsyncThunk(
     }
   }
 );
+
+export const getInfoForDay = createAsyncThunk(
+  'products/getInfoForDay',
+  async (date, { rejectWithValue }) => {
+    try {
+      const responce = await slimMomAxios.post('/day/info', date);
+      console.log(responce);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
