@@ -38,7 +38,6 @@ export function LogInPage() {
       >
         <Box
           py='98px' flexGrow='1'
-          // pt={{xs: '117px'}}
         >
           <Heading
             as='h1' size='xs' mb='34px'

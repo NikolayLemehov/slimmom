@@ -36,7 +36,6 @@ export function RegistrationPage() {
         justify="flex-start"
         alignItems={{xs: 'flex-start', lg: 'center'}}
         flexGrow='1'
-        // pt={{md: '120px'}}
         pb={{lg: '25px'}}
       >
         <Box
