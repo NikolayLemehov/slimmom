@@ -8,7 +8,7 @@ export default function CalculatorFormValidation({ text }) {
       fontSize="8px"
       m="0"
       position="absolute"
-      top={{ xs: '60px', md: '63px' }}
+      top={{ xs: '48px', md: '63px' }}
       color="red"
     >
       {text}
