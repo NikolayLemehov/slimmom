@@ -98,8 +98,8 @@ export default function MobileModalForm(props) {
               <VStack
                 // spacing={5}
                 alignItems="center"
-                gap={{xs: '0'}}
-                mb='42px'
+                gap={{xs: '12px'}}
+                mb='30px'
                 w='100%'
                 // isInvalid={inputDirty}
               >
