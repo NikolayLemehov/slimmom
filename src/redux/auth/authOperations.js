@@ -18,7 +18,7 @@ const register = createAsyncThunk('auth/register', async credential => {
   }
 });
 
-const logIn = createAsyncThunk('auth/login', async ({credential, setSubmitting}) => {
+const logIn = createAsyncThunk('auth/login', async credential => {
   const { email, password } = credential;
 
   try {
@@ -26,11 +26,9 @@ const logIn = createAsyncThunk('auth/login', async ({credential, setSubmitting})
       email,
       password,
     });
-    setSubmitting(false);
     token.set(data.accessToken);
     return data;
   } catch (e) {
-    setSubmitting(false);
     console.log(e);
   }
 });
