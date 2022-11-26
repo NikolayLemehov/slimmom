@@ -7,8 +7,12 @@ import { ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import ModalWindow from 'components/Modal/Modal';
 import CalculatorСalorieForm from '../../components/CalculatorСalorieForm/CalculatorСalorieForm';
 import { BgImg } from './HomePage.styled';
+import { authSelectors } from 'redux/auth/authSelectors';
 
 const HomePage = () => {
+  // const accessToken;
+  // authSelectors
+  // accessToken
   const dispatch = useDispatch();
 
   // Modal window
