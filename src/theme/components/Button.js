@@ -23,11 +23,13 @@ export const Button = defineStyleConfig({
   variants: {
     primary: {
       ...baseVariantStyle,
-      background: customColors.sun["100"],
+      // background: customColors.sun["100"],
       color: 'white',
       boxShadow: "0px 4px 10px rgba(252, 132, 45, 0.5)",
       bg: customColors.sun["100"],
-      _hover: { background: customColors.sun["200"] },
+      _hover: { bg: customColors.sun["200"],
+        _disabled: {bg: customColors.sun["200"]} },
+      _disabled: {bg: customColors.sun["200"]}
     },
     outline: {
       ...baseVariantStyle,

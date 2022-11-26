@@ -5,9 +5,9 @@ import {Button, Heading, VStack} from "@chakra-ui/react";
 export default function UiKit() {
   const dispatch = useDispatch();
   const credentialRegister = {
-    "email": "watermelon005@example.com",
+    "email": "watermelon011@example.com",
     "password": "qwerty123",
-    "username": "Emma"
+    "username": "Emma011"
   }
   const credentialLogIn = {
     "email": "watermelon004@example.com",
@@ -35,6 +35,7 @@ export default function UiKit() {
 
       <Button>base</Button>
       <Button variant={'primary'}>primary</Button>
+      <Button variant={'primary'} isLoading={true}>primary loading</Button>
       <Button variant={'outline'}>outline</Button>
 
       <Heading fontFamily={'body'}>Body font family</Heading>
