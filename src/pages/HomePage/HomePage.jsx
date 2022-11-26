@@ -36,6 +36,7 @@ const HomePage = () => {
     const value = Number(e.target.value);
     setRenderAlert(false);
 
+    console.log(value);
     switch (name) {
       case 'heightUser':
         setHeightUser(value);
@@ -49,6 +50,9 @@ const HomePage = () => {
       case 'desiredWeightUser':
         setDesiredWeightUser(value);
         break;
+      case 'bloodTypeUser':
+        setBloodTypeUser(value);
+        break;
 
       default:
         break;
@@ -57,10 +61,6 @@ const HomePage = () => {
 
   const handleInputBlur = () => {
     setBlurOnInput(false);
-  };
-
-  const handleRadio = e => {
-    setBloodTypeUser(Number(e));
   };
 
   const dataUser = {
@@ -117,7 +117,7 @@ const HomePage = () => {
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         handleInputBlur={handleInputBlur}
-        handleRadio={handleRadio}
+        bloodTypeUser={bloodTypeUser}
         renderAlert={renderAlert}
         showValidationInput={showValidationInput}
         blurOnInput={blurOnInput}
