@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Divider, Flex, Link } from '@chakra-ui/react';
-import textLogo from '../assets/logo/textLogo.svg';
+import textLogo from '../../assets/logo/textLogo.svg';
 
 const Logo = () => {
   return (

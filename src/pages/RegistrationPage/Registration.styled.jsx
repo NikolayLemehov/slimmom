@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import desktopMainBg from '../../components/assets/bg/desktopMainBg.png';
-import tabletMainBg from '../../components/assets/bg/tabletMainBg.png';
+import desktopMainBg from '../../assets/bg/desktopMainBg.png';
+import tabletMainBg from '../../assets/bg/tabletMainBg.png';
 
 export const BgImg = styled.div`
   @media screen and (min-width: 768px) {

@@ -2,7 +2,7 @@ import {Field, Form, Formik} from "formik";
 import {
   Box,
   Button,
-  Flex, FormControl, FormErrorMessage,
+  Flex, FormControl,
   Heading,
   VStack
 } from "@chakra-ui/react";
@@ -15,19 +15,20 @@ import {customColors} from "../../theme/colors";
 import * as Yup from "yup";
 import {authSelectors} from "../../redux/auth/authSelectors";
 import {noop} from "../../utils/noop";
+import DiaryFormValidation from "../../components/DiaryAddProductForm/DiaryFormValidation/DiaryFormValidation";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('This field is required'),
   email: Yup.string()
     .email('Invalid email')
-    .required('Required'),
+    .required('This field is required'),
   password: Yup.string()
     .min(5, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('This field is required'),
 });
 
 export function RegistrationPage() {
@@ -83,7 +84,7 @@ export function RegistrationPage() {
                           width="100%"
                           {...field}
                         />
-                        <FormErrorMessage colorScheme={'red'}>{form.errors.email}</FormErrorMessage>
+                        <DiaryFormValidation text={form.errors.email}/>
                       </FormControl>
                     </Box>
                   )}
@@ -102,7 +103,7 @@ export function RegistrationPage() {
                           width="100%"
                           {...field}
                         />
-                        <FormErrorMessage colorScheme={'red'}>{form.errors.email}</FormErrorMessage>
+                        <DiaryFormValidation text={form.errors.email}/>
                       </FormControl>
                     </Box>
                   )}
@@ -120,7 +121,7 @@ export function RegistrationPage() {
                           width="100%"
                           {...field}
                         />
-                        <FormErrorMessage colorScheme={'red'}>{form.errors.email}</FormErrorMessage>
+                        <DiaryFormValidation text={form.errors.email}/>
                       </FormControl>
                     </Box>
                   )}

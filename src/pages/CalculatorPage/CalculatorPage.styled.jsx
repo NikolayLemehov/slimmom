@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import leafLg from '../../components/assets/bgDairy/leafLg.svg';
-import leafMd from '../../components/assets/bgDairy/leafMd.svg';
+import leafLg from '../../assets/bgDairy/leafLg.svg';
+import leafMd from '../../assets/bgDairy/leafMd.svg';
 
 export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {

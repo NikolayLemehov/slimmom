@@ -2,7 +2,7 @@ import {Field, Form, Formik} from "formik";
 import {
   Box,
   Button,
-  Flex, FormControl, FormErrorMessage,
+  Flex, FormControl,
   Heading,
   VStack
 } from "@chakra-ui/react";
@@ -15,15 +15,16 @@ import {BgImg} from "./LogIn.styled";
 import * as Yup from 'yup';
 import {noop} from "../../utils/noop";
 import {authSelectors} from "../../redux/auth/authSelectors";
+import DiaryFormValidation from "../../components/DiaryAddProductForm/DiaryFormValidation/DiaryFormValidation";
 
 const LogInSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email')
-    .required('Required'),
+    .required('This field is required'),
   password: Yup.string()
     .min(5, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('This field is required'),
 });
 
 export function LogInPage() {
@@ -84,7 +85,7 @@ export function LogInPage() {
                               width='100%'
                               {...field}
                             />
-                            <FormErrorMessage colorScheme={'red'}>{form.errors.email}</FormErrorMessage>
+                            <DiaryFormValidation text={form.errors.email}/>
                           </FormControl>
                         </Box>
                       )
@@ -105,7 +106,7 @@ export function LogInPage() {
                             width='100%'
                             {...field}
                           />
-                          <FormErrorMessage>{form.errors.password}</FormErrorMessage>
+                          <DiaryFormValidation text={form.errors.password}/>
                         </FormControl>
                       </Box>
                     )}
