@@ -33,7 +33,7 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
   const notAllowedProducts = useSelector(getNotAllowedProducts);
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/login');
+    navigate('/registration');
   };
   return (
     <>
