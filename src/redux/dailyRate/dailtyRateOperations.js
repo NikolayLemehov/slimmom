@@ -7,7 +7,6 @@ export const dailyRateById = createAsyncThunk(
   async ({ userId, dataUser }, thunkAPI) => {
     // const accessToken = authSelectors.refreshToken(thunkAPI.getState());
     try {
-      console.log(dataUser);
       const { data } = await slimMomAxios.post(
         `/daily-rate/${userId}`,
         dataUser
@@ -23,9 +22,8 @@ export const dailyRate = createAsyncThunk(
   'dailyRate/fetchData',
   async (userData, thunkAPI) => {
     try {
-      console.log(userData);
       const { data } = await slimMomAxios.post(`/daily-rate`, userData);
-      console.log(data);
+
       return data;
     } catch (e) {
       thunkAPI.rejectWithValue(e.message);

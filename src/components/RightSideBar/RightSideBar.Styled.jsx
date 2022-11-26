@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const List = styled.ul`
+export const ListProducts = styled.ul`
   width: 100%;
   height: 150px;
 
@@ -34,15 +34,15 @@ export const BottomGradient = styled.div`
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.1) 0%,
-    #ffffff 100%
+    #f0f1f3 100%
   );
 `;
 export const TopGradient = styled.div`
   position: absolute;
-  top: 56px;
+  top: 0;
 
   width: 100%;
   height: 15px;
 
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, #ffffff 100%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, #f0f1f3 100%);
 `;

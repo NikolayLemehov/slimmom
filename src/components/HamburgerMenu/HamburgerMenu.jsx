@@ -12,8 +12,9 @@ import {
   ModalHeader,
   useDisclosure,
 } from '@chakra-ui/react';
-import textLogo from '../assets/logo/textLogo.svg';
+
 import UserMenu from 'components/UserMenu/UserMenu';
+import Logo from 'components/Logo/Logo';
 
 const HamburgerMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,7 +36,7 @@ const HamburgerMenu = () => {
       <Modal isOpen={isOpen} onClose={onClose} size="full" motionPreset="none">
         <ModalContent>
           <ModalHeader
-            pt="21px"
+            p="20px"
             fontWeight="normal"
             fontSize="16px"
             borderBottom="2px solid #E0E0E0"
@@ -43,9 +44,7 @@ const HamburgerMenu = () => {
             display="flex"
             alignItems="center"
           >
-            <NavLink to="/">
-              <img src={textLogo} alt="logo" />
-            </NavLink>
+            <Logo />
             <Flex>
               <Box display={{ xs: 'none', md: 'flex' }} mr="53px">
                 <UserMenu />
@@ -71,7 +70,6 @@ const HamburgerMenu = () => {
               <Box>
                 <Link
                   _hover={{ textDecor: 'none', color: '#9B9FAA' }}
-                  fontFamily="-moz-initial"
                   fontSize="18px"
                   as={NavLink}
                   to="/calculator"
@@ -85,7 +83,6 @@ const HamburgerMenu = () => {
               <Box>
                 <Link
                   _hover={{ textDecor: 'none', color: '#9B9FAA' }}
-                  fontFamily="-moz-initial"
                   fontSize="18px"
                   as={NavLink}
                   to="/diary"
