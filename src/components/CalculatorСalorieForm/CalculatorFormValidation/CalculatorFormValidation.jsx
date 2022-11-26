@@ -4,7 +4,13 @@ import React from 'react';
 
 export default function CalculatorFormValidation({ text }) {
   return (
-    <Text fontSize="8px" m="0" position="absolute" top="63px" color="red">
+    <Text
+      fontSize="8px"
+      m="0"
+      position="absolute"
+      top={{ xs: '60px', md: '63px' }}
+      color="red"
+    >
       {text}
     </Text>
   );

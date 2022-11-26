@@ -15,7 +15,7 @@ export const FormLabel = styled.label`
 
 export const LabelName = styled.span`
   position: absolute;
-  bottom: 20px;
+  bottom: 8px;
 
   font-family: 'Verdana';
   font-style: normal;
@@ -28,6 +28,9 @@ export const LabelName = styled.span`
 
   transition: bottom 300ms ease, color 300ms ease, font-size 300ms ease;
   z-index: 10;
+  @media screen and (min-width: 768px) {
+    bottom: 20px;
+  }
 `;
 
 export const Input = styled.input`

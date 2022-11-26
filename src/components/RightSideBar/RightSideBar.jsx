@@ -49,7 +49,7 @@ const RightSideBar = () => {
       justifyContent={{ xs: 'center', lg: 'start' }}
       alignItems={{ xs: 'center', md: 'baseline', lg: 'center' }}
     >
-      <Box w="288px">
+      <Box w={{ xs: '100%', md: '288px' }}>
         <Heading fontSize="14px" textAlign="center" mb="20px" color="#212121">
           Summary for {dateNewFormat ? dateNewFormat : currentDate}
         </Heading>
@@ -72,7 +72,7 @@ const RightSideBar = () => {
           </ListItem>
         </List>
       </Box>
-      <Box w="288px">
+      <Box w={{ xs: '100%', md: '288px' }}>
         <Heading
           as="h3"
           fontSize="14px"
