@@ -110,7 +110,7 @@ const Header = () => {
           </Flex>
         )}
         <Box position="absolute" bottom="-42px" left="0" w="100%">
-          <GrayBar />
+          {isLogin && <GrayBar />}
         </Box>
       </Flex>
     </>

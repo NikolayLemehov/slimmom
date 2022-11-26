@@ -33,6 +33,9 @@ export default function CalculatorСalorieForm({
               handlerEvent={handleChange}
               required
               width="100%"
+              min="50"
+              max="220"
+              title="The height must be between 50cm and 220cm."
             />
             <InputField
               labelName="Age *"
@@ -41,6 +44,9 @@ export default function CalculatorСalorieForm({
               handlerEvent={handleChange}
               required
               width="100%"
+              min="6"
+              max="120"
+              title="The age should be between 6 years and 120 years."
             />
             <InputField
               labelName="Current weight *"
@@ -49,6 +55,9 @@ export default function CalculatorСalorieForm({
               handlerEvent={handleChange}
               required
               width="100%"
+              min="10"
+              max="150"
+              title="The current weight should be between 10kg and 150kg."
             />
           </Box>
           <Box
@@ -64,17 +73,10 @@ export default function CalculatorСalorieForm({
               handlerEvent={handleChange}
               required
               width="100%"
+              min="10"
+              max="150"
+              title="The desired weight should be between 10kg and 150kg."
             />
-            {/* <InputField
-              labelName="Blood type *"
-              type="number"
-              name="bloodType"
-              value="1"
-              handlerEvent={handlerEvent}
-              required
-              width="100%"
-              disable
-            /> */}
             <NameLabel>Blood type *</NameLabel>
             <RadioGroup
               onChange={handleRadio}
