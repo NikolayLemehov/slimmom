@@ -24,7 +24,7 @@ export const Form = styled.form`
 
 export const Title = styled.h1`
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 
   font-family: 'Verdana';
   font-style: normal;

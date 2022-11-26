@@ -3,13 +3,20 @@ import styled from '@emotion/styled';
 export const FormLabel = styled.label`
   display: block;
   position: relative;
-  height: 60px;
+  height: 46px;
 
   &:focus-within span {
-    bottom: 35px;
+    bottom: 25px;
 
     font-size: 12px;
     color: #fc842d;
+
+    @media screen and (min-width: 768px) {
+      bottom: 32px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    height: 60px;
   }
 `;
 
@@ -38,13 +45,18 @@ export const Input = styled.input`
   bottom: 0;
 
   width: 100%;
-  padding-bottom: 5px;
+  /* padding-bottom: 0px; */
 
   letter-spacing: 0.04em;
 
   border-bottom: 1px solid #e0e0e0;
 
   transition: border-color 300ms ease;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 5px;
+  }
+
   &:focus-within {
     border-bottom: 1px solid #fc842d;
     outline: none;
@@ -55,9 +67,12 @@ export const Input = styled.input`
   }
 
   &:not(:placeholder-shown) ~ span {
-    bottom: 35px;
+    bottom: 25px;
     color: #fc842d;
 
     font-size: 12px;
+    @media screen and (min-width: 768px) {
+      bottom: 32px;
+    }
   }
 `;

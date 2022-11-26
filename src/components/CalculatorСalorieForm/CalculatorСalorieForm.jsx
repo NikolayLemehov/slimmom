@@ -32,6 +32,7 @@ export default function CalculatorСalorieForm({
             flexDirection="column"
             gap="10px"
             minWidth={{ xs: '100%', md: '240px' }}
+            pb={{ xs: '10px', md: '0px' }}
           >
             <Box position="relative">
               <InputField
