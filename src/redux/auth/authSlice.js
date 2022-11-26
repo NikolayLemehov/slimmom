@@ -23,14 +23,19 @@ export const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(authOperations.register.pending, (state) => {
-        state.loading.register = true;
+        state.loading.registration = true;
       })
       .addCase(authOperations.register.rejected, (state) => {
-        state.loading.register = false;
+        state.loading.registration = false;
       })
       .addCase(authOperations.register.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.loading.register = false;
+        state.user.username = payload['user']['username'];
+        state.user.email = payload['user']['email'];
+        state.accessToken = payload['accessToken'];
+        state.refreshToken = payload['refreshToken'];
+        state.sid = payload['sid'];
+        state.isLoggedIn = true;
+        state.loading.registration = false;
       })
 
       .addCase(authOperations.logIn.pending, (state) => {

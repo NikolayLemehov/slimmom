@@ -1,33 +1,49 @@
-import {useFormik} from "formik";
+import {Field, Form, Formik} from "formik";
 import {
   Box,
   Button,
-  Flex,
+  Flex, FormControl, FormErrorMessage,
   Heading,
   VStack
 } from "@chakra-ui/react";
 import InputField from "../../components/InputField/InputField";
 import authOperations from "../../redux/auth/authOperations";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {BgImg} from "./Registration.styled";
 import {customColors} from "../../theme/colors";
+import * as Yup from "yup";
+import {authSelectors} from "../../redux/auth/authSelectors";
+import {noop} from "../../utils/noop";
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  password: Yup.string()
+    .min(5, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+});
 
 export function RegistrationPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      const {email, password, name} = values;
-      dispatch(authOperations.register({email, password, username: name}))
-      console.log(values)
-    }
-  });
+  const registrationLoading = useSelector(authSelectors.registrationLoading);
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+  }
+  const onSubmit = (values) => {
+    const {email, password, name} = values;
+    dispatch(authOperations.register({email, password, username: name}))
+  }
+
   return (
     <>
       <BgImg/>
@@ -49,51 +65,78 @@ export function RegistrationPage() {
             color={customColors.sun["100"]}
             textTransform='uppercase'
           >Registration</Heading>
-          <form onSubmit={formik.handleSubmit}>
-            <VStack spacing={5} align="flex-start" mb={{xs: '60px', lg: '60px'}}>
-              <Box w={{xs: '100%', md: '240px'}}>
-                <InputField
-                  labelName="Name *"
-                  type="text"
-                  name="name"
-                  handlerEvent={formik.handleChange}
-                  value={formik.values.name}
-                  required
-                  width="100%"
-                />
-              </Box>
-              <Box w={{xs: '100%', md: '240px'}}>
-                <InputField
-                  labelName="Email *"
-                  type="text"
-                  name="email"
-                  handlerEvent={formik.handleChange}
-                  value={formik.values.email}
-                  required
-                  width="100%"
-                />
-              </Box>
-              <Box w={{xs: '100%', md: '240px'}}>
-                <InputField
-                  labelName="Password *"
-                  type="password"
-                  name="password"
-                  handlerEvent={formik.handleChange}
-                  value={formik.values.password}
-                  required
-                  width="100%"
-                />
-              </Box>
-            </VStack>
-            <Flex
-              gap={6}
-              flexDirection={{xs: 'column', md: 'row'}}
-              alignItems={{xs: 'center'}}
-            >
-              <Button variant={'outline'} type="button" onClick={() => navigate('/login')}>Login</Button>
-              <Button variant={'primary'} type="submit">Register</Button>
-            </Flex>
-          </form>
+          <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+            {() => (
+              <Form>
+                <VStack spacing={5} align="flex-start" mb={{xs: '60px', lg: '60px'}}>
+
+                  <Field name="name">{({field, form}) => (
+                    <Box w={{xs: '100%', md: '240px'}}>
+                      <FormControl isInvalid={form.errors.email && form.touched.email}>
+                        <InputField
+                          labelName="Name *"
+                          type="text"
+                          name="name"
+                          handlerEvent={noop}
+                          // value={formik.values.name}
+                          required
+                          width="100%"
+                          {...field}
+                        />
+                        <FormErrorMessage colorScheme={'red'}>{form.errors.email}</FormErrorMessage>
+                      </FormControl>
+                    </Box>
+                  )}
+                  </Field>
+
+                  <Field name="email">{({field, form}) => (
+                    <Box w={{xs: '100%', md: '240px'}}>
+                      <FormControl isInvalid={form.errors.email && form.touched.email}>
+                        <InputField
+                          labelName="Email *"
+                          type="text"
+                          name="email"
+                          handlerEvent={noop}
+                          // value={formik.values.email}
+                          required
+                          width="100%"
+                          {...field}
+                        />
+                        <FormErrorMessage colorScheme={'red'}>{form.errors.email}</FormErrorMessage>
+                      </FormControl>
+                    </Box>
+                  )}
+                  </Field>
+                  <Field name="password">{({field, form}) => (
+                    <Box w={{xs: '100%', md: '240px'}}>
+                      <FormControl isInvalid={form.errors.email && form.touched.email}>
+                        <InputField
+                          labelName="Password *"
+                          type="password"
+                          name="password"
+                          handlerEvent={noop}
+                          // value={formik.values.password}
+                          required
+                          width="100%"
+                          {...field}
+                        />
+                        <FormErrorMessage colorScheme={'red'}>{form.errors.email}</FormErrorMessage>
+                      </FormControl>
+                    </Box>
+                  )}
+                  </Field>
+                </VStack>
+                <Flex
+                  gap={6}
+                  flexDirection={{xs: 'column', md: 'row'}}
+                  alignItems={{xs: 'center'}}
+                >
+                  <Button variant={'outline'} type="button" onClick={() => navigate('/login')}>Login</Button>
+                  <Button variant={'primary'} type="submit" isLoading={registrationLoading}>Register</Button>
+                </Flex>
+              </Form>
+            )}
+          </Formik>
         </Box>
       </Flex>
     </>
