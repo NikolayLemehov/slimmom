@@ -3,7 +3,7 @@ import { Box, Flex, Heading, List, ListItem, Text } from '@chakra-ui/react';
 const RightSideBar = () => {
   return (
     <Flex
-      bgColor="#F0F1F3"
+      bgColor={{ xs: '#F0F1F3', md: 'transparent', lg: 'transparent' }}
       h="100%"
       py={{ xs: '40px', md: '80px', lg: '0px' }}
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
