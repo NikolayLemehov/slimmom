@@ -18,7 +18,7 @@ const register = createAsyncThunk('auth/register', async credential => {
   }
 });
 
-const logIn = createAsyncThunk('auth/login', async credential => {
+const logIn = createAsyncThunk('auth/login', async ({credential, setSubmitting}) => {
   const { email, password } = credential;
 
   try {
@@ -26,9 +26,11 @@ const logIn = createAsyncThunk('auth/login', async credential => {
       email,
       password,
     });
+    setSubmitting(false);
     token.set(data.accessToken);
     return data;
   } catch (e) {
+    setSubmitting(false);
     console.log(e);
   }
 });
@@ -51,7 +53,6 @@ const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
 
   try {
     const { data } = await slimMomAxios.post('/auth/refresh', { sid });
-    console.log('data refresh', data.newAccessToken.slice(-3));
     token.set(data.newAccessToken);
     return data;
   } catch (e) {

@@ -35,6 +35,7 @@ export default function UiKit() {
 
       <Button>base</Button>
       <Button variant={'primary'}>primary</Button>
+      <Button variant={'primary'} isLoading={true}>primary loading</Button>
       <Button variant={'outline'}>outline</Button>
 
       <Heading fontFamily={'body'}>Body font family</Heading>
