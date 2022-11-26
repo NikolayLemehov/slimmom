@@ -68,19 +68,6 @@ export default function CalculatorPage() {
     setShowValidationInput(true);
     setBlurOnInput(true);
 
-    if (
-      heightUser < 140 ||
-      heightUser > 220 ||
-      ageUser < 16 ||
-      ageUser > 120 ||
-      currentWeightUser < 40 ||
-      currentWeightUser > 150 ||
-      desiredWeightUser < 40 ||
-      desiredWeightUser > 150
-    ) {
-      return;
-    }
-
     // Validation form
     setRenderAlert(false);
     const isEmptyField = Object.values(dataUser).some(
@@ -92,6 +79,19 @@ export default function CalculatorPage() {
       setTimeout(() => {
         setRenderAlert(false);
       }, 3500);
+      return;
+    }
+
+    if (
+      heightUser < 140 ||
+      heightUser > 220 ||
+      ageUser < 16 ||
+      ageUser > 120 ||
+      currentWeightUser < 40 ||
+      currentWeightUser > 150 ||
+      desiredWeightUser < 40 ||
+      desiredWeightUser > 150
+    ) {
       return;
     }
 
