@@ -4,11 +4,13 @@ import InputField from 'components/InputField/InputField';
 import MainButton from 'components/Button/MainButton';
 
 import { Form, Title, NameLabel } from './CalculatorСalorieForm.styled';
+import CalculatorFormError from './CalculatorFormValidation/CalculatorFormError';
 
 export default function CalculatorСalorieForm({
   handleSubmit,
   handleChange,
   handleRadio,
+  renderAlert,
 }) {
   return (
     <>
@@ -31,33 +33,33 @@ export default function CalculatorСalorieForm({
               type="number"
               name="heightUser"
               handlerEvent={handleChange}
-              required
               width="100%"
-              min="50"
-              max="220"
-              title="The height must be between 50cm and 220cm."
+              // required
+              // min="50"
+              // max="220"
+              // title="The height must be between 50cm and 220cm."
             />
             <InputField
               labelName="Age *"
               type="number"
               name="ageUser"
               handlerEvent={handleChange}
-              required
               width="100%"
-              min="6"
-              max="120"
-              title="The age should be between 6 years and 120 years."
+              // required
+              // min="6"
+              // max="120"
+              // title="The age should be between 6 years and 120 years."
             />
             <InputField
               labelName="Current weight *"
               type="number"
               name="currentWeightUser"
               handlerEvent={handleChange}
-              required
               width="100%"
-              min="10"
-              max="150"
-              title="The current weight should be between 10kg and 150kg."
+              // required
+              // min="10"
+              // max="150"
+              // title="The current weight should be between 10kg and 150kg."
             />
           </Box>
           <Box
@@ -71,11 +73,11 @@ export default function CalculatorСalorieForm({
               type="number"
               name="desiredWeightUser"
               handlerEvent={handleChange}
-              required
               width="100%"
-              min="10"
-              max="150"
-              title="The desired weight should be between 10kg and 150kg."
+              // required
+              // min="10"
+              // max="150"
+              // title="The desired weight should be between 10kg and 150kg."
             />
             <NameLabel>Blood type *</NameLabel>
             <RadioGroup
@@ -100,7 +102,10 @@ export default function CalculatorСalorieForm({
             </RadioGroup>
           </Box>
         </Box>
-        <MainButton type="submit" text="Start losing weight" />
+        <Box position="relative">
+          <MainButton type="submit" text="Start losing weight" />
+          {renderAlert && <CalculatorFormError />}
+        </Box>
       </Form>
     </>
   );

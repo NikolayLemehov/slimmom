@@ -19,6 +19,8 @@ export default function CalculatorPage() {
   const [currentWeightUser, setCurrentWeightUser] = useState(null);
   const [desiredWeightUser, setDesiredWeightUser] = useState(null);
   const [bloodTypeUser, setBloodTypeUser] = useState(1);
+  const [renderAlert, setRenderAlert] = useState(false);
+
   const handleChange = e => {
     const name = e.target.name;
     const value = Number(e.target.value);
@@ -55,7 +57,21 @@ export default function CalculatorPage() {
       desiredWeight: desiredWeightUser,
       bloodType: bloodTypeUser,
     };
+    // Validation form
+    setRenderAlert(false);
+    const isEmptyField = Object.values(dataUser).some(
+      item => item === 0 || item === null
+    );
+    console.log(isEmptyField);
+    if (isEmptyField) {
+      setRenderAlert(true);
+      setTimeout(() => {
+        setRenderAlert(false);
+      }, 3500);
+      return;
+    }
 
+    // Submit
     const fetchObj = { userId, dataUser };
     dispatch(dailyRateById(fetchObj));
   };
@@ -67,6 +83,7 @@ export default function CalculatorPage() {
           handleSubmit={handleSubmit}
           handleChange={handleChange}
           handleRadio={handleRadio}
+          renderAlert={renderAlert}
         />
       </Box>
       <Box position="relative">

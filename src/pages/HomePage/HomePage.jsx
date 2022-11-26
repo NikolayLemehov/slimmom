@@ -27,9 +27,12 @@ const HomePage = () => {
   const [currentWeightUser, setCurrentWeightUser] = useState(null);
   const [desiredWeightUser, setDesiredWeightUser] = useState(null);
   const [bloodTypeUser, setBloodTypeUser] = useState(1);
+  const [renderAlert, setRenderAlert] = useState(false);
+
   const handleChange = e => {
     const name = e.target.name;
     const value = Number(e.target.value);
+    setRenderAlert(false);
 
     switch (name) {
       case 'heightUser':
@@ -63,6 +66,22 @@ const HomePage = () => {
       desiredWeight: desiredWeightUser,
       bloodType: bloodTypeUser,
     };
+
+    // Validation form
+    setRenderAlert(false);
+    const isEmptyField = Object.values(dataUser).some(
+      item => item === 0 || item === null
+    );
+    console.log(isEmptyField);
+    if (isEmptyField) {
+      setRenderAlert(true);
+      setTimeout(() => {
+        setRenderAlert(false);
+      }, 3500);
+      return;
+    }
+
+    // Submit
     dispatch(dailyRate(dataUser));
     setOverlay(<OverlayOne />);
     onOpen();
@@ -75,6 +94,7 @@ const HomePage = () => {
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         handleRadio={handleRadio}
+        renderAlert={renderAlert}
       />
       <ModalWindow overlay={overlay} isOpen={isOpen} onClose={onClose} />
     </>
