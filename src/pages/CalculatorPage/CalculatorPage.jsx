@@ -57,7 +57,6 @@ export default function CalculatorPage() {
     };
 
     const fetchObj = { userId, dataUser };
-    console.log(fetchObj);
     dispatch(dailyRateById(fetchObj));
   };
 

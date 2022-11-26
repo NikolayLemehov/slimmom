@@ -1,28 +1,40 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FormControl, Box } from '@chakra-ui/react';
 
-import DiaryAddFormValidation from './DiaryAddFormValidation';
-import DiaryAddFormError from './DiaryAddFormError';
+import DiaryFormError from './DiaryFormValidation/DiaryFormError';
+import DiaryFormValidation from './DiaryFormValidation/DiaryFormValidation';
 import InputField from 'components/InputField/InputField';
 import AddButton from 'components/Button/AddButton';
+import DiarySelectProduct from 'components/DiarySelectProduct/DiarySelectProduct';
+
+import { selectProducts } from 'redux/products/productsSelectors';
 
 import { selectProduct, addProduct } from 'redux/products/productsOperations';
 
 export default function DiaryAddProductForm() {
   const dispatch = useDispatch();
+  const searchProduct = useSelector(selectProducts);
 
   const [product, setProduct] = useState('');
   const [grams, setGrams] = useState('');
   const [productInputDirty, setProductInputDirty] = useState(false);
   const [gramsInputDirty, setGramsInputDirty] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const inputDirty = productInputDirty || gramsInputDirty;
 
+  const handleProductItemClick = e => {
+    const { textContent } = e.target;
+    setProduct(textContent);
+    dispatch(selectProduct(textContent));
+    setIsSelectOpen(!isSelectOpen);
+  };
+
   const handleInputChange = e => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.target;
     if (name === 'product') {
       setProduct(value);
       setProductInputDirty(false);
@@ -32,6 +44,7 @@ export default function DiaryAddProductForm() {
 
     if (name === 'product' && value === '') {
       setProductInputDirty(true);
+      setIsSelectOpen(false);
     }
 
     if (name === 'grams') {
@@ -47,8 +60,11 @@ export default function DiaryAddProductForm() {
 
   const handleInputBlur = e => {
     setProductInputDirty(false);
-
     setGramsInputDirty(false);
+  };
+
+  const handleInputClick = () => {
+    setIsSelectOpen(true);
   };
 
   const handleFromSubmit = e => {
@@ -64,11 +80,6 @@ export default function DiaryAddProductForm() {
     // dispatch(addProduct(product));
   };
 
-  const handleClick = e => {
-    // setSubmitError(false);
-    console.log(e);
-  };
-
   return (
     <Box display={{ xs: 'none', md: 'block' }}>
       <form onSubmit={handleFromSubmit}>
@@ -78,7 +89,7 @@ export default function DiaryAddProductForm() {
           gap={{ md: '22px', lg: '48px' }}
           isInvalid={inputDirty}
         >
-          <Box w={{ md: '240px' }}>
+          <Box w={{ md: '240px' }} fontSize="14px">
             <InputField
               labelName="Enter product name"
               width="100%"
@@ -86,11 +97,19 @@ export default function DiaryAddProductForm() {
               name="product"
               value={product}
               onBlur={handleInputBlur}
+              onClick={handleInputClick}
             />
             {productInputDirty && (
-              <DiaryAddFormValidation text="*Please, enter the product name" />
+              <DiaryFormValidation text="*Please, enter the product name" />
+            )}
+            {searchProduct.length > 0 && isSelectOpen && (
+              <DiarySelectProduct
+                data={searchProduct}
+                onClick={handleProductItemClick}
+              />
             )}
           </Box>
+
           <Box w={{ md: '106px', lg: '107px' }} position="relative">
             <InputField
               labelName="Grams"
@@ -102,12 +121,12 @@ export default function DiaryAddProductForm() {
               onBlur={handleInputBlur}
             />
             {gramsInputDirty && (
-              <DiaryAddFormValidation text="*Please, enter the product weight" />
+              <DiaryFormValidation text="*Please, enter the product weight" />
             )}
           </Box>
 
-          <AddButton type="submit" onClick={handleClick} />
-          {submitError && <DiaryAddFormError />}
+          <AddButton type="submit" />
+          {submitError && <DiaryFormError />}
         </FormControl>
       </form>
     </Box>

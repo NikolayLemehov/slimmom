@@ -40,7 +40,6 @@ export default function DiaryDateCalendar() {
       lineHeight={{ xs: '21px', md: '41px' }}
       color="#212121"
       cursor="pointer"
-      // marginBottom={{ xs: '32px', md: '60px' }}
     >
       <Flatpickr
         options={{ dateFormat: 'd.m.Y', disableMobile: true }}

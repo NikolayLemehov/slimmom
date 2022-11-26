@@ -13,17 +13,20 @@ const UserMenu = () => {
 
   return (
     <Flex alignItems="center" gap="15px">
-      <Text>{userName}</Text>
+      <Text fontFamily="secondary" fontWeight="700">
+        {userName}
+      </Text>
       <Divider orientation="vertical" h="7" border="1px solid #9d9999" />
       <Link
         _hover={{ textDecor: 'none' }}
-        fontFamily="-moz-initial"
+        fontFamily="secondary"
         fontSize="14px"
         as={NavLink}
         to="/"
         pt="1"
         onClick={() => dispatch(authOperations.logOut())}
         style={getStyle}
+        fontWeight="700"
       >
         EXIT
       </Link>
