@@ -4,13 +4,16 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const selectProduct = createAsyncThunk(
   'products/selectProduct',
   async (search, { rejectWithValue }) => {
+    if (!search) return [];
+    console.log(search);
+
     try {
-      const response = await slimMomAxios.get('/product', {
+      const { data } = await slimMomAxios.get('/product', {
         params: {
           search,
         },
       });
-      console.log(response);
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

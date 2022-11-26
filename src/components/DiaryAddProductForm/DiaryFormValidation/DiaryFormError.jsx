@@ -4,9 +4,9 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@chakra-ui/react';
-import css from './DiaryAddProductForm.module.css';
+import css from '../DiaryAddProductForm.module.css';
 
-export default function DiaryAddFormError() {
+export default function DiaryFormError() {
   return (
     <Alert
       status="error"

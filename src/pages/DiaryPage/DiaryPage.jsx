@@ -1,4 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react';
+
+import { Wrapper, BgImg } from 'pages/CalculatorPage/CalculatorPage.styled';
+
+// import { BgImg, Wrapper } from './CalculatorPage.styled';
 import DiaryDateCalendar from '../../components/DiaryDateСalendar/DiaryDateСalendar';
 import DiaryAddProductForm from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import DiaryProductsList from 'components/DiaryProductsList/DiaryProductsList';
@@ -6,7 +10,8 @@ import RightSideBar from 'components/RightSideBar/RightSideBar';
 
 export default function DiaryPage() {
   return (
-    <Flex h="100%" flexDirection={{ xs: 'column', lg: 'row' }}>
+    <Wrapper>
+      {/* <Flex h="100%" flexDirection={{ xs: 'column', lg: 'row' }}> */}
       <Box
         w="100%"
         display="flex"
@@ -25,8 +30,12 @@ export default function DiaryPage() {
         <DiaryAddProductForm />
         <DiaryProductsList />
       </Box>
-      <RightSideBar />
-    </Flex>
+      <Box position="relative">
+        <RightSideBar />
+        <BgImg />
+      </Box>
+      {/* </Flex> */}
+    </Wrapper>
   );
 }
 

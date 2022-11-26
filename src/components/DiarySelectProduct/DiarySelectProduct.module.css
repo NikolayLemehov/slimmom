@@ -1,0 +1,33 @@
+.list {
+  position: absolute;
+  top: 70px;
+  max-height: 240px;
+  height: auto;
+  overflow: auto;
+  width: inherit;
+
+  margin: 0;
+  padding: 0;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+
+  list-style: none;
+  z-index: 1000;
+}
+
+.item {
+  font-size: 12px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 0%;
+  width: 100%;
+
+  transition: border-bottom 500ms, border-radius 500ms;
+}
+
+.item:hover {
+  border-bottom: 1px solid #fc842d;
+  border-radius: 5px;
+  cursor: pointer;
+}
