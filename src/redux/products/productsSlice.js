@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { selectProduct } from './productsOperations';
 const initialState = {
-  products: [],
+  selectedProduct: [],
   dairyProducts: [],
   currentDate: null,
   isLoading: false,
@@ -14,7 +14,7 @@ const handlePending = state => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-  state.products = [];
+  state.selectedProduct = [];
 };
 
 export const productsSlice = createSlice({
@@ -33,7 +33,7 @@ export const productsSlice = createSlice({
     builder.addCase(selectProduct.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.products = action.payload;
+      state.selectedProduct = action.payload;
     });
   },
 });
