@@ -56,7 +56,7 @@ const Header = () => {
                 fontFamily="secondary"
                 fontWeight="700"
               >
-                SIGIN IN
+                SIGN IN
               </Link>
               <Link
                 _hover={{ textDecor: 'none' }}
