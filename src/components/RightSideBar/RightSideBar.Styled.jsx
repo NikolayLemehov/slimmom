@@ -12,7 +12,7 @@ export const ListProducts = styled.ul`
   }
 
   &&::-webkit-scrollbar-track {
-    background: #f0f1f3;
+    background: #dfdede;
   }
 
   &&::-webkit-scrollbar-thumb {
