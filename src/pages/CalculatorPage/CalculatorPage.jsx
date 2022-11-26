@@ -26,7 +26,6 @@ export default function CalculatorPage() {
   const handleChange = e => {
     const name = e.target.name;
     const value = Number(e.target.value);
-
     switch (name) {
       case 'heightUser':
         setHeightUser(value);
@@ -40,6 +39,9 @@ export default function CalculatorPage() {
       case 'desiredWeightUser':
         setDesiredWeightUser(value);
         break;
+      case 'bloodTypeUser':
+        setBloodTypeUser(value);
+        break;
 
       default:
         break;
@@ -47,10 +49,6 @@ export default function CalculatorPage() {
   };
   const handleInputBlur = () => {
     setBlurOnInput(false);
-  };
-
-  const handleRadio = e => {
-    setBloodTypeUser(Number(e));
   };
 
   const dataUser = {
@@ -107,7 +105,7 @@ export default function CalculatorPage() {
           handleSubmit={handleSubmit}
           handleChange={handleChange}
           handleInputBlur={handleInputBlur}
-          handleRadio={handleRadio}
+          bloodTypeUser={bloodTypeUser}
           renderAlert={renderAlert}
           showValidationInput={showValidationInput}
           blurOnInput={blurOnInput}
