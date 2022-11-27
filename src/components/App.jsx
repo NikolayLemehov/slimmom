@@ -27,7 +27,7 @@ export const App = () => {
     <Container
       maxW={{ sm: '768px', md: '1280px' }}
       position="relative"
-      pt={{ xs: '152px', md: '180px', lg: '293px' }}
+      pt={{ xs: '80px', lg: '146px' }}
     >
       <Header />
 

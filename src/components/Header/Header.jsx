@@ -21,10 +21,11 @@ const Header = () => {
     <>
       <Flex
         position="absolute"
-        top="0"
+        top={{ lg: '80px', xs: '20px' }}
         left="0"
         w="100%"
-        p="20px"
+        pb={{ xs: '16px', lg: '0px' }}
+        px={{ xs: '16px', md: '32px', lg: '16px' }}
         zIndex="100"
         justifyContent="space-between"
         borderBottom={{

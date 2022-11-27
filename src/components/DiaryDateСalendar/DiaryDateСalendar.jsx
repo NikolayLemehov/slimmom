@@ -13,6 +13,12 @@ export default function DiaryDateCalendar() {
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
 
+
+  const formatDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+  .toISOString()
+  .substring(0, 10);
+
+
   useEffect(() => {
     const formatDate = new Date(
       date.getTime() - date.getTimezoneOffset() * 60000
