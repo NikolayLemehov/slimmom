@@ -5,7 +5,6 @@ export const selectProduct = createAsyncThunk(
   'products/selectProduct',
   async (search, { rejectWithValue }) => {
     if (!search) return [];
-    console.log(search);
 
     try {
       const { data } = await slimMomAxios.get('/product', {
@@ -25,7 +24,7 @@ export const addProduct = createAsyncThunk(
   async (productData, { rejectWithValue }) => {
     try {
       const response = await slimMomAxios.post('/day', productData);
-      console.log(response);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -36,8 +35,21 @@ export const getInfoForDay = createAsyncThunk(
   'products/getInfoForDay',
   async (date, { rejectWithValue }) => {
     try {
-      const responce = await slimMomAxios.post('/day/info', date);
-      console.log(responce);
+      const response = await slimMomAxios.post('/day/info', date);
+      console.log('getInfoForDay', response);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteProduct = createAsyncThunk(
+  'products/deleteProduct',
+  async (idValues, { rejectWithValue }) => {
+    console.log('Request Body for deleteProduct', idValues);
+    try {
+      const response = await slimMomAxios.delete(`/day`, { data: idValues });
+      console.log('deleteProduct', response);
     } catch (error) {
       return rejectWithValue(error.message);
     }

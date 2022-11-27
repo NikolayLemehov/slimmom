@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
 
 import { Wrapper, BgImg } from 'pages/CalculatorPage/CalculatorPage.styled';
@@ -8,7 +10,21 @@ import DiaryAddProductForm from 'components/DiaryAddProductForm/DiaryAddProductF
 import DiaryProductsList from 'components/DiaryProductsList/DiaryProductsList';
 import RightSideBar from 'components/RightSideBar/RightSideBar';
 
+import { selectCurrentDate } from 'redux/products/productsSelectors';
+import { authSelectors } from 'redux/auth/authSelectors';
+import { getInfoForDay } from 'redux/products/productsOperations';
+
 export default function DiaryPage() {
+  const dispatch = useDispatch();
+  const currentDate = useSelector(selectCurrentDate);
+  const token = useSelector(authSelectors.accessToken);
+
+  useEffect(() => {
+    if (currentDate === null) return;
+    if (token === null) return;
+    dispatch(getInfoForDay({ date: currentDate }));
+  }, [currentDate, dispatch, token]);
+
   return (
     <Wrapper>
       {/* <Flex h="100%" flexDirection={{ xs: 'column', lg: 'row' }}> */}
@@ -38,6 +54,3 @@ export default function DiaryPage() {
     </Wrapper>
   );
 }
-
-// DiaryPage. Верстка мобілка, планшет, десктоп. Відповідає за позиціонування на сторінці елементів та компонентів.
-// Заімпортувати в цей компонент його підкомпоненти: DiaryDateСalendar, DiaryAddProductForm и DiaryProductsList. Приватна сторінка.
