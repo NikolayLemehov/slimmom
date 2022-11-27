@@ -3,6 +3,7 @@ import { Box, Flex, Heading, List, ListItem, Text } from '@chakra-ui/react';
 import {
   getNotAllowedProducts,
   getSummaries,
+  getDate,
 } from 'redux/dailyRate/dailyRateSelectors';
 import {
   ListProducts,
@@ -12,7 +13,7 @@ import {
 
 const RightSideBar = () => {
   // Summary
-  const date = useSelector(state => state.products.currentDate);
+  const date = useSelector(getDate);
   const dateNewFormat = newDateFormat(date);
   const summaries = useSelector(getSummaries);
   const summariesCurrentDate = summaries.find(item => item.date === date);
@@ -41,6 +42,7 @@ const RightSideBar = () => {
       {index + 1}. {item}
     </li>
   ));
+
   return (
     <Flex
       bgColor={{ xs: '#F0F1F3', md: 'transparent', lg: 'transparent' }}
