@@ -9,13 +9,16 @@ import InputField from 'components/InputField/InputField';
 import AddButton from 'components/Button/AddButton';
 import DiarySelectProduct from 'components/DiarySelectProduct/DiarySelectProduct';
 
-import { selectProducts } from 'redux/products/productsSelectors';
-
 import { selectProduct, addProduct } from 'redux/products/productsOperations';
+import {
+  selectProductOfList,
+  selectCurrentDate,
+} from 'redux/products/productsSelectors';
 
 export default function DiaryAddProductForm() {
   const dispatch = useDispatch();
-  const searchProduct = useSelector(selectProducts);
+  const searchProduct = useSelector(selectProductOfList);
+  const currentDate = useSelector(selectCurrentDate);
 
   const [product, setProduct] = useState('');
   const [grams, setGrams] = useState('');
@@ -45,6 +48,10 @@ export default function DiaryAddProductForm() {
     if (name === 'product' && value === '') {
       setProductInputDirty(true);
       setIsSelectOpen(false);
+    }
+
+    if (name === 'product' && value !== '') {
+      setIsSelectOpen(true);
     }
 
     if (name === 'grams') {
@@ -77,7 +84,17 @@ export default function DiaryAddProductForm() {
       }, 3500);
       return;
     }
-    // dispatch(addProduct(product));
+
+    if (searchProduct.length > 0) {
+      const requestBody = {
+        date: currentDate,
+        productId: searchProduct[0]._id,
+        weight: grams,
+      };
+      dispatch(addProduct(requestBody));
+      setProduct('');
+      setGrams('');
+    }
   };
 
   return (
@@ -110,7 +127,11 @@ export default function DiaryAddProductForm() {
             )}
           </Box>
 
-          <Box w={{ md: '106px', lg: '107px' }} position="relative">
+          <Box
+            w={{ md: '106px', lg: '107px' }}
+            fontSize="14px"
+            position="relative"
+          >
             <InputField
               labelName="Grams"
               width="100%"
