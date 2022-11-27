@@ -18,12 +18,14 @@ const RightSideBar = () => {
   const summariesCurrentDate = summaries.find(item => item.date === date);
 
   const dailyRate = summariesCurrentDate
-    ? summariesCurrentDate.dailyRate
+    ? summariesCurrentDate.dailyRate.toFixed(1)
     : '000';
-  const kcalLeft = summariesCurrentDate ? summariesCurrentDate.kcalLeft : '000';
+  const kcalLeft = summariesCurrentDate
+    ? summariesCurrentDate.kcalLeft.toFixed(1)
+    : '000';
 
   const kcalConsumed = summariesCurrentDate
-    ? summariesCurrentDate.kcalConsumed
+    ? summariesCurrentDate.kcalConsumed.toFixed(1)
     : '000';
 
   const percentsOfDailyRate = summariesCurrentDate

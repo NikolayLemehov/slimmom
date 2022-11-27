@@ -5,12 +5,12 @@ import {
   getInfoForDay,
   deleteProduct,
 } from './productsOperations';
+
 const initialState = {
   selectedProduct: [],
   productsHistory: [],
   productsByDate: [],
   currentDate: null,
-  daySummary: {},
   isLoading: false,
   error: null,
 };
@@ -52,8 +52,7 @@ export const productsSlice = createSlice({
       state.error = null;
       // state.productsHistory = action.payload.day;
       // ??? треба зберігати в хісторі
-
-      state.daySummary = action.payload.daySummary;
+      console.log(action.payload.daySummary);
     });
     builder.addCase(addProduct.rejected, handleRejected);
     builder.addCase(getInfoForDay.pending, state => {

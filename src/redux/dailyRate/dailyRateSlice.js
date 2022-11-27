@@ -2,6 +2,7 @@ import storage from 'redux-persist/lib/storage';
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import { dailyRate, dailyRateById } from './dailtyRateOperations';
+import { addProduct, getInfoForDay } from 'redux/products/productsOperations';
 
 const initialState = {
   dailyRate: null,
@@ -10,6 +11,7 @@ const initialState = {
   loading: false,
   error: '',
 };
+
 const handlePending = state => {
   state.dailyRate = null;
   state.notAllowedProducts = [];
@@ -46,6 +48,15 @@ export const dailyRateSlice = createSlice({
         state.summaries = payload.summaries;
       })
       .addCase(dailyRateById.rejected, handleRejected);
+    builder.addCase(getInfoForDay.fulfilled, (state, action) => {
+      // state.summaries = state.summaries.map(item => {
+      //   if (item.date === action.payload.daySummary.date) {
+      //     return action.payload.daySummary;
+      //   }
+      //   return item;
+      // });
+      state.summaries.push(action.payload.daySummary);
+    });
   },
 });
 
