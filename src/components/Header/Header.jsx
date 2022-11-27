@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
-import { Box, Flex, Link } from '@chakra-ui/react';
+import { Box, Flex, Link, Container } from '@chakra-ui/react';
 
 import { authSelectors } from 'redux/auth/authSelectors';
 import SmallLogo from 'components/Logo/SmallLogo';
@@ -18,7 +18,12 @@ const Header = () => {
     isActive ? { color: '#212121' } : { color: '#9B9FAA' };
 
   return (
-    <>
+    <Container
+      maxW={{ sm: '768px', md: '1280px' }}
+      position="relative"
+      pt={{ xs: '80px', lg: '151px' }}
+      px={{ xs: '16px', md: '32px', lg: '16px' }}
+    >
       <Flex
         position="absolute"
         top={{ lg: '80px', xs: '20px' }}
@@ -119,7 +124,9 @@ const Header = () => {
           {isLogin && <GrayBar />}
         </Box>
       </Flex>
-    </>
+
+      <Outlet />
+    </Container>
   );
 };
 
