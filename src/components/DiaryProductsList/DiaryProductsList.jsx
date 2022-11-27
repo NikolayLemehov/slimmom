@@ -4,8 +4,14 @@ import DiaryProductItem from 'components/DiaryProductItem/DiaryProductItem';
 import {
   selectEatenProductsByDate,
   selectCurrentDayId,
+  selectCurrentDate,
 } from 'redux/products/productsSelectors';
-import { deleteProduct } from 'redux/products/productsOperations';
+import { authSelectors } from 'redux/auth/authSelectors';
+
+import {
+  deleteProduct,
+  getInfoForDay,
+} from 'redux/products/productsOperations';
 import DeleteButton from 'components/Button/DeleteButton';
 import { List, BottomGradient } from './DiaryProductList.styled';
 
@@ -13,6 +19,8 @@ export default function DiaryProductsList() {
   const dispatch = useDispatch();
   const productsList = useSelector(selectEatenProductsByDate);
   const currendDayId = useSelector(selectCurrentDayId);
+  const currentDate = useSelector(selectCurrentDate);
+  const token = useSelector(authSelectors.accessToken);
 
   return (
     <Box
@@ -33,12 +41,15 @@ export default function DiaryProductsList() {
               >
                 <DeleteButton
                   onClick={() => {
-                    return dispatch(
+                    dispatch(
                       deleteProduct({
                         dayId: currendDayId,
                         eatenProductId: product.id,
                       })
                     );
+                    if (currentDate === null) return;
+                    if (token === null) return;
+                    return dispatch(getInfoForDay({ date: currentDate }));
                   }}
                 />
               </DiaryProductItem>

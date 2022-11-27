@@ -34,7 +34,7 @@ export default function DiaryPage() {
         flexDirection={'column'}
         justifyContent="center"
         gap={{ xs: '32px', md: '60px' }}
-        pt={{ xs: '160px', md: '180px', lg: '50px' }}
+        // pt={{ xs: '160px', md: '180px', lg: '50px' }}
         // padding={{
         //   xs: '40px 20px',
         //   md: '100px 126px 55px 32px',
