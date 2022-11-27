@@ -9,6 +9,9 @@ import Header from './Header/Header';
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRestrictedRoute from './PublicStrictedRoute/PublicRestrictedRoute';
+import MobileModalForm from './MobileModalForm/MobileModalForm';
+import NotFound from '../pages/NotFound/NotFound';
+
 
 const DiaryPage = lazy(() => import('pages/DiaryPage/DiaryPage'));
 const LogInPage = lazy(()=> import('../pages/LogInPage/LogInPage'));
@@ -79,7 +82,7 @@ export const App = () => {
             <Route path="uikit" element={<UiKit />} />
             <Route path="mobileModal" element={<MobileModalForm />} />
           </Route>
-          <Route path="*" element={<div>404</div>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Container>

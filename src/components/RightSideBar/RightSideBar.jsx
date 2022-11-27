@@ -4,6 +4,7 @@ import {
   getNotAllowedProducts,
   getSummaries,
   getDate,
+  getDailyRate,
 } from 'redux/dailyRate/dailyRateSelectors';
 import {
   ListProducts,
@@ -16,14 +17,13 @@ const RightSideBar = () => {
   const date = useSelector(getDate);
   const dateNewFormat = newDateFormat(date);
   const summaries = useSelector(getSummaries);
+  const dailyRateFromState = useSelector(getDailyRate);
   const summariesCurrentDate = summaries.find(item => item.date === date);
 
-  const dailyRate = summariesCurrentDate
-    ? summariesCurrentDate.dailyRate.toFixed(1)
-    : '000';
+  const dailyRate = dailyRateFromState ? dailyRateFromState.toFixed(1) : '000';
   const kcalLeft = summariesCurrentDate
     ? summariesCurrentDate.kcalLeft.toFixed(1)
-    : '000';
+    : dailyRate;
 
   const kcalConsumed = summariesCurrentDate
     ? summariesCurrentDate.kcalConsumed.toFixed(1)
