@@ -25,9 +25,9 @@ const HamburgerMenu = () => {
         <IconButton
           bgColor="transparent"
           aria-label="Open Menu"
-          size="sm"
-          icon={<HamburgerIcon />}
+          icon={<HamburgerIcon w="25px" h="22px" />}
           display={{ lg: 'none' }}
+          size="lg"
           onClick={() => {
             onOpen();
           }}
@@ -52,8 +52,8 @@ const HamburgerMenu = () => {
               <IconButton
                 aria-label="Close Button"
                 bgColor="transparent"
-                size="sm"
-                icon={<CloseIcon />}
+                size="lg"
+                icon={<CloseIcon w="12px" h="12px" />}
                 onClick={() => {
                   onClose();
                 }}
