@@ -24,6 +24,7 @@ export const Form = styled.form`
 
 export const Title = styled.h1`
   width: 100%;
+  margin-top: 72px;
   margin-bottom: 10px;
 
   font-family: 'Verdana';
@@ -35,15 +36,12 @@ export const Title = styled.h1`
   color: #212121;
 
   @media screen and (min-width: 768px) {
-    width: 100%;
-    margin-top: 0px;
+    width: 608px;
+    margin-top: 140px;
     margin-bottom: 48px;
 
     font-size: 34px;
     line-height: 1.2;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 608px;
   }
 `;
 

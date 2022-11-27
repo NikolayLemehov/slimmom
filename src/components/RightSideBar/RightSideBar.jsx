@@ -44,7 +44,8 @@ const RightSideBar = () => {
   return (
     <Flex
       bgColor={{ xs: '#F0F1F3', md: 'transparent', lg: 'transparent' }}
-      h="100%"
+      // h="100%"
+      mt={{ md: '0px', lg: '139px' }}
       py={{ xs: '40px', md: '80px', lg: '0px' }}
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
       gap={{ xs: '40px', md: '97px', lg: '60px' }}
