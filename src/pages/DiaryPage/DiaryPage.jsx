@@ -9,6 +9,7 @@ import DiaryDateCalendar from '../../components/DiaryDateСalendar/DiaryDateСal
 import DiaryAddProductForm from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import DiaryProductsList from 'components/DiaryProductsList/DiaryProductsList';
 import RightSideBar from 'components/RightSideBar/RightSideBar';
+import AddButton from 'components/Button/AddButton';
 
 import { selectCurrentDate } from 'redux/products/productsSelectors';
 import { authSelectors } from 'redux/auth/authSelectors';
@@ -34,7 +35,7 @@ export default function DiaryPage() {
         flexDirection={'column'}
         justifyContent="center"
         gap={{ xs: '32px', md: '60px' }}
-        // pt={{ xs: '160px', md: '180px', lg: '50px' }}
+        pt={{ xs: '160px', md: '180px', lg: '50px' }}
         // padding={{
         //   xs: '40px 20px',
         //   md: '100px 126px 55px 32px',
@@ -44,6 +45,9 @@ export default function DiaryPage() {
         <DiaryDateCalendar />
         <DiaryAddProductForm />
         <DiaryProductsList />
+        <Box display={{ xs: 'block', md: 'none' }}>
+          <AddButton />
+        </Box>
       </Box>
       <Box position="relative">
         <RightSideBar />

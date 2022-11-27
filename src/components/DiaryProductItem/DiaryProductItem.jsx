@@ -19,11 +19,13 @@ export default function DiaryProductItem({ product, grams, kcal, children }) {
       </Text>
       <Text
         as="span"
+        display="block"
         minW={{ xs: '49px', md: '106px' }}
         paddingBottom={{ xs: '8px', md: '20px' }}
         borderBottom="1px solid #E0E0E0"
         marginRight={{ xs: '8px', md: '46px', lg: '32px' }}
         textAlign="right"
+        height="inherit"
       >
         {grams} g
       </Text>

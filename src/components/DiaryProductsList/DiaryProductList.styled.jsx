@@ -6,7 +6,7 @@ export const List = styled.ul`
 
   color: #9b9faa;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   &&::-webkit-scrollbar {
     width: 6px;
   }
