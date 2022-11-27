@@ -15,7 +15,6 @@ import {
   selectCurrentDate,
 } from 'redux/products/productsSelectors';
 
-
 export default function DiaryAddProductForm() {
   const dispatch = useDispatch();
   const searchProduct = useSelector(selectProductOfList);

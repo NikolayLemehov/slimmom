@@ -1,18 +1,40 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import DiaryProductItem from 'components/DiaryProductItem/DiaryProductItem';
+import DeleteButton from 'components/Button/DeleteButton';
+
+import {
+  deleteProduct,
+  getInfoForDay,
+} from 'redux/products/productsOperations';
+
 import {
   selectEatenProductsByDate,
   selectCurrentDayId,
+  selectCurrentDate,
+  selectShallGetInfoOfDay,
 } from 'redux/products/productsSelectors';
-import { deleteProduct } from 'redux/products/productsOperations';
-import DeleteButton from 'components/Button/DeleteButton';
+
+import { authSelectors } from 'redux/auth/authSelectors';
+
 import { List, BottomGradient } from './DiaryProductList.styled';
 
 export default function DiaryProductsList() {
   const dispatch = useDispatch();
   const productsList = useSelector(selectEatenProductsByDate);
   const currendDayId = useSelector(selectCurrentDayId);
+  const currentDate = useSelector(selectCurrentDate);
+  const token = useSelector(authSelectors.accessToken);
+  const isGetDayInfo = useSelector(selectShallGetInfoOfDay);
+
+  useEffect(() => {
+    if (currentDate === null) return;
+    if (token === null) return;
+    if (isGetDayInfo) {
+      dispatch(getInfoForDay({ date: currentDate }));
+    }
+  }, [currentDate, dispatch, isGetDayInfo, token]);
 
   return (
     <Box

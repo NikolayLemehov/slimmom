@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
     .required('This field is required'),
 });
 
-export function RegistrationPage() {
+export default function RegistrationPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const registrationLoading = useSelector(authSelectors.registrationLoading);

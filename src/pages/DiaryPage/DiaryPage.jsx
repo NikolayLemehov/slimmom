@@ -1,8 +1,6 @@
-
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
-
 
 import { Wrapper, BgImg } from 'pages/CalculatorPage/CalculatorPage.styled';
 
@@ -36,7 +34,6 @@ export default function DiaryPage() {
         flexDirection={'column'}
         justifyContent="center"
         gap={{ xs: '32px', md: '60px' }}
-
         // pt={{ xs: '160px', md: '180px', lg: '50px' }}
         // padding={{
         //   xs: '40px 20px',
