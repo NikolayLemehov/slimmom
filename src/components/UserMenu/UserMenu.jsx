@@ -16,7 +16,7 @@ const UserMenu = () => {
       <Text fontFamily="secondary" fontWeight="700">
         {userName}
       </Text>
-      <Divider orientation="vertical" h="7" border="1px solid #9d9999" />
+      <Divider orientation="vertical" h="32px" w="1px" bgColor=" #E0E0E0" />
       <Link
         _hover={{ textDecor: 'none' }}
         fontFamily="secondary"

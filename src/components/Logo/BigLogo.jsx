@@ -12,7 +12,7 @@ const DesktopLogo = () => {
       <Link as={NavLink} to="/">
         <img src={BigLogo} alt="Logo" width="166px" height="66px" />
       </Link>
-      <Divider orientation="vertical" h="7" border="1px solid #9d9999" />
+      <Divider orientation="vertical" h="32px" w="1px" bgColor=" #E0E0E0" />
     </Flex>
   );
 };
