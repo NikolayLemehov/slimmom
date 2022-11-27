@@ -19,10 +19,13 @@ export default function CalculatorPage() {
   const [currentWeightUser, setCurrentWeightUser] = useState(null);
   const [desiredWeightUser, setDesiredWeightUser] = useState(null);
   const [bloodTypeUser, setBloodTypeUser] = useState(1);
+  const [renderAlert, setRenderAlert] = useState(false);
+  const [showValidationInput, setShowValidationInput] = useState(false);
+  const [blurOnInput, setBlurOnInput] = useState(false);
+
   const handleChange = e => {
     const name = e.target.name;
     const value = Number(e.target.value);
-
     switch (name) {
       case 'heightUser':
         setHeightUser(value);
@@ -36,26 +39,61 @@ export default function CalculatorPage() {
       case 'desiredWeightUser':
         setDesiredWeightUser(value);
         break;
+      case 'bloodTypeUser':
+        setBloodTypeUser(value);
+        break;
 
       default:
         break;
     }
   };
+  const handleInputBlur = () => {
+    setBlurOnInput(false);
+  };
 
-  const handleRadio = e => {
-    setBloodTypeUser(Number(e));
+  const dataUser = {
+    weight: currentWeightUser,
+    height: heightUser,
+    age: ageUser,
+    desiredWeight: desiredWeightUser,
+    bloodType: bloodTypeUser,
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const dataUser = {
-      weight: currentWeightUser,
-      height: heightUser,
-      age: ageUser,
-      desiredWeight: desiredWeightUser,
-      bloodType: bloodTypeUser,
-    };
 
+    // Validation inputs
+    setShowValidationInput(true);
+    setBlurOnInput(true);
+
+    // Validation form
+    setRenderAlert(false);
+    const isEmptyField = Object.values(dataUser).some(
+      item => item === 0 || item === null
+    );
+
+    if (isEmptyField) {
+      setRenderAlert(true);
+      setTimeout(() => {
+        setRenderAlert(false);
+      }, 3500);
+      return;
+    }
+
+    if (
+      heightUser < 140 ||
+      heightUser > 220 ||
+      ageUser < 16 ||
+      ageUser > 120 ||
+      currentWeightUser < 40 ||
+      currentWeightUser > 150 ||
+      desiredWeightUser < 40 ||
+      desiredWeightUser > 150
+    ) {
+      return;
+    }
+
+    // Submit
     const fetchObj = { userId, dataUser };
     dispatch(dailyRateById(fetchObj));
   };
@@ -66,7 +104,12 @@ export default function CalculatorPage() {
         <CalculatorСalorieForm
           handleSubmit={handleSubmit}
           handleChange={handleChange}
-          handleRadio={handleRadio}
+          handleInputBlur={handleInputBlur}
+          bloodTypeUser={bloodTypeUser}
+          renderAlert={renderAlert}
+          showValidationInput={showValidationInput}
+          blurOnInput={blurOnInput}
+          dataUser={dataUser}
         />
       </Box>
       <Box position="relative">

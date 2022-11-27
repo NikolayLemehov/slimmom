@@ -9,6 +9,7 @@ import UserMenu from 'components/UserMenu/UserMenu';
 import Logo from 'components/Logo/Logo';
 import HamburgerMenu from 'components/HamburgerMenu/HamburgerMenu';
 import GrayBar from 'components/GrayBar/GrayBar';
+import DesktopLogo from 'components/Logo/BigLogo';
 
 const Header = () => {
   const isLogin = useSelector(authSelectors.isLoggedIn);
@@ -33,13 +34,14 @@ const Header = () => {
       >
         {!isLogin ? (
           <Flex
-            alignItems="center"
+            alignItems={{ xs: 'center', lg: 'end' }}
             gap="20px"
             w="100%"
             justifyContent={{ xs: 'space-between', lg: 'flex-start' }}
           >
             <Box>
-              <Flex display={{ xs: 'none', md: 'flex' }}>
+              <DesktopLogo />
+              <Flex display={{ xs: 'none', md: 'flex', lg: 'none' }}>
                 <Logo />
               </Flex>
               <Flex display={{ xs: 'flex', md: 'none' }}>
@@ -56,7 +58,7 @@ const Header = () => {
                 fontFamily="secondary"
                 fontWeight="700"
               >
-                SIGIN IN
+                SIGN IN
               </Link>
               <Link
                 _hover={{ textDecor: 'none' }}
@@ -73,8 +75,11 @@ const Header = () => {
           </Flex>
         ) : (
           <Flex justifyContent="space-between" w="100%">
-            <Flex alignItems="center" gap="20px">
-              <Logo />
+            <Flex alignItems={{ xs: 'center', lg: 'end' }} gap="20px">
+              <DesktopLogo />
+              <Box display={{ lg: 'none' }}>
+                <Logo />
+              </Box>
               <Flex display={{ xs: 'none', lg: 'flex' }} gap="16px">
                 <Link
                   _hover={{ textDecor: 'none' }}
@@ -101,7 +106,7 @@ const Header = () => {
               </Flex>
             </Flex>
 
-            <Flex display="flex" alignItems="center">
+            <Flex display="flex" alignItems={{ xs: 'center', lg: 'end' }}>
               <Box display={{ xs: 'none', md: 'flex' }} mr="53px">
                 <UserMenu />
               </Box>
