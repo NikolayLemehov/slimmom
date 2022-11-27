@@ -1,18 +1,23 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import DiaryProductItem from 'components/DiaryProductItem/DiaryProductItem';
-import {
-  selectEatenProductsByDate,
-  selectCurrentDayId,
-  selectCurrentDate,
-} from 'redux/products/productsSelectors';
-import { authSelectors } from 'redux/auth/authSelectors';
+import DeleteButton from 'components/Button/DeleteButton';
 
 import {
   deleteProduct,
   getInfoForDay,
 } from 'redux/products/productsOperations';
-import DeleteButton from 'components/Button/DeleteButton';
+
+import {
+  selectEatenProductsByDate,
+  selectCurrentDayId,
+  selectCurrentDate,
+  selectShallGetInfoOfDay,
+} from 'redux/products/productsSelectors';
+
+import { authSelectors } from 'redux/auth/authSelectors';
+
 import { List, BottomGradient } from './DiaryProductList.styled';
 
 export default function DiaryProductsList() {
@@ -21,6 +26,15 @@ export default function DiaryProductsList() {
   const currendDayId = useSelector(selectCurrentDayId);
   const currentDate = useSelector(selectCurrentDate);
   const token = useSelector(authSelectors.accessToken);
+  const isGetDayInfo = useSelector(selectShallGetInfoOfDay);
+
+  useEffect(() => {
+    if (currentDate === null) return;
+    if (token === null) return;
+    if (isGetDayInfo) {
+      dispatch(getInfoForDay({ date: currentDate }));
+    }
+  }, [currentDate, dispatch, isGetDayInfo, token]);
 
   return (
     <Box
@@ -41,15 +55,12 @@ export default function DiaryProductsList() {
               >
                 <DeleteButton
                   onClick={() => {
-                    dispatch(
+                    return dispatch(
                       deleteProduct({
                         dayId: currendDayId,
                         eatenProductId: product.id,
                       })
                     );
-                    if (currentDate === null) return;
-                    if (token === null) return;
-                    return dispatch(getInfoForDay({ date: currentDate }));
                   }}
                 />
               </DiaryProductItem>
