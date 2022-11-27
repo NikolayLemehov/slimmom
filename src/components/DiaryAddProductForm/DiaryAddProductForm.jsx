@@ -11,7 +11,7 @@ import DiarySelectProduct from 'components/DiarySelectProduct/DiarySelectProduct
 
 import { selectProducts } from 'redux/products/productsSelectors';
 
-import { selectProduct, addProduct } from 'redux/products/productsOperations';
+import { selectProduct } from 'redux/products/productsOperations';
 
 export default function DiaryAddProductForm() {
   const dispatch = useDispatch();
