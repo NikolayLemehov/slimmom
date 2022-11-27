@@ -43,14 +43,15 @@ export function LogInPage() {
         justify="flex-start"
         alignItems={{xs: 'flex-start', lg: 'center'}}
         flexGrow='1'
-        // pt={{md: '120px'}}
-        pb={{lg: '25px'}}
+        pt={{xs: '38px', md: '150px'}}
+        pb={{xs: '50px', lg: '25px'}}
       >
         <Box
-          py='98px' flexGrow='1'
+          flexGrow='1'
         >
           <Heading
-            as='h1' size='xs' mb='34px'
+            as='h1' size='xs'
+            mb={{xs: '50px', md: '34px'}}
             w={{xs: '100%', md: 'auto'}}
             textAlign={{xs: 'center', md: 'left'}}
             color={customColors.sun["100"]}
@@ -67,29 +68,25 @@ export function LogInPage() {
           >
             {() => (
               <Form>
-                <VStack spacing={5} align="flex-start" mb={{xs: '60px', lg: '60px'}}>
+                <VStack spacing={7} align="flex-start" mb={{xs: '60px', lg: '60px'}}>
                   <Field name='email'>
-                    {({field, form}) => {
-                      // console.log({field, form})
-                      return (
-                        <Box w={{xs: '100%', md: '240px'}}>
-                          <FormControl isInvalid={form.errors.email && form.touched.email}>
-                            <InputField
-                              // autoComplete="off"
-                              labelName="Email&nbsp;*"
-                              type="text"
-                              name="email"
-                              handlerEvent={noop}
-                              // value={formik.values.email}
-                              required
-                              width='100%'
-                              {...field}
-                            />
-                            <DiaryFormValidation text={form.errors.email}/>
-                          </FormControl>
-                        </Box>
-                      )
-                    }}
+                    {({field, form}) => (
+                      <Box w={{xs: '100%', md: '240px'}}>
+                        <FormControl isInvalid={form.errors.email && form.touched.email}>
+                          <InputField
+                            // autoComplete="off"
+                            labelName="Email&nbsp;*"
+                            type="text"
+                            name="email"
+                            handlerEvent={noop}
+                            required
+                            width='100%'
+                            {...field}
+                          />
+                          <DiaryFormValidation text={form.errors.email}/>
+                        </FormControl>
+                      </Box>
+                    )}
                   </Field>
                   <Field name='password'>
                     {({field, form}) => (
@@ -101,7 +98,6 @@ export function LogInPage() {
                             type="password"
                             name="password"
                             handlerEvent={noop}
-                            // value={formik.values.password}
                             required
                             width='100%'
                             {...field}

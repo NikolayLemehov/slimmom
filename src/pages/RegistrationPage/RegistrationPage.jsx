@@ -53,11 +53,11 @@ export function RegistrationPage() {
         justify="flex-start"
         alignItems={{xs: 'flex-start', lg: 'center'}}
         flexGrow='1'
-        pb={{lg: '25px'}}
+        pt={{xs: '38px', md: '150px'}}
+        pb={{xs: '50px', lg: '25px'}}
       >
         <Box
-          py='98px' flexGrow='1'
-          pt={{xs: '117px'}}
+          flexGrow='1'
         >
           <Heading
             as='h1' size='xs' mb='34px'
@@ -69,7 +69,7 @@ export function RegistrationPage() {
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             {() => (
               <Form>
-                <VStack spacing={5} align="flex-start" mb={{xs: '60px', lg: '60px'}}>
+                <VStack spacing={7} align="flex-start" mb={{xs: '60px', lg: '60px'}}>
 
                   <Field name="name">{({field, form}) => (
                     <Box w={{xs: '100%', md: '240px'}}>
