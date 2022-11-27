@@ -73,7 +73,7 @@ const RightSideBar = () => {
           </ListItem>
           <ListItem display="flex" justifyContent="space-between">
             <Text>n% of normal</Text>
-            <Text>{percentsOfDailyRate} kcal</Text>
+            <Text>{percentsOfDailyRate} % &ensp;</Text>
           </ListItem>
         </List>
       </Box>
