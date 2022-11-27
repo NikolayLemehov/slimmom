@@ -4,11 +4,12 @@ import { Container } from '@chakra-ui/react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 
 import authOperations from 'redux/auth/authOperations';
+
 import Header from './Header/Header';
-import { LogInPage } from '../pages/LogInPage/LogInPage';
+import LogInPage from '../pages/LogInPage/LogInPage';
 import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
 import DiaryPage from 'pages/DiaryPage/DiaryPage';
-import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
+import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import HomePage from '../pages/HomePage/HomePage';
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
