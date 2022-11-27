@@ -1,28 +1,23 @@
-import { Button, ListIcon } from '@chakra-ui/react';
+import { Button, Icon } from '@chakra-ui/react';
 import { VscChromeClose } from 'react-icons/vsc';
 
-export default function DeleteButton() {
+export default function DeleteButton({ onClick }) {
   return (
     <Button
       type="button"
-      marginRight={{ xs: '0px', md: '40px' }}
+      display="block"
+      // marginRight={{ xs: '0px', md: '40px' }}
       background="transparent"
       color="rgba(155, 159, 170, 1)"
-      p="4px"
-      maxW="20px"
-      maxH="20px"
+      p="5px"
+      width="25px"
+      height="25px"
       _hover={{
         color: '#FC842D',
       }}
+      onClick={onClick}
     >
-      <ListIcon
-        as={VscChromeClose}
-        maxW="12px"
-        maxH="12px"
-        color="inherit"
-        margin="0px"
-        p="0px"
-      />
+      <VscChromeClose width="12px" height="12px" />
     </Button>
   );
 }

@@ -14,6 +14,7 @@ const GrayBar = ({ onClick }) => {
   );
 
   const isLogin = useSelector(authSelectors.isLoggedIn);
+  const justifyContent = isLogin ? 'end' : 'start';
   return (
     isVisible && (
       <Box display={{ md: 'none' }} w="100%">
@@ -21,7 +22,7 @@ const GrayBar = ({ onClick }) => {
           bgColor="#EFF1F3"
           w="100%"
           h="40px"
-          justifyContent="end"
+          justifyContent={justifyContent}
           alignItems="center"
           p="15px 20px"
         >
