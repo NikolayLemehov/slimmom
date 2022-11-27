@@ -9,7 +9,7 @@ import {
 const initialState = {
   selectedProduct: [],
   productsHistory: [],
-  productsByDate: [],
+  dayId: [],
   currentDate: null,
   isLoading: false,
   error: null,
@@ -47,12 +47,9 @@ export const productsSlice = createSlice({
     });
     builder.addCase(addProduct.pending, handlePending);
     builder.addCase(addProduct.fulfilled, (state, action) => {
-      console.log('fullfield on addProduct', action.payload);
       state.isLoading = false;
       state.error = null;
-      // state.productsHistory = action.payload.day;
-      // ??? треба зберігати в хісторі
-      console.log(action.payload.daySummary);
+      state.productsHistory = action.payload.day;
     });
     builder.addCase(addProduct.rejected, handleRejected);
     builder.addCase(getInfoForDay.pending, state => {
@@ -62,7 +59,9 @@ export const productsSlice = createSlice({
     builder.addCase(getInfoForDay.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.productsByDate = action.payload;
+      console.log(action.payload);
+      state.dayId = action.payload.id;
+      state.productsHistory = action.payload;
       state.daySummary = action.payload.daySummary;
     });
     builder.addCase(getInfoForDay.rejected, (state, action) => {
