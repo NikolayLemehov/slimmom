@@ -9,17 +9,19 @@ import Header from './Header/Header';
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRestrictedRoute from './PublicStrictedRoute/PublicRestrictedRoute';
-import MobileModalForm from './MobileModalForm/MobileModalForm';
 import NotFound from '../pages/NotFound/NotFound';
 
-
 const DiaryPage = lazy(() => import('pages/DiaryPage/DiaryPage'));
-const LogInPage = lazy(()=> import('../pages/LogInPage/LogInPage'));
-const CalculatorPage = lazy(()=> import('../pages/CalculatorPage/CalculatorPage'));
-const RegistrationPage = lazy(()=> import('../pages/RegistrationPage/RegistrationPage'));
-const HomePage = lazy(()=> import('../pages/HomePage/HomePage'));
+const LogInPage = lazy(() => import('../pages/LogInPage/LogInPage'));
+const CalculatorPage = lazy(() =>
+  import('../pages/CalculatorPage/CalculatorPage')
+);
+const RegistrationPage = lazy(() =>
+  import('../pages/RegistrationPage/RegistrationPage')
+);
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 
-const MobileModalForm = lazy(()=> import("./MobileModalForm/MobileModalForm"));
+const MobileModalForm = lazy(() => import('./MobileModalForm/MobileModalForm'));
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
 export const App = () => {
