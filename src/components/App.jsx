@@ -13,6 +13,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRestrictedRoute from './PublicStrictedRoute/PublicRestrictedRoute';
+import MobileModalForm from "./MobileModalForm/MobileModalForm";
 
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
@@ -73,6 +74,7 @@ export const App = () => {
               }
             />
             <Route path="uikit" element={<UiKit />} />
+            <Route path="mobileModal" element={<MobileModalForm />} />
           </Route>
           <Route path="*" element={<div>404</div>} />
         </Routes>

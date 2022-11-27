@@ -1,19 +1,12 @@
 import React from 'react';
-import { ListItem, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
+import { Item } from './DiaryProductItem.styled';
 
-import DeleteButton from 'components/Button/DeleteButton';
 // VscChromeClose
 
-export default function DiaryProductItem({ product, grams, kcal }) {
+export default function DiaryProductItem({ product, grams, kcal, children }) {
   return (
-    <ListItem
-      display="flex"
-      alignItems="center"
-      color="#212121"
-      lineHeight="1.21"
-      letterSpacing="0.04em"
-      fontSize="14px"
-    >
+    <Item>
       <Text
         as="span"
         display="block"
@@ -44,7 +37,7 @@ export default function DiaryProductItem({ product, grams, kcal }) {
       >
         {kcal} kcal
       </Text>
-      <DeleteButton />
-    </ListItem>
+      {children}
+    </Item>
   );
 }
