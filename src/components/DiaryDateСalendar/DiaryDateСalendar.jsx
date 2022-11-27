@@ -6,6 +6,7 @@ import 'flatpickr/dist/themes/material_orange.css';
 import { MdDateRange } from 'react-icons/md';
 
 import { getCurrentDate } from 'redux/products/productsSlice';
+import { getDate } from 'redux/dailyRate/dailyRateSlice';
 
 import css from './DiaryDateCalendar.module.css';
 
@@ -13,11 +14,9 @@ export default function DiaryDateCalendar() {
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
 
-
   const formatDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
-  .toISOString()
-  .substring(0, 10);
-
+    .toISOString()
+    .substring(0, 10);
 
   useEffect(() => {
     const formatDate = new Date(
@@ -27,6 +26,7 @@ export default function DiaryDateCalendar() {
       .substring(0, 10);
 
     dispatch(getCurrentDate(formatDate));
+    dispatch(getDate(formatDate));
   }, [date, dispatch]);
 
   return (

@@ -2,12 +2,13 @@ import storage from 'redux-persist/lib/storage';
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import { dailyRate, dailyRateById } from './dailtyRateOperations';
-import { addProduct, getInfoForDay } from 'redux/products/productsOperations';
+import { getInfoForDay } from 'redux/products/productsOperations';
 
 const initialState = {
   dailyRate: null,
   notAllowedProducts: [],
   summaries: [],
+  currentDate: null,
   loading: false,
   error: '',
 };
@@ -27,6 +28,13 @@ const handleRejected = (state, action) => {
 export const dailyRateSlice = createSlice({
   name: 'dailyRate',
   initialState,
+  reducers: {
+    getDate: {
+      reducer(state, action) {
+        state.currentDate = action.payload;
+      },
+    },
+  },
   extraReducers: builder => {
     // Without id user
     builder
@@ -48,14 +56,43 @@ export const dailyRateSlice = createSlice({
         state.summaries = payload.summaries;
       })
       .addCase(dailyRateById.rejected, handleRejected);
-    builder.addCase(getInfoForDay.fulfilled, (state, action) => {
-      // state.summaries = state.summaries.map(item => {
-      //   if (item.date === action.payload.daySummary.date) {
-      //     return action.payload.daySummary;
-      //   }
-      //   return item;
-      // });
-      state.summaries.push(action.payload.daySummary);
+
+    // get info for day
+    builder.addCase(getInfoForDay.fulfilled, (state, { payload }) => {
+      // If response with date
+      if (
+        payload.daySummary &&
+        !state.summaries.some(item => item.date === payload.daySummary.date)
+      ) {
+        // add new info for day
+        state.summaries.push(payload.daySummary);
+      } else {
+        // replace info for day
+        state.summaries = state.summaries.map(item => {
+          if (item?.date === payload?.daySummary?.date) {
+            return payload.daySummary;
+          }
+          return item;
+        });
+      }
+
+      // If response without date
+      if (!payload.daySummary) {
+        const newPayload = { date: state.currentDate, ...payload };
+
+        if (!state.summaries.some(item => item.date === newPayload.date)) {
+          // add new info for day
+          state.summaries.push(newPayload);
+        } else {
+          // replace info for day
+          state.summaries = state.summaries.map(item => {
+            if (item?.date === newPayload.date) {
+              return newPayload;
+            }
+            return item;
+          });
+        }
+      }
     });
   },
 });
@@ -65,6 +102,8 @@ const persistConfig = {
   storage,
   whitelist: ['dailyRate', 'notAllowedProducts'],
 };
+
+export const { getDate } = dailyRateSlice.actions;
 
 export const persistedDailyRateReducer = persistReducer(
   persistConfig,

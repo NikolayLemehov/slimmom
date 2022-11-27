@@ -113,7 +113,7 @@ export default function CalculatorPage() {
         />
       </Box>
       <Box position="relative">
-        <RightSideBar />
+        <RightSideBar></RightSideBar>
         <BgImg />
       </Box>
     </Wrapper>
