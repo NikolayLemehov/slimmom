@@ -1,23 +1,22 @@
 import { Box } from '@chakra-ui/react';
 import notFoundIcon from 'assets/notFound/notFound.svg';
 
-import { NotFoundImg, LinkStyled, Article } from './NotFound.styled';
+import { NotFoundImg, Title, BgImg } from './NotFound.styled';
 
 export default function NotFound() {
   return (
     <>
-      <NotFoundImg src={notFoundIcon} alt="Not found icon" width={500} />
+      <BgImg />
       <Box
-        display="flex"
+        display={{ xs: 'flex' }}
         flexDirection="column"
+        justifyContent="center"
         alignItems="center"
-        gridGap={30}
-        pb={40}
+        w={{ lg: '700px' }}
+        h={{ xs: 'calc(100vh - 85px)', md: '100%', lg: 'calc(100vh - 160px)' }}
       >
-        <h1>We couldn't find this page.</h1>
-        <Article>
-          Click <LinkStyled to="/">here</LinkStyled> to get back to home page
-        </Article>
+        <NotFoundImg src={notFoundIcon} alt="Not found icon" width={500} />
+        <Title>Opps... Page Not Found!</Title>
       </Box>
     </>
   );

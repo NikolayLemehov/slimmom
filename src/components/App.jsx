@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Container } from '@chakra-ui/react';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 import authOperations from 'redux/auth/authOperations';
 import Header from './Header/Header';
@@ -24,53 +25,62 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route
-            index
-            element={
-              <PublicRestrictedRoute
-                redirectTo="/calculator"
-                children={<HomePage />}
-              />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRestrictedRoute
-                redirectTo="/calculator"
-                children={<LogInPage />}
-              />
-            }
-          />
-          <Route
-            path="registration"
-            element={
-              <PublicRestrictedRoute
-                redirectTo="/calculator"
-                children={<RegistrationPage />}
-              />
-            }
-          />
-          <Route
-            path="calculator"
-            element={
-              <PrivateRoute redirectTo="/" children={<CalculatorPage />} />
-            }
-          />
-          <Route
-            path="diary"
-            element={
-              <PrivateRoute redirectTo="/login" children={<DiaryPage />} />
-            }
-          />
-          <Route path="uikit" element={<UiKit />} />
-          <Route path="mobileModal" element={<MobileModalForm />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
+    <Container
+      maxW={{ sm: '768px', md: '1280px' }}
+      position="relative"
+      pt={{ xs: '80px', lg: '151px' }}
+      px={{ xs: '16px', md: '32px', lg: '16px' }}
+    >
+      <Header />
+
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Outlet />}>
+            <Route
+              index
+              element={
+                <PublicRestrictedRoute
+                  redirectTo="/calculator"
+                  children={<HomePage />}
+                />
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRestrictedRoute
+                  redirectTo="/calculator"
+                  children={<LogInPage />}
+                />
+              }
+            />
+            <Route
+              path="registration"
+              element={
+                <PublicRestrictedRoute
+                  redirectTo="/calculator"
+                  children={<RegistrationPage />}
+                />
+              }
+            />
+            <Route
+              path="calculator"
+              element={
+                <PrivateRoute redirectTo="/" children={<CalculatorPage />} />
+              }
+            />
+            <Route
+              path="diary"
+              element={
+                <PrivateRoute redirectTo="/login" children={<DiaryPage />} />
+              }
+            />
+            <Route path="uikit" element={<UiKit />} />
+            <Route path="mobileModal" element={<MobileModalForm />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </Container>
   );
 };
