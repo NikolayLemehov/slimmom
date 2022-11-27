@@ -28,6 +28,7 @@ export const App = () => {
       maxW={{ sm: '768px', md: '1280px' }}
       position="relative"
       pt={{ xs: '80px', lg: '151px' }}
+      px={{ xs: '16px', md: '32px', lg: '16px' }}
     >
       <Header />
 
