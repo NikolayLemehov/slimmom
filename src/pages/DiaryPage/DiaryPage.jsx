@@ -51,7 +51,11 @@ export default function DiaryPage() {
       >
         <DiaryDateCalendar />
         <DiaryAddProductForm />
-        {!isLoading ? <DiaryProductsList /> : <Loader />}
+        {!isLoading ? (
+          <DiaryProductsList />
+        ) : (
+          <Loader height="30px" width="30px" />
+        )}
 
         <Box display={{ xs: 'block', md: 'none' }}>
           <AddButton
