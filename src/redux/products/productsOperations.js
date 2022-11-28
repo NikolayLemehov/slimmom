@@ -1,5 +1,6 @@
 import { slimMomAxios } from 'redux/slimMomAxios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import {Notify} from "notiflix";
 
 import { Notify } from 'notiflix';
 
@@ -15,8 +16,9 @@ export const selectProduct = createAsyncThunk(
         },
       });
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      Notify.failure(e.message);
+      return rejectWithValue(e.message);
     }
   }
 );
@@ -27,8 +29,9 @@ export const addProduct = createAsyncThunk(
     try {
       const response = await slimMomAxios.post('/day', productData);
       return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      Notify.failure(e.message);
+      return rejectWithValue(e.message);
     }
   }
 );
@@ -39,8 +42,9 @@ export const getInfoForDay = createAsyncThunk(
     try {
       const response = await slimMomAxios.post('/day/info', date);
       return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      Notify.failure(e.message);
+      return rejectWithValue(e.message);
     }
   }
 );
@@ -50,8 +54,9 @@ export const deleteProduct = createAsyncThunk(
     try {
       const { data } = await slimMomAxios.delete(`/day`, { data: idValues });
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      Notify.failure(e.message);
+      return rejectWithValue(e.message);
     }
   }
 );
