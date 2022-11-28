@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/slimmom/static/css/main.431fad38.css",
-    "main.js": "/slimmom/static/js/main.a76a287c.js",
+    "main.js": "/slimmom/static/js/main.5f8aa7d4.js",
     "static/css/805.6a726532.chunk.css": "/slimmom/static/css/805.6a726532.chunk.css",
     "static/js/805.0da73188.chunk.js": "/slimmom/static/js/805.0da73188.chunk.js",
     "static/js/534.1fc3576c.chunk.js": "/slimmom/static/js/534.1fc3576c.chunk.js",
@@ -37,7 +37,7 @@
     "static/media/montserrat-vietnamese-400-normal.woff2": "/slimmom/static/media/montserrat-vietnamese-400-normal.8f3f4c99eb0eeb5990f1.woff2",
     "index.html": "/slimmom/index.html",
     "main.431fad38.css.map": "/slimmom/static/css/main.431fad38.css.map",
-    "main.a76a287c.js.map": "/slimmom/static/js/main.a76a287c.js.map",
+    "main.5f8aa7d4.js.map": "/slimmom/static/js/main.5f8aa7d4.js.map",
     "805.6a726532.chunk.css.map": "/slimmom/static/css/805.6a726532.chunk.css.map",
     "805.0da73188.chunk.js.map": "/slimmom/static/js/805.0da73188.chunk.js.map",
     "534.1fc3576c.chunk.js.map": "/slimmom/static/js/534.1fc3576c.chunk.js.map",
@@ -53,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.431fad38.css",
-    "static/js/main.a76a287c.js"
+    "static/js/main.5f8aa7d4.js"
   ]
 }
