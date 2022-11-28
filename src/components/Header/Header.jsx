@@ -11,7 +11,7 @@ import HamburgerMenu from 'components/HamburgerMenu/HamburgerMenu';
 import GrayBar from 'components/GrayBar/GrayBar';
 import DesktopLogo from 'components/Logo/BigLogo';
 
-const Header = () => {
+const Header = ({ onClick }) => {
   const isLogin = useSelector(authSelectors.isLoggedIn);
 
   const getStyle = ({ isActive }) =>
@@ -116,7 +116,7 @@ const Header = () => {
           </Flex>
         )}
         <Box position="absolute" bottom="-42px" left="0" w="100%">
-          {isLogin && <GrayBar />}
+          {isLogin && <GrayBar onClick={onClick} />}
         </Box>
       </Flex>
     </>

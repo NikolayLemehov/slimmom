@@ -38,7 +38,7 @@ export const App = () => {
       px={{ xs: '16px', md: '32px', lg: '16px' }}
     >
       <Header />
-
+      {/* <Loader /> */}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Outlet />}>

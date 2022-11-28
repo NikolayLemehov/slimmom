@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box } from '@chakra-ui/react';
+import { Box, useDisclosure } from '@chakra-ui/react';
 
 import { Wrapper, BgImg } from 'pages/CalculatorPage/CalculatorPage.styled';
 
@@ -20,7 +20,8 @@ import { authSelectors } from 'redux/auth/authSelectors';
 import { getInfoForDay } from 'redux/products/productsOperations';
 
 export default function DiaryPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -28,7 +29,7 @@ export default function DiaryPage() {
   const token = useSelector(authSelectors.accessToken);
 
   const handleClickAddButton = () => {
-    setIsModalOpen(true);
+    onOpen();
   };
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function DiaryPage() {
     <Wrapper>
       <Box
         w={{ md: '610px', lg: '640px' }}
-        minWidth={{ xs: '310px' }}
+        minWidth={{ xs: '100%' }}
         display="flex"
         flexDirection={'column'}
         justifyContent="center"
@@ -61,7 +62,7 @@ export default function DiaryPage() {
             mb="60px"
             onClick={handleClickAddButton}
           />
-          {isModalOpen && <MobileModalForm />}
+          <MobileModalForm isOpen={isOpen} onClose={onClose} />
         </Box>
       </Box>
       <Box position="relative">

@@ -14,7 +14,11 @@ const GrayBar = ({ onClick }) => {
   );
 
   const isLogin = useSelector(authSelectors.isLoggedIn);
-  const justifyContent = isLogin ? 'end' : 'start';
+  const justifyContent = isLogin
+    ? onClick
+      ? 'space-between'
+      : 'end'
+    : 'start';
   return (
     isVisible && (
       <Box display={{ md: 'none' }} w="100%">
@@ -26,7 +30,7 @@ const GrayBar = ({ onClick }) => {
           alignItems="center"
           p="15px 20px"
         >
-          {!isLogin && (
+          {onClick && (
             <Icon as={IoReturnDownBackSharp} boxSize="6" onClick={onClick} />
           )}
 
