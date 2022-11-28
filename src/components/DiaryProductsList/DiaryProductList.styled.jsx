@@ -8,6 +8,9 @@ export const List = styled.ul`
   overflow: hidden;
   overflow-y: auto;
   &&::-webkit-scrollbar {
+    position: fixed;
+    top: 200px;
+    right: 0px;
     width: 6px;
   }
 

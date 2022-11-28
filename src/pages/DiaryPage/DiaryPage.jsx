@@ -30,12 +30,13 @@ export default function DiaryPage() {
     <Wrapper>
       {/* <Flex h="100%" flexDirection={{ xs: 'column', lg: 'row' }}> */}
       <Box
-        w="100%"
+        w={{ md: '610px', lg: '640px' }}
+        minWidth={{ xs: '300px' }}
         display="flex"
         flexDirection={'column'}
         justifyContent="center"
         gap={{ xs: '32px', md: '60px' }}
-        pt={{ xs: '160px', md: '180px', lg: '50px' }}
+        pt={{ xs: '80px', md: '100px', lg: '150px' }}
         // padding={{
         //   xs: '40px 20px',
         //   md: '100px 126px 55px 32px',
@@ -46,7 +47,7 @@ export default function DiaryPage() {
         <DiaryAddProductForm />
         <DiaryProductsList />
         <Box display={{ xs: 'block', md: 'none' }}>
-          <AddButton />
+          <AddButton type="click" ml="auto" mr="auto" mt="28px" mb="60px" />
         </Box>
       </Box>
       <Box position="relative">

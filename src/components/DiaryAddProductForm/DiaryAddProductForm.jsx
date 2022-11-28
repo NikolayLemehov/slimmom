@@ -33,7 +33,7 @@ export default function DiaryAddProductForm() {
     const { textContent } = e.target;
     setProduct(textContent);
     dispatch(selectProduct(textContent));
-    setIsSelectOpen(!isSelectOpen);
+    setIsSelectOpen(false);
   };
 
   const handleInputChange = e => {
@@ -70,9 +70,13 @@ export default function DiaryAddProductForm() {
     setGramsInputDirty(false);
   };
 
-  const handleInputClick = () => {
-    setIsSelectOpen(true);
-  };
+  // const handleInputClick = () => {
+  //   setIsSelectOpen(true);
+
+  //   if(product === '') {
+  //     setIsSelectOpen(false)
+  //   }
+  // };
 
   const handleFromSubmit = e => {
     e.preventDefault();
@@ -114,7 +118,7 @@ export default function DiaryAddProductForm() {
               name="product"
               value={product}
               onBlur={handleInputBlur}
-              onClick={handleInputClick}
+              // onClick={handleInputClick}
             />
             {productInputDirty && (
               <DiaryFormValidation text="*Please, enter the product name" />

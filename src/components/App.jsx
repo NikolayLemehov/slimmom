@@ -13,7 +13,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRestrictedRoute from './PublicStrictedRoute/PublicRestrictedRoute';
-import MobileModalForm from "./MobileModalForm/MobileModalForm";
+import MobileModalForm from './MobileModalForm/MobileModalForm';
 
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 

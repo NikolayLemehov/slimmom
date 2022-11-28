@@ -6,7 +6,7 @@ export default function DeleteButton({ onClick }) {
     <Button
       type="button"
       display="block"
-      // marginRight={{ xs: '0px', md: '40px' }}
+      marginRight={{ xs: '10px', md: '40px' }}
       background="transparent"
       color="rgba(155, 159, 170, 1)"
       p="5px"
