@@ -1,7 +1,7 @@
 import storage from 'redux-persist/lib/storage';
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
-import { dailyRate, dailyRateById } from './dailtyRateOperations';
+import { dailyRate, dailyRateById, userInfo } from './dailtyRateOperations';
 import { getInfoForDay } from 'redux/products/productsOperations';
 
 const initialState = {
@@ -100,6 +100,14 @@ export const dailyRateSlice = createSlice({
         }
       }
     });
+
+    // Get user Info
+    builder
+      .addCase(userInfo.pending, handlePending)
+      .addCase(userInfo.fulfilled, (state, { payload }) => {
+        console.log(payload);
+      })
+      .addCase(userInfo.rejected, handleRejected);
   },
 });
 
