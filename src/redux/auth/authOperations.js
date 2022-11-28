@@ -50,9 +50,10 @@ const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   token.set(refreshToken);
 
   try {
-    const { data } = await slimMomAxios.post('/auth/refresh', { sid });
-    token.set(data.newAccessToken);
-    return data;
+    const { data: refreshData } = await slimMomAxios.post('/auth/refresh', { sid });
+    token.set(refreshData.newAccessToken);
+    const { data: userData } = await slimMomAxios.get('/user');
+    return {refreshData, userData};
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
   }

@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
 const initialState = {
-  user: { username: null, email: null },
+  user: { username: null, email: null, id: null },
   accessToken: null,
   refreshToken: null,
   sid: null,
@@ -31,6 +31,7 @@ export const authSlice = createSlice({
       .addCase(authOperations.register.fulfilled, (state, { payload }) => {
         state.user.username = payload['user']['username'];
         state.user.email = payload['user']['email'];
+        state.id = payload['user']['id'];
         state.accessToken = payload['accessToken'];
         state.refreshToken = payload['refreshToken'];
         state.sid = payload['sid'];
@@ -44,6 +45,7 @@ export const authSlice = createSlice({
       .addCase(authOperations.logIn.fulfilled, (state, { payload }) => {
         state.user.username = payload['user']['username'];
         state.user.email = payload['user']['email'];
+        state.id = payload['user']['id'];
         state.accessToken = payload['accessToken'];
         state.refreshToken = payload['refreshToken'];
         state.sid = payload['sid'];
@@ -75,9 +77,14 @@ export const authSlice = createSlice({
         state.accessToken = null;
       })
       .addCase(authOperations.refresh.fulfilled, (state, { payload }) => {
-        state.accessToken = payload['newAccessToken'];
-        state.refreshToken = payload['newRefreshToken'];
-        state.sid = payload['sid'];
+        state.accessToken = payload.refreshData['newAccessToken'];
+        state.refreshToken = payload.refreshData['newRefreshToken'];
+        state.sid = payload.refreshData['sid'];
+
+        state.user.username = payload.userData['username'];
+        state.user.email = payload.userData['email'];
+        state.user.id = payload.userData['id'];
+
         state.isLoggedIn = true;
         state.isFetchingCurrentUser = false;
         state.loading.refresh = false;
@@ -87,6 +94,7 @@ export const authSlice = createSlice({
         state.accessToken = initialState.accessToken;
         state.refreshToken = initialState.refreshToken;
         state.sid = initialState.sid;
+        state.id = initialState.id;
         state.isLoggedIn = initialState.isLoggedIn;
         state.loading.refresh = false;
       });
