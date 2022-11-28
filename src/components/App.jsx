@@ -4,17 +4,24 @@ import { Container } from '@chakra-ui/react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 
 import authOperations from 'redux/auth/authOperations';
+
 import Header from './Header/Header';
-import { LogInPage } from '../pages/LogInPage/LogInPage';
-import CalculatorPage from '../pages/CalculatorPage/CalculatorPage';
-import DiaryPage from 'pages/DiaryPage/DiaryPage';
-import { RegistrationPage } from '../pages/RegistrationPage/RegistrationPage';
-import HomePage from '../pages/HomePage/HomePage';
 import Loader from './Loader/Loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRestrictedRoute from './PublicStrictedRoute/PublicRestrictedRoute';
-import MobileModalForm from './MobileModalForm/MobileModalForm';
+import NotFound from '../pages/NotFound/NotFound';
 
+const DiaryPage = lazy(() => import('pages/DiaryPage/DiaryPage'));
+const LogInPage = lazy(() => import('../pages/LogInPage/LogInPage'));
+const CalculatorPage = lazy(() =>
+  import('../pages/CalculatorPage/CalculatorPage')
+);
+const RegistrationPage = lazy(() =>
+  import('../pages/RegistrationPage/RegistrationPage')
+);
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+
+const MobileModalForm = lazy(() => import('./MobileModalForm/MobileModalForm'));
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
 export const App = () => {
@@ -77,7 +84,7 @@ export const App = () => {
             <Route path="uikit" element={<UiKit />} />
             <Route path="mobileModal" element={<MobileModalForm />} />
           </Route>
-          <Route path="*" element={<div>404</div>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Container>

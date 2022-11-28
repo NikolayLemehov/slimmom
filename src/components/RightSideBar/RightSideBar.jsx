@@ -3,6 +3,8 @@ import { Box, Flex, Heading, List, ListItem, Text } from '@chakra-ui/react';
 import {
   getNotAllowedProducts,
   getSummaries,
+  getDate,
+  getDailyRate,
 } from 'redux/dailyRate/dailyRateSelectors';
 import {
   ListProducts,
@@ -12,17 +14,16 @@ import {
 
 const RightSideBar = () => {
   // Summary
-  const date = useSelector(state => state.products.currentDate);
+  const date = useSelector(getDate);
   const dateNewFormat = newDateFormat(date);
   const summaries = useSelector(getSummaries);
+  const dailyRateFromState = useSelector(getDailyRate);
   const summariesCurrentDate = summaries.find(item => item.date === date);
 
-  const dailyRate = summariesCurrentDate
-    ? summariesCurrentDate.dailyRate.toFixed(1)
-    : '000';
+  const dailyRate = dailyRateFromState ? dailyRateFromState.toFixed(1) : '000';
   const kcalLeft = summariesCurrentDate
     ? summariesCurrentDate.kcalLeft.toFixed(1)
-    : '000';
+    : dailyRate;
 
   const kcalConsumed = summariesCurrentDate
     ? summariesCurrentDate.kcalConsumed.toFixed(1)
@@ -41,10 +42,12 @@ const RightSideBar = () => {
       {index + 1}. {item}
     </li>
   ));
+
   return (
     <Flex
       bgColor={{ xs: '#F0F1F3', md: 'transparent', lg: 'transparent' }}
-      h="100%"
+      // h="100%"
+      mt={{ md: '0px', lg: '139px' }}
       py={{ xs: '40px', md: '80px', lg: '0px' }}
       flexDir={{ xs: 'column', md: 'row', lg: 'column' }}
       gap={{ xs: '40px', md: '97px', lg: '60px' }}
@@ -70,7 +73,7 @@ const RightSideBar = () => {
           </ListItem>
           <ListItem display="flex" justifyContent="space-between">
             <Text>n% of normal</Text>
-            <Text>{percentsOfDailyRate} kcal</Text>
+            <Text>{percentsOfDailyRate} % &ensp;</Text>
           </ListItem>
         </List>
       </Box>

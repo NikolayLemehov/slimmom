@@ -27,7 +27,7 @@ const LogInSchema = Yup.object().shape({
     .required('This field is required'),
 });
 
-export function LogInPage() {
+export default function LogInPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginLoading = useSelector(authSelectors.loginLoading);

@@ -22,14 +22,16 @@ export const BgImg = styled.div`
   z-index: -1;
 
   width: 100vw;
+
   height: 100%;
 
   background-color: #f0f1f3;
 
   @media screen and (min-width: 768px) {
-    left: -16px;
+    left: -32px;
 
-    height: calc(100vh - 617px);
+    height: calc(100vh - 698px);
+    min-height: 350px;
 
     background-image: url(${leafMd});
     background-repeat: no-repeat;
