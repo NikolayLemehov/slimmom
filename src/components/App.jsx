@@ -21,7 +21,6 @@ const RegistrationPage = lazy(() =>
 );
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 
-const MobileModalForm = lazy(() => import('./MobileModalForm/MobileModalForm'));
 const UiKit = lazy(() => import('./UiKit/UiKit'));
 
 export const App = () => {
@@ -82,7 +81,6 @@ export const App = () => {
               }
             />
             <Route path="uikit" element={<UiKit />} />
-            <Route path="mobileModal" element={<MobileModalForm />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
