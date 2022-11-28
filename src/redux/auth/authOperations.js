@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authSelectors } from './authSelectors';
 import { slimMomAxios, token } from '../slimMomAxios';
 
-const register = createAsyncThunk('auth/register', async credential => {
+const register = createAsyncThunk('auth/register', async (credential, thunkAPI) => {
   const { email, password, username } = credential;
 
   try {
@@ -14,11 +14,12 @@ const register = createAsyncThunk('auth/register', async credential => {
     token.set(data.accessToken);
     return data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
+    return thunkAPI.rejectWithValue(e.message);
   }
 });
 
-const logIn = createAsyncThunk('auth/login', async credential => {
+const logIn = createAsyncThunk('auth/login', async (credential, thunkAPI) => {
   const { email, password } = credential;
 
   try {
@@ -29,16 +30,18 @@ const logIn = createAsyncThunk('auth/login', async credential => {
     token.set(data.accessToken);
     return data;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
+    return thunkAPI.rejectWithValue(e.message);
   }
 });
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await slimMomAxios.post('/auth/logout');
     token.unset();
   } catch (e) {
-    console.log(e);
+    // console.log(e);
+    return thunkAPI.rejectWithValue(e.message);
   }
 });
 

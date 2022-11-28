@@ -31,10 +31,12 @@ export const authSlice = createSlice({
       .addCase(authOperations.register.fulfilled, (state, { payload }) => {
         state.user.username = payload['user']['username'];
         state.user.email = payload['user']['email'];
-        state.id = payload['user']['id'];
+        state.user.id = payload['user']['id'];
+
         state.accessToken = payload['accessToken'];
         state.refreshToken = payload['refreshToken'];
         state.sid = payload['sid'];
+
         state.isLoggedIn = true;
         state.loading.registration = false;
       })
@@ -45,10 +47,12 @@ export const authSlice = createSlice({
       .addCase(authOperations.logIn.fulfilled, (state, { payload }) => {
         state.user.username = payload['user']['username'];
         state.user.email = payload['user']['email'];
-        state.id = payload['user']['id'];
+        state.user.id = payload['user']['id'];
+
         state.accessToken = payload['accessToken'];
         state.refreshToken = payload['refreshToken'];
         state.sid = payload['sid'];
+
         state.isLoggedIn = true;
         state.loading.logIn = false;
       })
@@ -62,9 +66,12 @@ export const authSlice = createSlice({
       .addCase(authOperations.logOut.fulfilled, state => {
         state.user.username = initialState.user.username;
         state.user.email = initialState.user.email;
+        state.user.id = initialState.user.id;
+
         state.accessToken = initialState.accessToken;
         state.refreshToken = initialState.refreshToken;
         state.sid = initialState.sid;
+
         state.isLoggedIn = initialState.isLoggedIn;
         state.loading.logOut = false;
       })
@@ -90,11 +97,14 @@ export const authSlice = createSlice({
         state.loading.refresh = false;
       })
       .addCase(authOperations.refresh.rejected, state => {
-        state.user.username = initialState.username;
         state.accessToken = initialState.accessToken;
         state.refreshToken = initialState.refreshToken;
         state.sid = initialState.sid;
-        state.id = initialState.id;
+
+        state.user.username = initialState.user.username;
+        state.user.email = initialState.user.email;
+        state.user.id = initialState.user.id;
+
         state.isLoggedIn = initialState.isLoggedIn;
         state.loading.refresh = false;
       });
