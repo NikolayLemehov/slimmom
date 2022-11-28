@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { slimMomAxios } from '../slimMomAxios';
+import {Notify} from "notiflix";
 
 export const dailyRateById = createAsyncThunk(
   'dailyRateById/fetchData',
@@ -11,6 +12,7 @@ export const dailyRateById = createAsyncThunk(
       );
       return data;
     } catch (e) {
+      Notify.failure(e.message);
       thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -24,6 +26,7 @@ export const dailyRate = createAsyncThunk(
 
       return data;
     } catch (e) {
+      Notify.failure(e.message);
       thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -38,6 +41,7 @@ export const userInfo = createAsyncThunk(
 
       return data;
     } catch (e) {
+      Notify.failure(e.message);
       thunkAPI.rejectWithValue(e.message);
     }
   }
