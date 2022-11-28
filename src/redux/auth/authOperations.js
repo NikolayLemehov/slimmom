@@ -2,22 +2,34 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authSelectors } from './authSelectors';
 import { slimMomAxios, token } from '../slimMomAxios';
 
-const register = createAsyncThunk('auth/register', async (credential, thunkAPI) => {
-  const { email, password, username } = credential;
+const register = createAsyncThunk(
+  'auth/register',
+  async (credential, thunkAPI) => {
+    const { email, password, username } = credential;
 
-  try {
-    await slimMomAxios.post('/auth/register', { email, password, username });
-    const { data } = await slimMomAxios.post('/auth/login', {
-      email,
-      password,
-    });
-    token.set(data.accessToken);
-    return data;
-  } catch (e) {
-    // console.log(e);
-    return thunkAPI.rejectWithValue(e.message);
+    try {
+      await slimMomAxios.post('/auth/register', { email, password, username });
+      const { data } = await slimMomAxios.post('/auth/login', {
+        email,
+        password,
+      });
+      token.set(data.accessToken);
+      if (!thunkAPI.getState().dailyRate.dataUser) {
+        return data;
+      }
+
+      // Check if user already submit form
+      const dataUser = thunkAPI.getState().dailyRate.dataUser;
+      const userID = data.user.id;
+      if (thunkAPI.getState().dailyRate.dataUser) {
+        await slimMomAxios.post(`/daily-rate/${userID}`, dataUser);
+        return data;
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
-});
+);
 
 const logIn = createAsyncThunk('auth/login', async (credential, thunkAPI) => {
   const { email, password } = credential;
@@ -28,6 +40,7 @@ const logIn = createAsyncThunk('auth/login', async (credential, thunkAPI) => {
       password,
     });
     token.set(data.accessToken);
+
     return data;
   } catch (e) {
     // console.log(e);
@@ -53,10 +66,12 @@ const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   token.set(refreshToken);
 
   try {
-    const { data: refreshData } = await slimMomAxios.post('/auth/refresh', { sid });
+    const { data: refreshData } = await slimMomAxios.post('/auth/refresh', {
+      sid,
+    });
     token.set(refreshData.newAccessToken);
     const { data: userData } = await slimMomAxios.get('/user');
-    return {refreshData, userData};
+    return { refreshData, userData };
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
   }

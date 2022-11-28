@@ -8,6 +8,7 @@ import { BgImg, Wrapper } from './CalculatorPage.styled';
 import { Box } from '@chakra-ui/react';
 import { dailyRateById } from 'redux/dailyRate/dailtyRateOperations';
 import { authSelectors } from 'redux/auth/authSelectors';
+import { getDataUser } from 'redux/dailyRate/dailyRateSlice';
 
 export default function CalculatorPage() {
   const userId = useSelector(authSelectors.userId);
@@ -94,6 +95,7 @@ export default function CalculatorPage() {
     }
 
     // Submit
+    dispatch(getDataUser(dataUser));
     const fetchObj = { userId, dataUser };
     dispatch(dailyRateById(fetchObj));
   };

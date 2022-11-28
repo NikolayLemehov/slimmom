@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
   Divider,
@@ -32,8 +32,10 @@ const ModalWindow = ({ overlay, isOpen, onClose }) => {
   const isLoading = useSelector(getIsLoading);
   const notAllowedProducts = useSelector(getNotAllowedProducts);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleClick = () => {
     navigate('/registration');
+    dispatch(getDailyRate(null));
   };
   return (
     <>
