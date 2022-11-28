@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import watermelon from '../../assets/notFound/watermelon.png';
 import vector from '../../assets/notFound/Vector.png';
-import tabletMainBg from '../../assets/bg/tabletMainBg.png';
 
 export const NotFoundImg = styled.img`
   margin-top: 30px;

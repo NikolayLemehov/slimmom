@@ -1,4 +1,4 @@
-import { Button, Icon } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { VscChromeClose } from 'react-icons/vsc';
 
 export default function DeleteButton({ onClick }) {
