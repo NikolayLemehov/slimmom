@@ -7,6 +7,7 @@ import { ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import ModalWindow from 'components/Modal/Modal';
 import CalculatorСalorieForm from '../../components/CalculatorСalorieForm/CalculatorСalorieForm';
 import { BgImg } from './HomePage.styled';
+import { getDataUser } from 'redux/dailyRate/dailyRateSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -105,6 +106,7 @@ const HomePage = () => {
     }
 
     // Submit
+    dispatch(getDataUser(dataUser));
     dispatch(dailyRate(dataUser));
     setOverlay(<OverlayOne />);
     onOpen();

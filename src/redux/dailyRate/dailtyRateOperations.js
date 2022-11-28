@@ -5,7 +5,6 @@ import { slimMomAxios } from '../slimMomAxios';
 export const dailyRateById = createAsyncThunk(
   'dailyRateById/fetchData',
   async ({ userId, dataUser }, thunkAPI) => {
-    // const accessToken = authSelectors.refreshToken(thunkAPI.getState());
     try {
       const { data } = await slimMomAxios.post(
         `/daily-rate/${userId}`,

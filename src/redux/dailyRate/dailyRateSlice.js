@@ -6,6 +6,7 @@ import { getInfoForDay } from 'redux/products/productsOperations';
 
 const initialState = {
   dailyRate: null,
+  dataUser: null,
   notAllowedProducts: [],
   summaries: [],
   currentDate: null,
@@ -32,6 +33,11 @@ export const dailyRateSlice = createSlice({
     getDate: {
       reducer(state, action) {
         state.currentDate = action.payload;
+      },
+    },
+    getDataUser: {
+      reducer(state, action) {
+        state.dataUser = action.payload;
       },
     },
   },
@@ -104,6 +110,7 @@ const persistConfig = {
 };
 
 export const { getDate } = dailyRateSlice.actions;
+export const { getDataUser } = dailyRateSlice.actions;
 
 export const persistedDailyRateReducer = persistReducer(
   persistConfig,
