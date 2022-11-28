@@ -38,9 +38,9 @@ export default function DiaryProductsList() {
 
   return (
     <Box
-      // marginBottom={{ xs: '60px', md: '55px' }}
-      w={{ lg: '623px' }}
-      position="relative"
+      marginBottom={{ xs: '60px', md: '55px' }}
+      w={{ xs: '100%', md: '610px', lg: '623px' }}
+      // position="relative"
     >
       <List>
         {productsList &&

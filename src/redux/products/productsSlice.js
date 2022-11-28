@@ -10,7 +10,6 @@ const initialState = {
   selectedProduct: [],
   productsHistory: [],
   productsByDate: [],
-  // dayId: [],
   currentDate: null,
   isLoading: false,
   error: null,
@@ -38,7 +37,9 @@ export const productsSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(selectProduct.pending, handlePending);
+    builder.addCase(selectProduct.pending, state => {
+      state.isLoading = false;
+    });
     builder.addCase(selectProduct.fulfilled, (state, action) => {
       state.isLoading = false;
       state.shallGetInfoOfDay = false;
