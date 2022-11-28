@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
-import {Box, Button, Flex, FormControl, VStack} from "@chakra-ui/react";
-import InputField from "../InputField/InputField";
-import DiaryFormValidation from "../DiaryAddProductForm/DiaryFormValidation/DiaryFormValidation";
-import DiarySelectProduct from "../DiarySelectProduct/DiarySelectProduct";
-import AddButton from "../Button/AddButton";
-import DiaryFormError from "../DiaryAddProductForm/DiaryFormValidation/DiaryFormError";
-import {useDispatch, useSelector} from "react-redux";
-import {selectProducts} from "../../redux/products/productsSelectors";
-import {selectProduct} from "../../redux/products/productsOperations";
-import {Field, Form, Formik} from "formik";
-import {noop} from "../../utils/noop";
+import React, { useState } from 'react';
+import { Box, Button, Flex, FormControl, VStack } from '@chakra-ui/react';
+import InputField from '../InputField/InputField';
+import DiaryFormValidation from '../DiaryAddProductForm/DiaryFormValidation/DiaryFormValidation';
+import DiarySelectProduct from '../DiarySelectProduct/DiarySelectProduct';
+import AddButton from '../Button/AddButton';
+import DiaryFormError from '../DiaryAddProductForm/DiaryFormValidation/DiaryFormError';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProducts } from '../../redux/products/productsSelectors';
+import { selectProduct } from '../../redux/products/productsOperations';
+import { Field, Form, Formik } from 'formik';
+import { noop } from '../../utils/noop';
 
 export default function MobileModalForm(props) {
   // const dispatch = useDispatch();
@@ -80,33 +80,33 @@ export default function MobileModalForm(props) {
   const initialValues = {
     product: '',
     grams: '',
-  }
-  const onSubmit = (values) => {
-    console.log(values)
-  }
-
+  };
+  const onSubmit = values => {
+    console.log(values);
+  };
 
   return (
-    <Box pt='12px'>
+    <Box pt="120px">
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {() => (
           <Form
-            // onSubmit={handleFromSubmit}
+          // onSubmit={handleFromSubmit}
           >
             <VStack>
-
               <VStack
                 // spacing={5}
                 alignItems="center"
-                gap={{xs: '12px'}}
-                mb='30px'
-                w='100%'
+                gap={{ xs: '12px' }}
+                mb="30px"
+                w="100%"
                 // isInvalid={inputDirty}
               >
-                <Box w={{xs: '100%'}} fontSize="14px">
+                <Box w={{ xs: '100%' }} fontSize="14px">
                   <Field name="product">
-                    {({field, form}) => (
-                      <FormControl isInvalid={form.errors.email && form.touched.email}>
+                    {({ field, form }) => (
+                      <FormControl
+                        isInvalid={form.errors.email && form.touched.email}
+                      >
                         <InputField
                           labelName="Enter product name"
                           width="100%"
@@ -118,7 +118,7 @@ export default function MobileModalForm(props) {
                           // onClick={handleInputClick}
                           {...field}
                         />
-                        <DiaryFormValidation text={form.errors.email}/>
+                        <DiaryFormValidation text={form.errors.email} />
                       </FormControl>
                     )}
                   </Field>
@@ -133,10 +133,12 @@ export default function MobileModalForm(props) {
                   {/*)}*/}
                 </Box>
 
-                <Box w={{xs: '100%'}}>
+                <Box w={{ xs: '100%' }}>
                   <Field name="grams">
-                    {({field, form}) => (
-                      <FormControl isInvalid={form.errors.email && form.touched.email}>
+                    {({ field, form }) => (
+                      <FormControl
+                        isInvalid={form.errors.email && form.touched.email}
+                      >
                         <InputField
                           labelName="Grams"
                           width="100%"
@@ -148,7 +150,7 @@ export default function MobileModalForm(props) {
                           // onBlur={handleInputBlur}
                           {...field}
                         />
-                        <DiaryFormValidation text={form.errors.email}/>
+                        <DiaryFormValidation text={form.errors.email} />
                       </FormControl>
                     )}
                   </Field>
@@ -158,13 +160,14 @@ export default function MobileModalForm(props) {
                 </Box>
               </VStack>
 
-              <Button type="submit" variant='primary' margin='0 auto'>Add</Button>
+              <Button type="submit" variant="primary" margin="0 auto">
+                Add
+              </Button>
               {/*{submitError && <DiaryFormError />}*/}
             </VStack>
           </Form>
         )}
       </Formik>
     </Box>
-  )
+  );
 }
-

@@ -10,3 +10,5 @@ export const selectCurrentDayId = state => {
 
 export const selectShallGetInfoOfDay = state =>
   state.products.shallGetInfoOfDay;
+
+export const selectIsLoading = state => state.products.isLoading;
