@@ -52,22 +52,28 @@ export default function DiaryPage() {
         <DiaryDateCalendar />
         <DiaryAddProductForm />
         {!isLoading ? (
-          <DiaryProductsList />
+          <>
+            <DiaryProductsList />
+            <Box display={{ xs: 'block', md: 'none' }}>
+              <AddButton
+                type="click"
+                ml="auto"
+                mr="auto"
+                mt="-32px"
+                mb="60px"
+                onClick={handleClickAddButton}
+              />
+              <MobileModalForm isOpen={isOpen} onClose={onClose} />
+            </Box>
+          </>
         ) : (
-          <Loader height="30px" width="30px" />
-        )}
-
-        <Box display={{ xs: 'block', md: 'none' }}>
-          <AddButton
-            type="click"
-            ml="auto"
-            mr="auto"
-            mt="-32px"
-            mb="60px"
-            onClick={handleClickAddButton}
+          <Loader
+            height="30px"
+            width="30px"
+            marginLeft={{ xs: '0px', lg: '-190px' }}
+            marginTop={{ xs: '-90px' }}
           />
-          <MobileModalForm isOpen={isOpen} onClose={onClose} />
-        </Box>
+        )}
       </Box>
       <Box position="relative">
         <RightSideBar />
