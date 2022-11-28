@@ -37,7 +37,10 @@ export default function DiaryProductItem({ product, grams, kcal, children }) {
         marginRight={{ xs: '17px', md: '32px' }}
         textAlign="right"
       >
-        {kcal} kcal
+        {kcal}{' '}
+        <Text as="span" fontSize={{ xs: '10px', md: '14px' }}>
+          kcal
+        </Text>{' '}
       </Text>
       {children}
     </Item>
