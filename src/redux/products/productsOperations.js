@@ -13,9 +13,10 @@ export const selectProduct = createAsyncThunk(
           search,
         },
       });
+
       return data;
     } catch (e) {
-      Notify.failure(e.message);
+      Notify.failure('The list of products is empty!');
       return rejectWithValue(e.message);
     }
   }
