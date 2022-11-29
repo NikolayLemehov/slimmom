@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FormControl, Box } from '@chakra-ui/react';
@@ -13,6 +13,7 @@ import {
   selectProductOfList,
   selectCurrentDate,
 } from 'redux/products/productsSelectors';
+import {useDebounce} from "../../../hooks/useDebounce";
 
 export default function FormAddProduct({
   display,
@@ -28,6 +29,7 @@ export default function FormAddProduct({
   const currentDate = useSelector(selectCurrentDate);
 
   const [product, setProduct] = useState('');
+  const debouncedProduct = useDebounce(product, 1000)
   const [grams, setGrams] = useState('');
   const [productInputDirty, setProductInputDirty] = useState(false);
   const [gramsInputDirty, setGramsInputDirty] = useState(false);
@@ -36,10 +38,14 @@ export default function FormAddProduct({
 
   const inputDirty = productInputDirty || gramsInputDirty;
 
+  useEffect(() => {
+    dispatch(selectProduct(debouncedProduct));
+  }, [dispatch, debouncedProduct])
+
   const handleProductItemClick = e => {
     const { textContent } = e.target;
     setProduct(textContent);
-    dispatch(selectProduct(textContent));
+    // dispatch(selectProduct(textContent));
     setIsSelectOpen(false);
   };
 
@@ -49,7 +55,7 @@ export default function FormAddProduct({
       setProduct(value);
       setProductInputDirty(false);
       setSubmitError(false);
-      dispatch(selectProduct(value));
+      // dispatch(selectProduct(value));
     }
 
     if (name === 'product' && value === '') {
@@ -72,7 +78,7 @@ export default function FormAddProduct({
     }
   };
 
-  const handleInputBlur = e => {
+  const handleInputBlur = () => {
     setProductInputDirty(false);
     setGramsInputDirty(false);
   };
