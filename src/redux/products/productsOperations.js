@@ -1,7 +1,5 @@
 import { slimMomAxios } from 'redux/slimMomAxios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {Notify} from "notiflix";
-
 import { Notify } from 'notiflix';
 
 export const selectProduct = createAsyncThunk(
