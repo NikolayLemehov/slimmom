@@ -1,6 +1,6 @@
 import { slimMomAxios } from 'redux/slimMomAxios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {Notify} from "notiflix";
+import { Notify } from 'notiflix';
 
 export const selectProduct = createAsyncThunk(
   'products/selectProduct',
@@ -13,9 +13,10 @@ export const selectProduct = createAsyncThunk(
           search,
         },
       });
+
       return data;
     } catch (e) {
-      Notify.failure(e.message);
+      Notify.failure('The list of products is empty!');
       return rejectWithValue(e.message);
     }
   }
