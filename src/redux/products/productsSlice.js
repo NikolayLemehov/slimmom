@@ -80,7 +80,9 @@ export const productsSlice = createSlice({
     });
     builder.addCase(deleteProduct.pending, handlePending);
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
+      state.isLoading = false;
       state.shallGetInfoOfDay = true;
+      state.error = null;
     });
     builder.addCase(deleteProduct.rejected, handleRejected);
   },
