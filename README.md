@@ -1,4 +1,4 @@
-## Command project - SLOTHS - (JS) [Presentation](https://docs.google.com/presentation/d/1Bbjm9zPtEjoapBqBCjl8oLfS_AVQy5Uc/edit#slide=id.p1).
+## Command project - Watermelons - (React) [Presentation](https://docs.google.com/presentation/d/1Bbjm9zPtEjoapBqBCjl8oLfS_AVQy5Uc/edit#slide=id.p1).
 
 ![GitHub actions settings](./assets/Watermelons.png)
 ![GitHub actions settings](<./assets/Watermelons (1).png>)
