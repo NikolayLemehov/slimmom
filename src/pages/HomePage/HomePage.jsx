@@ -36,8 +36,6 @@ const HomePage = () => {
     const name = e.target.name;
     const value = Number(e.target.value);
     setRenderAlert(false);
-
-    console.log(value);
     switch (name) {
       case 'heightUser':
         setHeightUser(value);
