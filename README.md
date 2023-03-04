@@ -7,3 +7,8 @@
 ![GitHub actions settings](<./assets/Watermelons (4).png>)
 ![GitHub actions settings](<./assets/Watermelons (5).png>)
 ![GitHub actions settings](<./assets/Watermelons (6).png>)
+
+## Links
+
+- [site](https://nikolaylemehov.github.io/slimmom/)
+- [repository](https://github.com/NikolayLemehov/slimmom)
